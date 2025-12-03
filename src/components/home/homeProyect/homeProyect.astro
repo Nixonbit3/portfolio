@@ -1,0 +1,197 @@
+---
+import HomeProjectCard from "./homeProyectCard.astro";
+import { proyectos } from "../../../data/projetsAboutData.js";
+---
+
+<section 
+  class="relative py-32 md:py-40 overflow-hidden bg-black"
+  data-section="projects"
+>
+
+  <!-- AMBIENT BACKGROUND -->
+  <div class="absolute inset-0 -z-10">
+    <div class="absolute top-1/4 left-1/3 w-96 h-96 bg-purple-500/10 rounded-full blur-[140px] animate-float"></div>
+    <div class="absolute bottom-1/4 right-1/3 w-96 h-96 bg-cyan-500/10 rounded-full blur-[140px] animate-float-delayed"></div>
+  </div>
+
+  <div class="mx-auto max-w-7xl px-6 md:px-8">
+
+    <!-- HEADER -->
+    <div class="text-center mb-20" data-reveal>
+      
+      <!-- LABEL -->
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 mb-6">
+        <svg class="w-4 h-4 text-purple-400" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+        </svg>
+        <span class="text-white/70 text-sm font-medium">Portfolio</span>
+      </div>
+
+      <!-- TITLE -->
+      <h2 class="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6">
+        <span class="bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent">
+          Proyectos
+        </span>
+        <br />
+        <span class="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+          Destacados
+        </span>
+      </h2>
+
+      <!-- SUBTITLE -->
+      <p class="text-xl text-white/60 max-w-2xl mx-auto">
+        Una selección de mis trabajos más recientes en desarrollo de videojuegos y experiencias interactivas
+      </p>
+    </div>
+
+    <!-- PROJECTS GRID -->
+    <div class="grid md:grid-cols-2 gap-8 md:gap-10 mb-16">
+      {proyectos.map((proyecto, index) => (
+        <div 
+          data-reveal 
+          data-delay={index * 100}
+        >
+          <HomeProjectCard {...proyecto} />
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA SECTION -->
+    <div class="text-center" data-reveal data-delay="400">
+      
+      <!-- DIVIDER -->
+      <div class="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-12"></div>
+
+      <!-- CTA TEXT -->
+      <p class="text-white/60 text-lg mb-8">
+        ¿Quieres ver más de mi trabajo?
+      </p>
+
+      <!-- CTA BUTTON -->
+      <a
+        href="/proyectos"
+        class="group relative inline-flex items-center gap-3 px-8 py-4 rounded-full
+               bg-gradient-to-r from-purple-500 to-cyan-500
+               text-white font-semibold text-lg
+               shadow-lg shadow-purple-500/25
+               hover:shadow-2xl hover:shadow-purple-500/40
+               hover:scale-105 active:scale-95
+               transition-all duration-300
+               overflow-hidden"
+      >
+        <!-- GLOW EFFECT (debe estar dentro y antes del contenido) -->
+        <div class="absolute inset-0 rounded-full bg-white opacity-0 group-hover:opacity-10 blur-xl transition-opacity duration-300"></div>
+        
+        <!-- CONTENT -->
+        <span class="relative z-10">Ver todos los proyectos</span>
+        <svg 
+          class="relative z-10 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" 
+          fill="none" 
+          viewBox="0 0 24 24" 
+          stroke="currentColor"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+
+      <!-- STATS -->
+      <div class="mt-16 grid grid-cols-3 gap-8 max-w-2xl mx-auto">
+        <div class="space-y-2">
+          <div class="text-4xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+            {proyectos.length}+
+          </div>
+          <div class="text-sm text-white/50">Proyectos completados</div>
+        </div>
+        <div class="space-y-2">
+          <div class="text-4xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+            10+
+          </div>
+          <div class="text-sm text-white/50">Tecnologías</div>
+        </div>
+        <div class="space-y-2">
+          <div class="text-4xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+            100%
+          </div>
+          <div class="text-sm text-white/50">Pasión</div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+  @keyframes float {
+    0%, 100% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(30px, -30px);
+    }
+  }
+
+  @keyframes floatDelayed {
+    0%, 100% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(-30px, 30px);
+    }
+  }
+
+  .animate-float {
+    animation: float 20s ease-in-out infinite;
+  }
+
+  .animate-float-delayed {
+    animation: floatDelayed 20s ease-in-out infinite;
+    animation-delay: -10s;
+  }
+
+  /* Reveal animations */
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  [data-reveal].revealed {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  [data-reveal][data-delay="100"].revealed { transition-delay: 0.1s; }
+  [data-reveal][data-delay="200"].revealed { transition-delay: 0.2s; }
+  [data-reveal][data-delay="300"].revealed { transition-delay: 0.3s; }
+  [data-reveal][data-delay="400"].revealed { transition-delay: 0.4s; }
+
+  /* Typography */
+  h2, p, span {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+</style>
+
+<script>
+  // Intersection Observer for reveal animations
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { 
+      threshold: 0.15,
+      rootMargin: '0px 0px -50px 0px'
+    }
+  );
+
+  document.querySelectorAll('[data-reveal]').forEach((el) => {
+    observer.observe(el);
+  });
+</script>

@@ -1,0 +1,185 @@
+---
+import MiFoto from "../../assets/img/MiFoto.png";
+---
+
+<section class="relative py-20 md:py-28 overflow-hidden bg-black">
+  
+  <!-- AMBIENT BACKGROUND -->
+  <div class="absolute inset-0 -z-10">
+    <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[140px] animate-float"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-[140px] animate-float-delayed"></div>
+  </div>
+
+  <div class="mx-auto max-w-7xl px-6 md:px-8">
+    <div class="grid md:grid-cols-2 gap-16 items-center">
+
+      <!-- LEFT: IMAGE -->
+      <div class="relative order-2 md:order-1" data-reveal>
+        <!-- DECORATIVE BACKGROUND -->
+        <div class="absolute -inset-4 bg-gradient-to-r from-purple-500/20 to-cyan-500/20 rounded-3xl blur-2xl opacity-50"></div>
+        
+        <div class="relative group">
+          <!-- MAIN IMAGE CONTAINER -->
+          <div class="relative overflow-hidden rounded-3xl
+                     bg-gradient-to-br from-white/10 to-white/5
+                     backdrop-blur-xl border border-white/10
+                     shadow-2xl shadow-black/50
+                     transition-all duration-700 ease-out
+                     hover:shadow-[0_40px_80px_-20px_rgba(120,54,207,0.4)]
+                     hover:scale-[1.02]">
+            <img 
+              src={MiFoto.src} 
+              alt="Nixon - Game Developer"
+              class="w-full h-auto object-cover
+                     transition-all duration-700 ease-out
+                     group-hover:scale-105"
+            />
+            
+            <!-- GRADIENT OVERLAY ON HOVER -->
+            <div class="absolute inset-0 bg-gradient-to-t from-purple-500/10 via-transparent to-transparent 
+                        opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+          </div>
+
+          <!-- FLOATING BADGE -->
+          <div class="absolute -bottom-6 -right-6 px-6 py-3 rounded-2xl
+                     bg-white/10 backdrop-blur-2xl border border-white/20
+                     shadow-xl
+                     transform group-hover:translate-y-[-4px] transition-transform duration-500">
+            <div class="flex items-center gap-3">
+              <div class="relative flex h-3 w-3">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+              </div>
+              <span class="text-white font-semibold text-sm">Disponible</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: CONTENT -->
+      <div class="order-1 md:order-2 space-y-6" data-reveal data-delay="200">
+        
+        <!-- GREETING -->
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.1]">
+          <span class="text-white/60">Mi nombre es</span>
+          <br />
+          <span class="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+            Nixon
+          </span>
+        </h2>
+
+        <!-- MAIN DESCRIPTION -->
+<div class="space-y-4 text-base md:text-lg text-white/60 leading-relaxed">
+  <p>
+    Soy <span class="text-white/90 font-semibold">graduado en Diseño y Desarrollo de Videojuegos</span> 
+    por el <span class="text-white/90 font-semibold">CITM (UPC)</span>, con un enfoque equilibrado entre 
+    <span class="text-white/90 font-semibold">programación</span> y 
+    <span class="text-white/90 font-semibold">diseño</span>.
+  </p>
+
+  <p>
+    Manejo lenguajes como <span class="text-white/80">C#, C++, Python y Dart (Flutter)</span>, además de 
+    herramientas especializadas en arte y 3D como 
+    <span class="text-white/80">Blender, ZBrush, Substance Painter, Photoshop e Illustrator</span>.  
+    También cuento con experiencia en motores y tecnologías como 
+    <span class="text-white/80">Unity, VR/AR y desarrollo de herramientas</span>.
+  </p>
+
+  <p>
+    Me apasiona crear <span class="text-white/90 font-semibold">experiencias interactivas</span>, ya sea en 
+    <span class="text-white/90 font-semibold">realidad virtual</span> o en aplicaciones y videojuegos 
+    tradicionales. Disfruto convertir ideas en mecánicas, sistemas y entornos que se sientan vivos.
+  </p>
+
+  <p>
+    Destaco por mi <span class="text-white/90 font-semibold">capacidad de trabajo independiente</span>, 
+    mi facilidad para aprender nuevas tecnologías y mi rápida adaptación a 
+    <span class="text-white/90 font-semibold">entornos modernos de desarrollo</span>.  
+    Estoy en una búsqueda constante de <span class="text-white/90 font-semibold">crecimiento profesional</span> 
+    y de mejorar mis habilidades para aportar valor en cada proyecto que realizo.
+  </p>
+</div>
+
+
+        <!-- TECH HIGHLIGHTS -->
+        <div class="flex flex-wrap gap-3 pt-4">
+          {["Unity", "C#", "Unreal", "Blender", "Figma"].map((tech) => (
+            <span class="px-4 py-2 rounded-full bg-white/5 backdrop-blur-xl border border-white/10
+                         text-white/80 text-sm font-medium
+                         hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+              {tech}
+            </span>
+          ))}
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes float {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(30px, -30px); }
+  }
+
+  @keyframes floatDelayed {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(-30px, 30px); }
+  }
+
+  .animate-float {
+    animation: float 20s ease-in-out infinite;
+  }
+
+  .animate-float-delayed {
+    animation: floatDelayed 20s ease-in-out infinite;
+    animation-delay: -10s;
+  }
+
+  /* Reveal animation */
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  [data-reveal].revealed {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  [data-reveal][data-delay="200"].revealed {
+    transition-delay: 0.2s;
+  }
+
+  /* Typography */
+  h2, p, span {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+</style>
+
+<script>
+  // Intersection Observer for reveal animations
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { 
+      threshold: 0.2,
+      rootMargin: '0px 0px -100px 0px'
+    }
+  );
+
+  document.querySelectorAll('[data-reveal]').forEach((el) => {
+    observer.observe(el);
+  });
+</script>

@@ -1,0 +1,200 @@
+---
+export interface Props {
+  titulo: string;
+  subtitulo?: string;
+}
+
+const { titulo, subtitulo } = Astro.props;
+---
+
+<section
+  class="relative text-white pt-32 pb-16 overflow-hidden bg-black"
+  data-hero-section
+>
+  <!-- GRID PATTERN -->
+  <div class="absolute inset-0 
+              bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)]
+              bg-[size:100px_100px]
+              [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,black,transparent)]
+              animate-grid-fade">
+  </div>
+
+  <!-- GRADIENT BLOBS -->
+  <div class="absolute inset-0 -z-10 opacity-0 animate-blobs-appear">
+    <div class="absolute top-0 left-1/4 w-[600px] h-[600px] bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full blur-[150px] animate-pulse-slow"></div>
+    <div class="absolute top-0 right-1/4 w-[600px] h-[600px] bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full blur-[150px] animate-pulse-slow" style="animation-delay: 2s;"></div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="max-w-6xl mx-auto px-6 text-center relative z-10">
+    <!-- TITLE -->
+    <h1 class="text-5xl md:text-7xl font-black mb-4 tracking-tight relative opacity-0 translate-y-8 animate-title-reveal">
+      <!-- GLOW LAYER -->
+      <span class="absolute inset-0 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 blur-2xl opacity-50 animate-pulse-glow">
+        {titulo}
+      </span>
+      <!-- FRONT LAYER -->
+      <span class="relative text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 animate-gradient-x">
+        {titulo}
+      </span>
+    </h1>
+
+    <!-- SUBTITLE -->
+    {subtitulo && (
+      <p class="text-xl md:text-2xl text-white/60 max-w-2xl mx-auto opacity-0 translate-y-8 animate-subtitle-reveal">
+        {subtitulo}
+      </p>
+    )}
+
+    <!-- DECORATIVE LINE -->
+    <div class="mt-8 flex justify-center">
+      <div class="h-1 w-0 bg-gradient-to-r from-transparent via-purple-500 to-transparent rounded-full animate-line-expand"></div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* GRID FADE IN */
+  @keyframes grid-fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .animate-grid-fade {
+    animation: grid-fade 1s ease-out;
+  }
+
+  /* BLOBS APPEAR */
+  @keyframes blobs-appear {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    to {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+  }
+
+  .animate-blobs-appear {
+    animation: blobs-appear 1.5s ease-out 0.3s forwards;
+  }
+
+  /* TITLE REVEAL */
+  @keyframes title-reveal {
+    from {
+      opacity: 0;
+      transform: translateY(32px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-title-reveal {
+    animation: title-reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+  }
+
+  /* SUBTITLE REVEAL */
+  @keyframes subtitle-reveal {
+    from {
+      opacity: 0;
+      transform: translateY(32px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-subtitle-reveal {
+    animation: subtitle-reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
+  }
+
+  /* LINE EXPAND */
+  @keyframes line-expand {
+    from {
+      width: 0;
+      opacity: 0;
+    }
+    to {
+      width: 200px;
+      opacity: 0.5;
+    }
+  }
+
+  .animate-line-expand {
+    animation: line-expand 1s cubic-bezier(0.16, 1, 0.3, 1) 1.2s forwards;
+  }
+
+  /* GRADIENT ANIMATIONS */
+  @keyframes gradient-x {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.6; }
+  }
+
+  @keyframes pulse-slow {
+    0%, 100% { opacity: 0.2; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(1.1); }
+  }
+
+  .animate-gradient-x {
+    background-size: 200% auto;
+    animation: gradient-x 3s ease infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-slow 8s ease-in-out infinite;
+  }
+
+  /* Typography */
+  * {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    @keyframes line-expand {
+      to {
+        width: 120px;
+        opacity: 0.5;
+      }
+    }
+  }
+</style>
+
+<script>
+  // Intersection Observer para re-animar cuando vuelve a estar visible (opcional)
+  const observerOptions = {
+    threshold: 0.2,
+    rootMargin: '0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+      }
+    });
+  }, observerOptions);
+
+  const heroSection = document.querySelector('[data-hero-section]');
+  if (heroSection) {
+    observer.observe(heroSection);
+  }
+</script>

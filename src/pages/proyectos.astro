@@ -1,0 +1,338 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ProjectCard from "../components/project/proyectCard.astro";
+import Banner from "../components/commons/banners/banner.astro";
+import { proyectos } from "../data/projectData.js";
+---
+
+<Layout title="Proyectos - Nixon" description="Explora mis proyectos de desarrollo de videojuegos y experiencias digitales">
+  
+  <!-- HERO SECTION -->
+  <section class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-black">
+    
+    <!-- AMBIENT BACKGROUND -->
+    <div class="absolute inset-0 -z-10">
+      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[140px] animate-float"></div>
+      <div class="absolute top-1/3 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-[140px] animate-float-delayed"></div>
+    </div>
+
+    <!-- GRID PATTERN -->
+    <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] 
+                bg-[size:72px_72px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,black,transparent)]"></div>
+
+    <div class="relative mx-auto max-w-7xl px-6 md:px-8 text-center">
+      
+      <!-- BADGE -->
+      <div 
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-full 
+               bg-white/5 backdrop-blur-xl border border-white/10 mb-8
+               opacity-0 animate-fade-in"
+        style="animation-delay: 0.1s;"
+      >
+        <svg class="w-4 h-4 text-purple-400" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+        </svg>
+        <span class="text-white/70 text-sm font-medium">Portfolio</span>
+      </div>
+
+      <!-- TITLE -->
+      <h1 
+        class="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6
+               opacity-0 animate-fade-in"
+        style="animation-delay: 0.2s;"
+      >
+        <span class="bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent">
+          Mis
+        </span>
+        <br />
+        <span class="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+          Proyectos
+        </span>
+      </h1>
+
+      <!-- DESCRIPTION -->
+      <p 
+        class="text-xl text-white/60 max-w-2xl mx-auto mb-12
+               opacity-0 animate-fade-in"
+        style="animation-delay: 0.4s;"
+      >
+        Una colección de mis trabajos en desarrollo de videojuegos y experiencias interactivas
+      </p>
+
+      <!-- FILTER BUTTONS -->
+      <div 
+        class="flex flex-wrap justify-center gap-3 opacity-0 animate-fade-in"
+        style="animation-delay: 0.6s;"
+      >
+        <button 
+          class="filter-btn px-6 py-3 rounded-full
+                 bg-white/10 backdrop-blur-xl border border-white/20
+                 text-white font-semibold text-sm
+                 hover:bg-white/20 hover:border-white/30 hover:scale-105
+                 active:scale-95 transition-all duration-300"
+          data-filter="all"
+        >
+          Todos
+        </button>
+        <button 
+          class="filter-btn px-6 py-3 rounded-full
+                 bg-white/5 backdrop-blur-xl border border-white/10
+                 text-white/70 font-semibold text-sm
+                 hover:bg-white/10 hover:border-white/20 hover:text-white hover:scale-105
+                 active:scale-95 transition-all duration-300"
+          data-filter="code"
+        >
+          Code
+        </button>
+        <button 
+          class="filter-btn px-6 py-3 rounded-full
+                 bg-white/5 backdrop-blur-xl border border-white/10
+                 text-white/70 font-semibold text-sm
+                 hover:bg-white/10 hover:border-white/20 hover:text-white hover:scale-105
+                 active:scale-95 transition-all duration-300"
+          data-filter="art"
+        >
+          Art
+        </button>
+        <button 
+          class="filter-btn px-6 py-3 rounded-full
+                 bg-white/5 backdrop-blur-xl border border-white/10
+                 text-white/70 font-semibold text-sm
+                 hover:bg-white/10 hover:border-white/20 hover:text-white hover:scale-105
+                 active:scale-95 transition-all duration-300"
+          data-filter="design"
+        >
+          Design
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJECTS GRID -->
+  <section class="relative py-20 bg-black">
+    <div class="mx-auto max-w-7xl px-6 md:px-8">
+      
+      <!-- GRID -->
+      <div
+        id="projects-container"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+      >
+        {proyectos.map((proyecto, index) => (
+          <ProjectCard
+            index={index}
+            titulo={proyecto.titulo}
+            descripcion={proyecto.descripcion}
+            imagen={proyecto.imagen}
+            tecnologias={proyecto.tecnologias}
+            demo={proyecto.demo}
+            codigo={proyecto.codigo}
+            categoria={proyecto.categoria}
+          />
+        ))}
+      </div>
+
+      <!-- LOAD MORE BUTTON -->
+      <div class="flex justify-center mt-12">
+        <button
+          id="load-more"
+          class="group inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full
+                 bg-white/5 backdrop-blur-xl border border-white/20
+                 text-white font-semibold text-lg
+                 hover:bg-white/10 hover:border-white/30 hover:scale-105
+                 active:scale-95 transition-all duration-300"
+        >
+          <span>Ver más proyectos</span>
+          <svg 
+            class="w-5 h-5 transition-transform duration-300 group-hover:translate-y-1" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <Banner />
+</Layout>
+
+<style>
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(30px, -30px);
+    }
+  }
+
+  @keyframes floatDelayed {
+    0%, 100% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(-30px, 30px);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-float {
+    animation: float 20s ease-in-out infinite;
+  }
+
+  .animate-float-delayed {
+    animation: floatDelayed 20s ease-in-out infinite;
+    animation-delay: -10s;
+  }
+
+  /* Filter button active state */
+  .filter-btn.active {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+  }
+
+  /* Project card animations */
+  .project-visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .project-hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.4s ease-out;
+  }
+
+  /* Typography */
+  h1, h2, p, button, span {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+</style>
+
+<script is:inline>
+(function () {
+  /* ---------------- CONFIG ---------------- */
+  const VISIBLE_CLASS = "project-visible";
+  const HIDDEN_CLASS = "project-hidden";
+  const HIDE_TIMEOUT = 400;
+
+  const INITIAL_VISIBLE = 12;
+  let itemsToShow = INITIAL_VISIBLE;
+  let activeFilter = "all";
+  let cards = [];
+  let filterButtons = [];
+  let loadMoreBtn = null;
+
+  /* ---------------- HELPERS ---------------- */
+  function queryElements() {
+    cards = Array.from(document.querySelectorAll("[data-index]"));
+    filterButtons = Array.from(document.querySelectorAll(".filter-btn"));
+    loadMoreBtn = document.getElementById("load-more");
+  }
+
+  function showCard(card) {
+    card.style.display = "block";
+    requestAnimationFrame(() => {
+      card.classList.remove(HIDDEN_CLASS);
+      card.classList.add(VISIBLE_CLASS);
+    });
+  }
+
+  function hideCard(card) {
+    card.classList.remove(VISIBLE_CLASS);
+    card.classList.add(HIDDEN_CLASS);
+    setTimeout(() => {
+      if (card.classList.contains(HIDDEN_CLASS)) {
+        card.style.display = "none";
+      }
+    }, HIDE_TIMEOUT);
+  }
+
+  function setActiveButton(btn) {
+    filterButtons.forEach((b) => b.classList.remove("active"));
+    if (btn) btn.classList.add("active");
+  }
+
+  /* ---------------- FILTRADO ---------------- */
+  function applyFilter(filter) {
+    activeFilter = filter ?? "all";
+    const normalized = activeFilter.toLowerCase();
+
+    cards = Array.from(document.querySelectorAll("[data-index]"));
+
+    const filteredCards = cards.filter((card) => {
+      const categoria = (card.dataset.categoria ?? "").toLowerCase();
+      return normalized === "all" || categoria === normalized;
+    });
+
+    cards.forEach((c) => hideCard(c));
+
+    filteredCards.forEach((card, i) => {
+      if (i < itemsToShow) showCard(card);
+    });
+
+    // botón ver más visible solo si hay más para ver
+    if (!loadMoreBtn) return;
+    loadMoreBtn.style.display = filteredCards.length > itemsToShow ? "flex" : "none";
+  }
+
+  /* ---------------- Filtros eventos ---------------- */
+  function attachFilterEvents() {
+    if (!filterButtons.length) return;
+    filterButtons.forEach((btn) => {
+      btn.onclick = () => {
+        itemsToShow = INITIAL_VISIBLE; 
+        const filter = btn.dataset.filter || "all";
+        setActiveButton(btn);
+        applyFilter(filter);
+      };
+    });
+
+    // activar "Todos" al inicio
+    const allBtn = document.querySelector('.filter-btn[data-filter="all"]');
+    setActiveButton(allBtn);
+  }
+
+  /* ---------------- Ver mas ---------------- */
+  function attachLoadMore() {
+    if (!loadMoreBtn) return;
+    loadMoreBtn.onclick = () => {
+      itemsToShow += INITIAL_VISIBLE; 
+      applyFilter(activeFilter); 
+    };
+  }
+
+  /* ---------------- INIT ---------------- */
+  function init() {
+    queryElements();
+    attachFilterEvents();
+    attachLoadMore();
+    applyFilter("all");
+  }
+
+  document.addEventListener("astro:page-load", init);
+  window.addEventListener("load", init);
+})();
+</script>

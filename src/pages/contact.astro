@@ -1,0 +1,831 @@
+---
+import Layout from "../layouts/Layout.astro";
+import MiFoto from "../assets/img/MiFoto.png";
+
+const links = [
+  {
+    href: "https://www.linkedin.com/in/nixon-correa-818388244/",
+    label: "LinkedIn",
+    icon: "linkedin",
+    xp: 50
+  },
+  { 
+    href: "https://github.com/Nixonbit3 ", 
+    label: "GitHub",
+    icon: "github",
+    xp: 75
+  },
+  { 
+    href: "https://x.com/nixon_correa3/", 
+    label: "Twitter",
+    icon: "twitter",
+    xp: 25
+  },
+  { 
+    href: "mailto:ndncorrea@gmail.com", 
+    label: "Email",
+    icon: "email",
+    xp: 100
+  },
+];
+---
+
+<Layout title="Contacto - Nixon" description="Contáctame para colaborar en proyectos">
+  
+  <!-- ACHIEVEMENT NOTIFICATION -->
+  <div id="achievement" class="fixed top-32 right-6 pointer-events-none opacity-0 transition-all duration-700 ease-out" style="z-index: 99999; transform: translateX(400px);">
+    <div class="bg-gradient-to-r from-yellow-500 to-orange-500 px-8 py-5 rounded-2xl shadow-[0_20px_60px_rgba(251,146,60,0.6)] border-2 border-yellow-300 flex items-center gap-4 min-w-[300px]">
+      <div class="text-5xl animate-bounce">🏆</div>
+      <div>
+        <div class="text-white font-bold text-xl" id="achievement-title">¡Achievement Unlocked!</div>
+        <div class="text-white text-base font-semibold" id="achievement-desc">+50 XP</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- XP BAR -->
+  <div id="xp-bar" class="fixed top-24 left-1/2 -translate-x-1/2 z-[100] opacity-0 transition-all duration-500">
+    <div class="bg-black/80 backdrop-blur-xl px-8 py-3 rounded-full border border-white/20 flex items-center gap-4">
+      <span class="text-white/70 text-sm font-bold">LVL <span id="player-level">1</span></span>
+      <div class="w-48 h-3 bg-white/10 rounded-full overflow-hidden">
+        <div id="xp-fill" class="h-full bg-gradient-to-r from-purple-500 to-cyan-500 transition-all duration-500" style="width: 0%"></div>
+      </div>
+      <span class="text-white text-sm font-bold"><span id="current-xp">0</span>/<span id="max-xp">250</span> XP</span>
+    </div>
+  </div>
+
+  <!-- GAME BUTTON (Floating) -->
+  <button id="game-btn" class="fixed bottom-8 right-8 z-[100] group">
+    <div class="relative">
+      <!-- Glow -->
+      <div class="absolute -inset-2 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full blur-xl opacity-50 group-hover:opacity-100 transition-all duration-300"></div>
+      
+      <!-- Button -->
+      <div class="relative px-6 py-4 bg-gradient-to-r from-purple-500 to-cyan-500 rounded-full
+                  flex items-center gap-3
+                  shadow-2xl
+                  hover:scale-110 active:scale-95
+                  transition-all duration-300">
+        <span class="text-3xl">🎮</span>
+        <span class="text-white font-bold">Jugar Snake</span>
+      </div>
+    </div>
+  </button>
+
+  <!-- SNAKE GAME -->
+  <canvas id="snake-canvas" class="fixed inset-0 z-[9998] opacity-0 pointer-events-none"></canvas>
+  <div id="snake-ui" class="fixed top-6 left-6 z-[9999] opacity-0 pointer-events-none">
+    <div class="bg-black/90 backdrop-blur-xl px-6 py-3 rounded-2xl border border-white/20">
+      <div class="text-white font-bold text-2xl">Score: <span id="snake-score">0</span></div>
+      <div class="text-white/70 text-sm">High Score: <span id="snake-high">0</span></div>
+      <div class="text-white/50 text-xs mt-2">WASD or Arrows • ESC to quit</div>
+    </div>
+  </div>
+
+  <!-- WEBGL SHADER (Lightweight) -->
+  <canvas id="shader-canvas" class="fixed inset-0 pointer-events-none z-[1] opacity-20"></canvas>
+  
+  <section class="relative min-h-screen flex flex-col items-center justify-center px-6 py-32 pt-32 overflow-hidden bg-black">
+    
+    <!-- SIMPLE GRID -->
+    <div class="fixed inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] 
+                bg-[size:100px_100px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]"></div>
+
+    <div class="relative max-w-2xl w-full mx-auto z-10">
+
+      <!-- PROFILE SECTION -->
+      <div class="mb-16 flex flex-col items-center">
+        
+        <!-- PHOTO -->
+        <div class="relative mb-12">
+          
+          <!-- ORBITING PARTICLES -->
+          <div class="absolute inset-0 pointer-events-none">
+            <div class="orbit-particle absolute w-2 h-2 rounded-full bg-gradient-to-r from-purple-400 to-pink-400 blur-sm"></div>
+            <div class="orbit-particle-2 absolute w-2 h-2 rounded-full bg-gradient-to-r from-cyan-400 to-blue-400 blur-sm"></div>
+          </div>
+          
+          <div class="relative" id="photo-3d">
+            <div class="w-48 h-48 rounded-full overflow-hidden
+                       bg-gradient-to-br from-white/10 to-white/5
+                       backdrop-blur-xl border-4 border-white/30
+                       shadow-[0_0_80px_rgba(168,85,247,0.4)]
+                       transition-all duration-500
+                       hover:scale-105 hover:border-white/50
+                       cursor-pointer"
+                 id="secret-photo">
+              <img 
+                src={MiFoto.src} 
+                alt="Nixon - Game Developer"
+                class="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+              />
+            </div>
+
+            <!-- AVAILABILITY BADGE -->
+            <div class="absolute -bottom-4 -right-4 px-5 py-3 rounded-2xl
+                       bg-gradient-to-br from-emerald-500/90 to-emerald-600/90
+                       backdrop-blur-2xl border-2 border-emerald-300/50
+                       shadow-[0_10px_40px_rgba(16,185,129,0.5)]
+                       animate-bounce-subtle">
+              <div class="flex items-center gap-2">
+                <div class="relative flex h-3 w-3">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-3 w-3 bg-white shadow-lg"></span>
+                </div>
+                <span class="text-white text-sm font-bold tracking-wide">DISPONIBLE</span>
+              </div>
+            </div>
+
+            <!-- ROTATING TEXT -->
+            <svg viewBox="0 0 240 240" class="animate-spin-smooth absolute -inset-12 w-72 h-72">
+              <path id="circlePathText" d="M120,120 m-95,0 a95,95 0 1,1 190,0 a95,95 0 1,1 -190,0" fill="none"/>
+              <text class="text-[15px] font-bold tracking-wider" fill="url(#animatedGradient)">
+                <textPath href="#circlePathText" startOffset="0%">
+                  ★ ¡HOLA! ★ OPEN TO WORK ★ LET'S CREATE MAGIC ★
+                </textPath>
+              </text>
+              <defs>
+                <linearGradient id="animatedGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" style="stop-color:#a855f7;stop-opacity:1">
+                    <animate attributeName="stop-color" values="#a855f7; #00fff2; #ec4899; #a855f7" dur="4s" repeatCount="indefinite"/>
+                  </stop>
+                  <stop offset="50%" style="stop-color:#00fff2;stop-opacity:1">
+                    <animate attributeName="stop-color" values="#00fff2; #ec4899; #a855f7; #00fff2" dur="4s" repeatCount="indefinite"/>
+                  </stop>
+                  <stop offset="100%" style="stop-color:#ec4899;stop-opacity:1">
+                    <animate attributeName="stop-color" values="#ec4899; #a855f7; #00fff2; #ec4899" dur="4s" repeatCount="indefinite"/>
+                  </stop>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+        </div>
+
+        <!-- TITLE -->
+        <h1 class="text-6xl md:text-8xl font-black text-center mb-6 relative">
+          <span class="absolute inset-0 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 blur-2xl opacity-50 animate-pulse-glow">
+            Let's Talk
+          </span>
+          <span class="relative text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 animate-gradient-x">
+            Let's Talk
+          </span>
+        </h1>
+
+        <!-- SUBTITLE WITH TYPING -->
+        <p class="text-xl md:text-2xl text-white/70 text-center max-w-lg leading-relaxed mb-4">
+          <span id="typing-text"></span>
+          <span class="animate-blink">|</span>
+        </p>
+      </div>
+
+      <!-- SOCIAL LINKS (Simplified) -->
+      <div class="space-y-5">
+        {links.map((link, index) => (
+          <a
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="social-link group relative block w-full"
+            data-xp={link.xp}
+            style={`animation-delay: ${index * 150}ms;`}
+          >
+            <!-- XP BADGE -->
+            <div class="absolute -top-2 -right-2 px-3 py-1 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full text-white text-xs font-bold shadow-lg z-10 opacity-0 group-hover:opacity-100 transition-opacity">
+              +{link.xp} XP
+            </div>
+
+            <!-- LINK CARD -->
+            <div class="relative flex items-center justify-between px-10 py-6 rounded-3xl
+                       bg-gradient-to-br from-white/[0.12] to-white/[0.05]
+                       backdrop-blur-2xl border-2 border-white/10
+                       shadow-[0_8px_32px_rgba(0,0,0,0.3)]
+                       transition-all duration-300
+                       hover:border-purple-500/50
+                       hover:shadow-[0_20px_60px_rgba(168,85,247,0.3)]
+                       hover:scale-[1.02]
+                       cursor-pointer">
+              
+              <div class="flex items-center gap-5 z-10">
+                <!-- ICON -->
+                <div class="p-4 rounded-2xl bg-gradient-to-br from-white/10 to-white/5
+                           border border-white/10
+                           group-hover:border-purple-500/30
+                           transition-all duration-300">
+                  
+                  {link.icon === "linkedin" && (
+                    <svg class="w-7 h-7 text-white/80 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                  )}
+                  {link.icon === "github" && (
+                    <svg class="w-7 h-7 text-white/80 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                  )}
+                  {link.icon === "twitter" && (
+                    <svg class="w-7 h-7 text-white/80 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                  )}
+                  {link.icon === "email" && (
+                    <svg class="w-7 h-7 text-white/80 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  )}
+                </div>
+
+                <!-- LABEL (No cambia) -->
+                <span class="text-xl md:text-2xl font-bold text-white transition-colors duration-300">
+                  {link.label}
+                </span>
+              </div>
+
+              <!-- ARROW -->
+              <svg 
+                class="w-8 h-8 text-white/60 group-hover:text-white 
+                       group-hover:translate-x-2
+                       transition-all duration-300" 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
+                stroke-width="2.5"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <!-- HINT -->
+      <div class="mt-16 text-center opacity-50">
+        <p class="text-white/40 text-sm">🎮 Gana XP interactuando con los links ✨</p>
+      </div>
+
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* ANIMATIONS */
+  @keyframes gradient-x {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.6; }
+  }
+
+  @keyframes spin-smooth {
+    100% { transform: rotate(360deg); }
+  }
+
+  @keyframes bounce-subtle {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+  @keyframes blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+  }
+
+  @keyframes orbit {
+    0% { transform: rotate(0deg) translateX(100px) rotate(0deg); }
+    100% { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+  }
+
+  @keyframes orbit-reverse {
+    0% { transform: rotate(0deg) translateX(85px) rotate(0deg); }
+    100% { transform: rotate(-360deg) translateX(85px) rotate(360deg); }
+  }
+
+  .animate-gradient-x {
+    background-size: 200% auto;
+    animation: gradient-x 3s ease infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  .animate-spin-smooth {
+    animation: spin-smooth 30s linear infinite;
+  }
+
+  .animate-bounce-subtle {
+    animation: bounce-subtle 3s ease-in-out infinite;
+  }
+
+  .animate-blink {
+    animation: blink 1s step-end infinite;
+  }
+
+  .orbit-particle {
+    animation: orbit 8s linear infinite;
+  }
+
+  .orbit-particle-2 {
+    animation: orbit-reverse 6s linear infinite;
+  }
+
+  /* LINKS */
+  .social-link {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: slideUp 0.8s ease forwards;
+  }
+
+  @keyframes slideUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* TYPOGRAPHY */
+  * {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* ACHIEVEMENT */
+  #achievement {
+    will-change: transform, opacity;
+  }
+
+  #achievement.show {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+  }
+
+  /* NAVBAR VISIBILITY - Asegurar que la navbar sea visible */
+  nav {
+    position: relative;
+    z-index: 9999 !important;
+  }
+</style>
+
+<script>
+  // ==================== WEBGL SHADER (Lightweight) ====================
+  const shaderCanvas = document.getElementById('shader-canvas') as HTMLCanvasElement;
+  
+  if (shaderCanvas) {
+    const gl = shaderCanvas.getContext('webgl');
+    
+    if (gl) {
+      shaderCanvas.width = window.innerWidth;
+      shaderCanvas.height = window.innerHeight;
+
+      const vertexShaderSource = `
+        attribute vec2 position;
+        void main() {
+          gl_Position = vec4(position, 0.0, 1.0);
+        }
+      `;
+
+      const fragmentShaderSource = `
+        precision mediump float;
+        uniform float time;
+        uniform vec2 resolution;
+
+        void main() {
+          vec2 uv = gl_FragCoord.xy / resolution.xy;
+          
+          // Simple waves
+          float wave = sin(uv.x * 3.0 + time * 0.3) * cos(uv.y * 3.0 + time * 0.2);
+          
+          // Colors
+          vec3 color1 = vec3(0.66, 0.21, 0.81); // Purple
+          vec3 color2 = vec3(0.0, 1.0, 0.95);   // Cyan
+          
+          vec3 finalColor = mix(color1, color2, wave * 0.5 + 0.5);
+          
+          gl_FragColor = vec4(finalColor, 0.2);
+        }
+      `;
+
+      function createShader(gl: WebGLRenderingContext, type: number, source: string) {
+        const shader = gl.createShader(type);
+        if (!shader) return null;
+        
+        gl.shaderSource(shader, source);
+        gl.compileShader(shader);
+        
+        if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+          console.error('Shader error:', gl.getShaderInfoLog(shader));
+          gl.deleteShader(shader);
+          return null;
+        }
+        return shader;
+      }
+
+      const vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource);
+      const fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource);
+
+      if (vertexShader && fragmentShader) {
+        const program = gl.createProgram();
+        if (program) {
+          gl.attachShader(program, vertexShader);
+          gl.attachShader(program, fragmentShader);
+          gl.linkProgram(program);
+
+          if (gl.getProgramParameter(program, gl.LINK_STATUS)) {
+            const positions = new Float32Array([
+              -1, -1, 1, -1, -1, 1, 1, 1
+            ]);
+
+            const buffer = gl.createBuffer();
+            gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+            gl.bufferData(gl.ARRAY_BUFFER, positions, gl.STATIC_DRAW);
+
+            const positionLocation = gl.getAttribLocation(program, 'position');
+            gl.enableVertexAttribArray(positionLocation);
+            gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0);
+
+            const timeLocation = gl.getUniformLocation(program, 'time');
+            const resolutionLocation = gl.getUniformLocation(program, 'resolution');
+
+            gl.useProgram(program);
+
+            function render(time: number) {
+              if (!gl || !program) return;
+              
+              gl.viewport(0, 0, shaderCanvas.width, shaderCanvas.height);
+              gl.clearColor(0, 0, 0, 0);
+              gl.clear(gl.COLOR_BUFFER_BIT);
+
+              gl.uniform1f(timeLocation, time * 0.001);
+              gl.uniform2f(resolutionLocation, shaderCanvas.width, shaderCanvas.height);
+
+              gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+
+              requestAnimationFrame(render);
+            }
+
+            render(0);
+
+            window.addEventListener('resize', () => {
+              shaderCanvas.width = window.innerWidth;
+              shaderCanvas.height = window.innerHeight;
+            });
+          }
+        }
+      }
+    }
+  }
+
+  // ==================== TYPING EFFECT ====================
+  const typingText = document.getElementById('typing-text');
+  const phrases = [
+    "Disponible para proyectos emocionantes",
+    "Desarrollador de videojuegos & experiencias",
+    "Creando el futuro del entretenimiento"
+  ];
+  let phraseIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+
+  function type() {
+    if (!typingText) return;
+    
+    const currentPhrase = phrases[phraseIndex];
+    
+    if (isDeleting) {
+      typingText.textContent = currentPhrase.substring(0, charIndex - 1);
+      charIndex--;
+    } else {
+      typingText.textContent = currentPhrase.substring(0, charIndex + 1);
+      charIndex++;
+    }
+
+    let typeSpeed = isDeleting ? 50 : 100;
+
+    if (!isDeleting && charIndex === currentPhrase.length) {
+      typeSpeed = 2000;
+      isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+      isDeleting = false;
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+      typeSpeed = 500;
+    }
+
+    setTimeout(type, typeSpeed);
+  }
+
+  type();
+
+  // ==================== GAME SYSTEM ====================
+  let playerXP = 0;
+  let playerLevel = 1;
+  let maxXP = 250;
+
+  function addXP(amount: number) {
+    playerXP += amount;
+    
+    const xpBar = document.getElementById('xp-bar');
+    const xpFill = document.getElementById('xp-fill');
+    const currentXPSpan = document.getElementById('current-xp');
+    
+    if (xpBar) xpBar.style.opacity = '1';
+    if (currentXPSpan) currentXPSpan.textContent = playerXP.toString();
+    if (xpFill) xpFill.style.width = `${(playerXP / maxXP) * 100}%`;
+    
+    if (playerXP >= maxXP) {
+      playerLevel++;
+      playerXP = 0;
+      maxXP = Math.floor(maxXP * 1.5);
+      
+      const levelSpan = document.getElementById('player-level');
+      const maxXPSpan = document.getElementById('max-xp');
+      if (levelSpan) levelSpan.textContent = playerLevel.toString();
+      if (maxXPSpan) maxXPSpan.textContent = maxXP.toString();
+      
+      showAchievement('¡LEVEL UP!', `Ahora eres nivel ${playerLevel}!`, 150);
+    }
+  }
+
+  function showAchievement(title: string, desc: string, xp: number) {
+    const achievement = document.getElementById('achievement');
+    const titleEl = document.getElementById('achievement-title');
+    const descEl = document.getElementById('achievement-desc');
+    
+    if (!achievement || !titleEl || !descEl) return;
+    
+    titleEl.textContent = title;
+    descEl.textContent = `+${xp} XP`;
+    
+    // Forzar la aparición
+    achievement.style.opacity = '1';
+    achievement.style.transform = 'translateX(0)';
+    achievement.style.display = 'block';
+    
+    // Salir después de 3.5 segundos
+    setTimeout(() => {
+      achievement.style.opacity = '0';
+      achievement.style.transform = 'translateX(400px)';
+      
+      // Ocultar después de la animación
+      setTimeout(() => {
+        achievement.style.display = 'none';
+      }, 700);
+    }, 3500);
+    
+    addXP(xp);
+  }
+
+  // ==================== GAME BUTTON ====================
+  document.getElementById('game-btn')?.addEventListener('click', startSnakeGame);
+
+  // Variable global para controlar el estado del juego
+  let currentGameLoop: ReturnType<typeof setTimeout> | null = null;
+  let currentKeyHandler: ((e: KeyboardEvent) => void) | null = null;
+  let isGameRunning = false;
+
+  function startSnakeGame() {
+    // Si ya hay un juego corriendo, no iniciar otro
+    if (isGameRunning) return;
+    
+    const canvas = document.getElementById('snake-canvas') as HTMLCanvasElement;
+    const ui = document.getElementById('snake-ui');
+    const gameBtn = document.getElementById('game-btn');
+    
+    if (!canvas || !ui) return;
+    
+    isGameRunning = true;
+    
+    if (gameBtn) gameBtn.style.display = 'none';
+    
+    canvas.style.opacity = '1';
+    canvas.style.pointerEvents = 'auto';
+    ui.style.opacity = '1';
+    
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    
+    const gridSize = 20;
+    const tileCount = Math.floor(canvas.width / gridSize);
+    
+    let snake = [{x: 10, y: 10}];
+    let food = {x: 15, y: 15};
+    let dx = 0;
+    let dy = 0;
+    let score = 0;
+    let highScore = parseInt(localStorage.getItem('snakeHighScore') || '0');
+    let gameActive = true;
+    
+    const scoreEl = document.getElementById('snake-score');
+    const highEl = document.getElementById('snake-high');
+    if (scoreEl) scoreEl.textContent = '0';
+    if (highEl) highEl.textContent = highScore.toString();
+    
+    function drawSnake() {
+      if (!ctx) return;
+      
+      snake.forEach((segment, index) => {
+        const gradient = ctx.createLinearGradient(
+          segment.x * gridSize, segment.y * gridSize,
+          segment.x * gridSize + gridSize, segment.y * gridSize + gridSize
+        );
+        gradient.addColorStop(0, '#a855f7');
+        gradient.addColorStop(1, '#00fff2');
+        
+        ctx.fillStyle = gradient;
+        ctx.fillRect(segment.x * gridSize, segment.y * gridSize, gridSize - 2, gridSize - 2);
+        
+        if (index === 0) {
+          ctx.shadowBlur = 20;
+          ctx.shadowColor = '#a855f7';
+        } else {
+          ctx.shadowBlur = 0;
+        }
+      });
+    }
+    
+    function drawFood() {
+      if (!ctx) return;
+      
+      ctx.fillStyle = '#ff0';
+      ctx.shadowBlur = 30;
+      ctx.shadowColor = '#ff0';
+      ctx.fillRect(food.x * gridSize, food.y * gridSize, gridSize - 2, gridSize - 2);
+      ctx.shadowBlur = 0;
+    }
+    
+    function move() {
+      if (!gameActive) return;
+      
+      const head = {x: snake[0].x + dx, y: snake[0].y + dy};
+      
+      // Wall collision
+      if (head.x < 0 || head.x >= tileCount || head.y < 0 || head.y >= Math.floor(canvas.height / gridSize)) {
+        gameOver();
+        return;
+      }
+      
+      // Self collision
+      if (snake.some(segment => segment.x === head.x && segment.y === head.y)) {
+        gameOver();
+        return;
+      }
+      
+      snake.unshift(head);
+      
+      // Food collision
+      if (head.x === food.x && head.y === food.y) {
+        score += 10;
+        if (scoreEl) scoreEl.textContent = score.toString();
+        
+        food = {
+          x: Math.floor(Math.random() * tileCount),
+          y: Math.floor(Math.random() * Math.floor(canvas.height / gridSize))
+        };
+        
+        addXP(10);
+      } else {
+        snake.pop();
+      }
+    }
+    
+    function gameOver() {
+      gameActive = false;
+      
+      // Guardar score para mostrar después
+      const finalScore = score;
+      const isNewHighScore = score > highScore;
+      
+      if (isNewHighScore) {
+        highScore = score;
+        localStorage.setItem('snakeHighScore', highScore.toString());
+      }
+      
+      // Delay para mostrar el estado final antes de cerrar
+      setTimeout(() => {
+        stopSnake();
+        
+        // Mostrar achievement DESPUÉS de cerrar el juego
+        setTimeout(() => {
+          if (isNewHighScore) {
+            showAchievement('🏆 NEW HIGH SCORE!', `¡${highScore} puntos!`, 200);
+          } else if (finalScore > 0) {
+            showAchievement('Game Over', `Score: ${finalScore}`, 50);
+          }
+        }, 300);
+      }, 1000);
+    }
+    
+    function stopSnake() {
+      gameActive = false;
+      
+      // Limpiar el loop
+      if (currentGameLoop) {
+        clearTimeout(currentGameLoop);
+        currentGameLoop = null;
+      }
+      
+      // Remover event listener
+      if (currentKeyHandler) {
+        document.removeEventListener('keydown', currentKeyHandler);
+        currentKeyHandler = null;
+      }
+      
+      // Limpiar canvas
+      if (ctx) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+      
+      // Ocultar UI
+      canvas.style.opacity = '0';
+      canvas.style.pointerEvents = 'none';
+      if (ui) ui.style.opacity = '0';
+      if (gameBtn) gameBtn.style.display = 'block';
+      
+      isGameRunning = false;
+    }
+    
+    function update() {
+      if (!gameActive) return;
+      if (!ctx) return;
+      
+      // Clear con trail effect
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      
+      move();
+      
+      if (gameActive) {
+        drawSnake();
+        drawFood();
+        
+        currentGameLoop = setTimeout(update, 100);
+      }
+    }
+    
+    // Key handler
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        stopSnake();
+        return;
+      }
+      
+      // Prevenir que cambie de dirección 180 grados
+      if ((e.key === 'ArrowUp' || e.key === 'w' || e.key === 'W') && dy === 0) { 
+        dx = 0; dy = -1; 
+      }
+      if ((e.key === 'ArrowDown' || e.key === 's' || e.key === 'S') && dy === 0) { 
+        dx = 0; dy = 1; 
+      }
+      if ((e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') && dx === 0) { 
+        dx = -1; dy = 0; 
+      }
+      if ((e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') && dx === 0) { 
+        dx = 1; dy = 0; 
+      }
+    };
+    
+    currentKeyHandler = handleKey;
+    document.addEventListener('keydown', handleKey);
+    
+    // Iniciar juego
+    dx = 1;
+    dy = 0;
+    update();
+  }
+
+  // Easter Egg: Triple click
+  const secretPhoto = document.getElementById('secret-photo');
+  let photoClickCount = 0;
+  let photoClickTimer: ReturnType<typeof setTimeout>;
+
+  secretPhoto?.addEventListener('click', () => {
+    photoClickCount++;
+    clearTimeout(photoClickTimer);
+    
+    if (photoClickCount === 3) {
+      showAchievement('🎨 EASTER EGG', '¡Triple click master!', 100);
+      photoClickCount = 0;
+    } else {
+      photoClickTimer = setTimeout(() => {
+        photoClickCount = 0;
+      }, 500);
+    }
+  });
+
+  // XP on link click
+  const socialLinks = document.querySelectorAll('.social-link');
+  socialLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      const xp = parseInt((link as HTMLElement).dataset.xp || '0');
+      showAchievement('Link Visitado', `Ganaste ${xp} XP`, xp);
+    });
+  });
+</script>

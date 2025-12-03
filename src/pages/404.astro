@@ -1,0 +1,184 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="404 - Nixon" description="Página no encontrada" noindex={true}>
+  <section class="relative min-h-screen flex flex-col items-center justify-center px-6 text-center overflow-hidden bg-black">
+    
+    <!-- AMBIENT BACKGROUND -->
+    <div class="absolute inset-0 -z-10">
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] 
+                  bg-gradient-to-r from-purple-500/20 via-cyan-500/20 to-purple-500/20 
+                  rounded-full blur-[120px] animate-pulse-slow"></div>
+    </div>
+
+    <!-- GRID PATTERN -->
+    <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] 
+                bg-[size:72px_72px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]"></div>
+
+    <!-- CONTENT -->
+    <div class="relative z-10 max-w-2xl mx-auto">
+      
+      <!-- 404 NUMBER -->
+      <div class="mb-8 opacity-0 animate-fade-in" style="animation-delay: 0.1s;">
+        <h1 class="text-[10rem] md:text-[14rem] font-bold leading-none tracking-tight">
+          <span class="relative inline-block">
+            <!-- Glow effect -->
+            <span class="absolute inset-0 text-cyan-400 blur-2xl opacity-50">404</span>
+            <!-- Main text -->
+            <span class="relative bg-gradient-to-b from-white via-white to-white/40 bg-clip-text text-transparent">
+              404
+            </span>
+          </span>
+        </h1>
+      </div>
+
+      <!-- TITLE -->
+      <h2 
+        class="text-3xl md:text-4xl font-bold mb-6 opacity-0 animate-fade-in"
+        style="animation-delay: 0.3s;"
+      >
+        <span class="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
+          Página no encontrada
+        </span>
+      </h2>
+
+      <!-- DESCRIPTION -->
+      <p 
+        class="text-lg md:text-xl text-white/60 max-w-md mx-auto mb-12 leading-relaxed opacity-0 animate-fade-in"
+        style="animation-delay: 0.5s;"
+      >
+        El enlace al que intentaste acceder no existe o fue movido. 
+        <span class="text-white/80">Pero tranquilo, podés volver al inicio y seguir navegando.</span>
+      </p>
+
+      <!-- CTA BUTTON -->
+      <div 
+        class="opacity-0 animate-fade-in"
+        style="animation-delay: 0.7s;"
+      >
+        <a
+          href="/"
+          class="group inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full
+                 bg-white text-black font-semibold text-lg
+                 hover:scale-105 active:scale-95
+                 transition-all duration-300
+                 shadow-lg hover:shadow-2xl"
+        >
+          <svg 
+            class="w-5 h-5 transition-transform duration-300 group-hover:-translate-x-1" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+          </svg>
+          <span>Volver al inicio</span>
+          
+          <!-- GLOW EFFECT -->
+          <div class="absolute inset-0 rounded-full bg-white opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300"></div>
+        </a>
+      </div>
+
+      <!-- HELPFUL LINKS -->
+      <div 
+        class="mt-16 flex flex-wrap items-center justify-center gap-6 opacity-0 animate-fade-in"
+        style="animation-delay: 0.9s;"
+      >
+        <a 
+          href="/proyectos" 
+          class="text-white/60 hover:text-white text-sm font-medium transition-colors duration-300
+                 hover:underline underline-offset-4"
+        >
+          Ver proyectos
+        </a>
+        <span class="text-white/20">•</span>
+        <a 
+          href="/about" 
+          class="text-white/60 hover:text-white text-sm font-medium transition-colors duration-300
+                 hover:underline underline-offset-4"
+        >
+          Sobre mí
+        </a>
+        <span class="text-white/20">•</span>
+        <a 
+          href="/contact" 
+          class="text-white/60 hover:text-white text-sm font-medium transition-colors duration-300
+                 hover:underline underline-offset-4"
+        >
+          Contacto
+        </a>
+      </div>
+
+    </div>
+
+    <!-- DECORATIVE ELEMENTS -->
+    <div class="absolute top-20 left-20 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl animate-float"></div>
+    <div class="absolute bottom-20 right-20 w-32 h-32 bg-cyan-500/10 rounded-full blur-3xl animate-float-delayed"></div>
+
+  </section>
+</Layout>
+
+<style>
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes pulseSlow {
+    0%, 100% {
+      opacity: 0.15;
+    }
+    50% {
+      opacity: 0.35;
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(20px, -20px);
+    }
+  }
+
+  @keyframes floatDelayed {
+    0%, 100% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(-20px, 20px);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .animate-pulse-slow {
+    animation: pulseSlow 6s ease-in-out infinite;
+  }
+
+  .animate-float {
+    animation: float 20s ease-in-out infinite;
+  }
+
+  .animate-float-delayed {
+    animation: floatDelayed 20s ease-in-out infinite;
+    animation-delay: -10s;
+  }
+
+  /* Typography */
+  h1, h2, p, a, span {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+</style>
