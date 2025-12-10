@@ -43,7 +43,7 @@ const SkillsList = () => {
       "He trabajado en mi TFG y en varios proyectos de videojuegos y herramientas interactivas, creando sistemas jugables y diseños funcionales."
     ],
     "Mi formación": [
-      "Grado en Diseño y Desarrollo de Videojuegos – CITM (UPC). Complementado con cursos y práctica autodidacta en programación y diseño 3D."
+      "Grado en Diseño y Desarrollo de Videojuegos – CITM (UPC)."
     ],
     "¿Cómo trabajo en equipo?": [
       "Soy introvertido, pero me adapto a equipos multidisciplinarios usando metodologías ágiles y comunicación clara para coordinar tareas."
