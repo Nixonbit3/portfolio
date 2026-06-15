@@ -73,6 +73,22 @@ const links = [
           >
             <FaGithub className="h-5 w-5 text-white/70 group-hover:text-white transition-colors" />
           </a>
+
+          <!-- LANGUAGE TOGGLE -->
+          <button
+            id="lang-toggle"
+            type="button"
+            aria-label="Cambiar idioma / Switch language"
+            class="notranslate flex items-center gap-1.5 px-3 py-2 rounded-xl
+                   bg-white/5 backdrop-blur-xl border border-white/10
+                   hover:bg-white/10 hover:border-white/20 hover:scale-105
+                   transition-all duration-300 group"
+          >
+            <svg class="h-4 w-4 text-white/70 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18zm0 0c2.5-2.5 2.5-15 0-18m0 18c-2.5-2.5-2.5-15 0-18M3 12h18" />
+            </svg>
+            <span class="lang-toggle-label text-xs font-bold text-white/70 group-hover:text-white transition-colors">EN</span>
+          </button>
         </li>
       </ul>
 
@@ -110,7 +126,21 @@ const links = [
           {link.name}
         </a>
       ))}
-      
+
+      <!-- MOBILE LANGUAGE TOGGLE -->
+      <button
+        id="lang-toggle-mobile"
+        type="button"
+        aria-label="Cambiar idioma / Switch language"
+        class="notranslate w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-white/70
+               hover:text-white hover:bg-white/10 transition-all duration-300 font-medium"
+      >
+        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9 9 0 100-18 9 9 0 000 18zm0 0c2.5-2.5 2.5-15 0-18m0 18c-2.5-2.5-2.5-15 0-18M3 12h18" />
+        </svg>
+        <span>Idioma · <span class="lang-toggle-label font-bold">EN</span></span>
+      </button>
+
       <!-- MOBILE SOCIAL ICONS -->
       <div class="flex items-center gap-3 px-4 pt-4 border-t border-white/10 mt-4">
         <a

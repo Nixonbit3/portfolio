@@ -483,11 +483,19 @@ const links = [
 
   // ==================== TYPING EFFECT ====================
   const typingText = document.getElementById('typing-text');
-  const phrases = [
-    "Disponible para proyectos emocionantes",
-    "Desarrollador de videojuegos & experiencias",
-    "Creando el futuro del entretenimiento"
-  ];
+  const phrasesByLang = {
+    es: [
+      "Disponible para proyectos emocionantes",
+      "Desarrollador de videojuegos & experiencias",
+      "Creando el futuro del entretenimiento"
+    ],
+    en: [
+      "Available for exciting projects",
+      "Video game & experience developer",
+      "Creating the future of entertainment"
+    ]
+  };
+  const phrases = localStorage.getItem('lang') === 'en' ? phrasesByLang.en : phrasesByLang.es;
   let phraseIndex = 0;
   let charIndex = 0;
   let isDeleting = false;
