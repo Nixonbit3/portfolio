@@ -309,12 +309,14 @@ function onToggleClick() {
   } else {
     // Pasar a inglés: traducir en caliente, sin recargar.
     setLang("en");
+    document.documentElement.lang = "en";
     translate(document.body);
     updateToggleLabels();
   }
 }
 
 function init() {
+  document.documentElement.lang = getLang();
   if (getLang() === "en") translate(document.body);
   updateToggleLabels();
   startObserver();
