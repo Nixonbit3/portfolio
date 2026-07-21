@@ -37,10 +37,10 @@ const SkillsList = () => {
 
   const skills = {
     "¿Qué tecnologías uso?": [
-      "Unity, C++, Blender, Maya, Substance Painter, Figma, 3Dmax, C#, Photoshop, Unreal..."
+      "Unity y C# a diario, con ScriptableObjects, DOTween y builds de Android. También C++, Blender, Maya, Substance Painter, Figma y Unreal."
     ],
     "Mi Experiencia": [
-      "He trabajado en mi TFG y en varios proyectos de videojuegos y herramientas interactivas, creando sistemas jugables y diseños funcionales."
+      "He publicado Air Bomb, mi primer juego para Android hecho en solitario de principio a fin, además de mi TFG y otros proyectos de videojuegos y herramientas interactivas."
     ],
     "Mi formación": [
       "Grado en Diseño y Desarrollo de Videojuegos – CITM (UPC)."

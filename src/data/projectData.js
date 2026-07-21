@@ -8,9 +8,9 @@ export const proyectos = [
 
     {
       titulo: "Air Bomb",
-      descripcion: "Shooter arcade para Android al estilo Space Invaders: defiende la galaxia superando oleadas y persigue la puntuación máxima.",
+      descripcion: "Mi primer juego publicado: shooter arcade para Android estilo Space Invaders, hecho en solitario de principio a fin. Arquitectura View/Controller, niveles data-driven con ScriptableObjects, comunicación por eventos, DOTween para el game feel, persistencia en JSON y audio entre escenas.",
       imagen: airBomb.src,
-      tecnologias: ["Unity", "C#", "Android"],
+      tecnologias: ["Unity", "C#", "Android", "DOTween"],
       demo: "https://nixonbit3.itch.io/air-bomb",
       codigo: "",
       categoria: "Code",

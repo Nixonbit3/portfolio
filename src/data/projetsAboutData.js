@@ -8,7 +8,7 @@ export const proyectos = [
     titulo: "Air Bomb",
     descripcion: "Shooter arcade para Android al estilo Space Invaders",
     imagen: airBomb.src,
-    tecnologias: ["Unity", "C#", "Android"],
+    tecnologias: ["Unity", "C#", "Android", "DOTween"],
     demo: "https://nixonbit3.itch.io/air-bomb",
   },
   {

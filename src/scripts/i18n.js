@@ -16,32 +16,38 @@ const DICT = {
   "Contacto": "Contact",
 
   // ---------- Header (home) ----------
-  "Disponible para proyectos": "Available for projects",
+  "Buscando mi primer puesto · Barcelona o remoto":
+    "Looking for my first role · Barcelona or remote",
   "Hola, soy": "Hi, I'm",
-  "Explora mis proyectos, conoce un poco más sobre mí y, si deseas ponerte en contacto,":
-    "Explore my projects, learn a little more about me and, if you'd like to get in touch,",
-  "¡estoy a solo un mensaje de distancia!": "I'm just one message away!",
+  "Junior Unity Developer centrado en gameplay y juegos móviles. Acabo de publicar mi primer juego para Android, hecho de principio a fin con Unity y C#.":
+    "Junior Unity Developer focused on gameplay and mobile games. I just shipped my first Android game, built end-to-end with Unity and C#.",
+  "¿Hablamos?": "Shall we talk?",
   "Contactar": "Contact",
   "Scroll para explorar": "Scroll to explore",
 
   // ---------- Slider tecnológico (home) ----------
   "Stack Tecnológico": "Tech Stack",
   "Tecnologías que domino": "Technologies I master",
-  "Especializado en desarrollo de videojuegos con Unity, modelado 3D y programación":
-    "Specialized in video game development with Unity, 3D modeling and programming",
+  "Especializado en gameplay y juegos móviles con Unity y C#, con base sólida en 3D y programación":
+    "Focused on gameplay and mobile games with Unity and C#, with a solid base in 3D and programming",
 
   // ---------- About Home ----------
   "Disponible": "Available",
   "Sobre mí": "About me",
-  "Creando experiencias": "Creating unique",
-  "digitales únicas": "digital experiences",
+  "Del prototipo": "From prototype",
+  "al juego publicado": "to shipped game",
   "Soy": "I'm",
-  ", desarrollador y diseñador de videojuegos y experiencias digitales. Me apasiona crear interfaces, herramientas y juegos que":
-    ", a video game and digital experience developer and designer. I love creating interfaces, tools and games that",
-  "conectan visualmente con el usuario.": "connect visually with the user.",
+  ", Junior Unity Developer centrado en": ", a Junior Unity Developer focused on",
+  "gameplay y juegos móviles": "gameplay and mobile games",
+  ". Construyo juegos para aprender a construirlos mejor, y":
+    ". I build games to learn how to build better ones, and",
+  "acabo de publicar el primero de principio a fin.":
+    "I just shipped my first one end-to-end.",
   "Trabajo con": "I work with",
-  "y más. Me gusta convertir ideas en experiencias reales que impactan y entretienen.":
-    "and more. I like turning ideas into real experiences that impact and entertain.",
+  "Unity, C#, ScriptableObjects, DOTween y builds de Android":
+    "Unity, C#, ScriptableObjects, DOTween and Android builds",
+  ", cuidando la separación entre lógica y presentación y el diseño orientado a datos.":
+    ", with care for separating logic from presentation and for data-driven design.",
   "Conocer más sobre mí": "Learn more about me",
 
   // ---------- Skills (about) ----------
@@ -63,7 +69,9 @@ const DICT = {
   "Estoy disponible para nuevas oportunidades.": "I'm available for new opportunities.",
   "¡Hablemos y creemos algo increíble!": "Let's talk and create something amazing!",
   "Contáctame": "Contact me",
-  "Ver Curriculum": "View Resume",
+  "Ver Currículum": "View Resume",
+  "Abierto a ofertas · Junior Unity Developer":
+    "Open to offers · Junior Unity Developer",
 
   // ---------- FAQ (home) ----------
   "y mi trabajo": "and my work",
@@ -74,10 +82,10 @@ const DICT = {
   "Mi formación": "My education",
   "¿Cómo trabajo en equipo?": "How do I work in a team?",
   "Metodologías Ágiles": "Agile Methodologies",
-  "Unity, C++, Blender, Maya, Substance Painter, Figma, 3Dmax, C#, Photoshop, Unreal...":
-    "Unity, C++, Blender, Maya, Substance Painter, Figma, 3Dmax, C#, Photoshop, Unreal...",
-  "He trabajado en mi TFG y en varios proyectos de videojuegos y herramientas interactivas, creando sistemas jugables y diseños funcionales.":
-    "I've worked on my final degree project and on several video game and interactive tool projects, creating playable systems and functional designs.",
+  "Unity y C# a diario, con ScriptableObjects, DOTween y builds de Android. También C++, Blender, Maya, Substance Painter, Figma y Unreal.":
+    "Unity and C# every day, with ScriptableObjects, DOTween and Android builds. Also C++, Blender, Maya, Substance Painter, Figma and Unreal.",
+  "He publicado Air Bomb, mi primer juego para Android hecho en solitario de principio a fin, además de mi TFG y otros proyectos de videojuegos y herramientas interactivas.":
+    "I shipped Air Bomb, my first Android game, built solo from start to finish, plus my final degree project and other video game and interactive tool projects.",
   "Grado en Diseño y Desarrollo de Videojuegos – CITM (UPC).":
     "Degree in Video Game Design and Development – CITM (UPC).",
   "Soy introvertido, pero me adapto a equipos multidisciplinarios usando metodologías ágiles y comunicación clara para coordinar tareas.":
@@ -88,10 +96,10 @@ const DICT = {
   // ---------- FAQ (about) ----------
   "Más sobre": "More about",
   "mi trabajo": "my work",
-  "Actualmente trabajo con Unity, C#, C++, Blender, Maya, Substance Painter, Figma, 3Dmax, Astro, Photoshop y Unreal, entre otras herramientas para desarrollo de videojuegos y experiencias digitales.":
-    "I currently work with Unity, C#, C++, Blender, Maya, Substance Painter, Figma, 3Dmax, Astro, Photoshop and Unreal, among other tools for video game and digital experience development.",
-  "He trabajado en mi TFG y en varios proyectos de videojuegos y herramientas interactivas, creando sistemas jugables, diseños funcionales y experiencias de usuario inmersivas.":
-    "I've worked on my final degree project and on several video game and interactive tool projects, creating playable systems, functional designs and immersive user experiences.",
+  "Unity y C# como base del día a día, con ScriptableObjects, DOTween, persistencia en JSON y builds de Android. Además C++, Blender, Maya, Substance Painter, Figma, Photoshop y Unreal.":
+    "Unity and C# as my day-to-day base, with ScriptableObjects, DOTween, JSON persistence and Android builds. Plus C++, Blender, Maya, Substance Painter, Figma, Photoshop and Unreal.",
+  "He publicado Air Bomb, mi primer juego para Android, desarrollado en solitario de principio a fin. A eso sumo mi TFG y varios proyectos de videojuegos y herramientas interactivas.":
+    "I shipped Air Bomb, my first Android game, developed solo from start to finish. On top of that, my final degree project and several video game and interactive tool projects.",
   "Grado en Diseño y Desarrollo de Videojuegos – CITM (UPC). Complementado con cursos y práctica autodidacta en programación, diseño 3D y desarrollo de gameplay.":
     "Degree in Video Game Design and Development – CITM (UPC). Complemented with courses and self-taught practice in programming, 3D design and gameplay development.",
   "Soy introvertido, pero me adapto bien a equipos multidisciplinarios usando metodologías ágiles y comunicación clara para coordinar tareas y alcanzar objetivos comunes.":
@@ -100,8 +108,8 @@ const DICT = {
     "I've worked with Scrum and Kanban to manage projects, development sprints and reviews, ensuring efficiency, organization and delivery of results.",
 
   // ---------- Footer ----------
-  "Desarrollador y diseñador de videojuegos, creando experiencias digitales únicas e innovadoras.":
-    "Video game developer and designer, creating unique and innovative digital experiences.",
+  "Junior Unity Developer centrado en gameplay y juegos móviles. Barcelona o remoto.":
+    "Junior Unity Developer focused on gameplay and mobile games. Barcelona or remote.",
   "Navegación": "Navigation",
   "Videojuegos": "Video Games",
   "Modelado 3D": "3D Modeling",
@@ -118,32 +126,34 @@ const DICT = {
   "Mi nombre es": "My name is",
   "graduado en Diseño y Desarrollo de Videojuegos": "a graduate in Video Game Design and Development",
   "por el": "from",
-  ", con un enfoque equilibrado entre": ", with a balanced focus between",
-  "programación": "programming",
+  "centrado en": "focused on",
+  ", y": ", and",
   "y": "and",
   "e": "and",
-  "diseño": "design",
-  "Manejo lenguajes como": "I work with languages such as",
-  ", además de herramientas especializadas en arte y 3D como":
-    ", as well as specialized art and 3D tools such as",
-  ". También cuento con experiencia en motores y tecnologías como":
-    ". I also have experience with engines and technologies such as",
-  "Unity, VR/AR y desarrollo de herramientas": "Unity, VR/AR and tool development",
-  "Me apasiona crear": "I'm passionate about creating",
-  "experiencias interactivas": "interactive experiences",
-  ", ya sea en": ", whether in",
-  "realidad virtual": "virtual reality",
-  "o en aplicaciones y videojuegos tradicionales. Disfruto convertir ideas en mecánicas, sistemas y entornos que se sientan vivos.":
-    "or in traditional apps and video games. I enjoy turning ideas into mechanics, systems and environments that feel alive.",
+
+  "Acabo de publicar": "I just shipped",
+  ", mi primer juego para Android, hecho en solitario de principio a fin con":
+    ", my first Android game, built solo from start to finish with",
+  "Unity y C#": "Unity and C#",
+  ": arquitectura View/Controller, niveles data-driven con ScriptableObjects, comunicación por eventos, DOTween, persistencia en JSON y audio entre escenas.":
+    ": View/Controller architecture, data-driven levels with ScriptableObjects, event-based communication, DOTween, JSON persistence and cross-scene audio.",
+
+  "Lo que aporto:": "What I bring:",
+  "programación de gameplay, sistemas de UI y builds de Android":
+    "gameplay programming, UI systems and Android builds",
+  ", con hábitos de arquitectura que separan lógica y presentación. A eso sumo la base de mi carrera:":
+    ", with architecture habits that separate logic from presentation. On top of that, the foundation from my degree:",
+  "C++, motores propios, VR/AR, 3D (Blender, 3ds Max, Maya) y UI/UX":
+    "C++, custom engines, VR/AR, 3D (Blender, 3ds Max, Maya) and UI/UX",
+
   "Destaco por mi": "I stand out for my",
   "capacidad de trabajo independiente": "ability to work independently",
-  ", mi facilidad para aprender nuevas tecnologías y mi rápida adaptación a":
-    ", my ease in learning new technologies and my quick adaptation to",
-  "entornos modernos de desarrollo": "modern development environments",
-  ". Estoy en una búsqueda constante de": ". I'm in a constant search for",
-  "crecimiento profesional": "professional growth",
-  "y de mejorar mis habilidades para aportar valor en cada proyecto que realizo.":
-    "and improving my skills to add value to every project I work on.",
+  ", mi disciplina depurando (stack traces, referencias de prefabs y pruebas en dispositivo real) y mi rapidez aprendiendo. Busco mi":
+    ", my debugging discipline (stack traces, prefab reference hunting and testing on real devices) and how fast I learn. I'm looking for my",
+  "primer puesto como Junior Unity / Gameplay Developer":
+    "first role as a Junior Unity / Gameplay Developer",
+  "en un estudio o equipo móvil, en Barcelona o en remoto.":
+    "at a studio or mobile team, in Barcelona or remote.",
 
   // ---------- Experiencia (about) ----------
   "Experiencia": "Experience",
@@ -159,19 +169,19 @@ const DICT = {
   "Creación de materiales gamificados enfocados en la concienciación sobre ciberseguridad.":
     "Creation of gamified materials focused on cybersecurity awareness.",
 
-  // ---------- Features / Servicios (about) ----------
-  "Servicios": "Services",
-  "Lo que puedo": "What I can",
-  "hacer por ti": "do for you",
-  "Especializado en desarrollo de videojuegos y experiencias interactivas de alta calidad":
-    "Specialized in high-quality video game and interactive experience development",
-  "Desarrollo de sistemas jugables, mecánicas innovadoras y experiencias de usuario fluidas en Unity y C#.":
-    "Development of playable systems, innovative mechanics and smooth user experiences in Unity and C#.",
-  "Diseño de niveles, balanceo de mecánicas y creación de experiencias inmersivas que enganchan al jugador.":
-    "Level design, mechanics balancing and creation of immersive experiences that hook the player.",
-  "UI/UX para Juegos": "UI/UX for Games",
-  "Interfaces intuitivas, menús optimizados y HUD que mejoran la experiencia del jugador.":
-    "Intuitive interfaces, optimized menus and HUDs that improve the player's experience.",
+  // ---------- Fortalezas (about) ----------
+  "Fortalezas": "Strengths",
+  "En qué": "What I'm",
+  "soy fuerte": "good at",
+  "Lo que aporto hoy a un equipo que desarrolla juegos con Unity":
+    "What I bring today to a team building games with Unity",
+  "Sistemas jugables y mecánicas en Unity y C#: control del jugador, oleadas de enemigos, puntuación y game feel.":
+    "Playable systems and mechanics in Unity and C#: player control, enemy waves, scoring and game feel.",
+  "Arquitectura y código limpio": "Architecture & clean code",
+  "Separación entre lógica y presentación, diseño orientado a datos con ScriptableObjects y comunicación por eventos.":
+    "Separation of logic and presentation, data-driven design with ScriptableObjects and event-based communication.",
+  "Builds de Android, sistemas de UI y HUD, persistencia en JSON y pruebas en dispositivo real.":
+    "Android builds, UI and HUD systems, JSON persistence and testing on real devices.",
 
   // ---------- Banner GitHub (about) ----------
   "¡Visita mi": "Visit my",
@@ -193,8 +203,8 @@ const DICT = {
   "Mate realista hecho en blender": "Realistic mate made in Blender",
   "Shooter arcade para Android al estilo Space Invaders":
     "Space Invaders-style arcade shooter for Android",
-  "Shooter arcade para Android al estilo Space Invaders: defiende la galaxia superando oleadas y persigue la puntuación máxima.":
-    "Space Invaders-style arcade shooter for Android: defend the galaxy through escalating waves and chase the high score.",
+  "Mi primer juego publicado: shooter arcade para Android estilo Space Invaders, hecho en solitario de principio a fin. Arquitectura View/Controller, niveles data-driven con ScriptableObjects, comunicación por eventos, DOTween para el game feel, persistencia en JSON y audio entre escenas.":
+    "My first shipped game: a Space Invaders-style arcade shooter for Android, built solo from start to finish. View/Controller architecture, data-driven levels with ScriptableObjects, event-based communication, DOTween for game feel, JSON persistence and cross-scene audio.",
 
   // ---------- Página Contacto ----------
   "★ ¡HOLA! ★ OPEN TO WORK ★ LET'S CREATE MAGIC ★":

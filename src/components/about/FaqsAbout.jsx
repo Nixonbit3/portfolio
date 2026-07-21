@@ -36,10 +36,10 @@ const FaqsAbout = () => {
   const cardsRef = useRef([]);
 
   const skills = {
-    "¿Qué tecnologías uso?": 
-      "Actualmente trabajo con Unity, C#, C++, Blender, Maya, Substance Painter, Figma, 3Dmax, Astro, Photoshop y Unreal, entre otras herramientas para desarrollo de videojuegos y experiencias digitales.",
-    "Mi Experiencia": 
-      "He trabajado en mi TFG y en varios proyectos de videojuegos y herramientas interactivas, creando sistemas jugables, diseños funcionales y experiencias de usuario inmersivas.",
+    "¿Qué tecnologías uso?":
+      "Unity y C# como base del día a día, con ScriptableObjects, DOTween, persistencia en JSON y builds de Android. Además C++, Blender, Maya, Substance Painter, Figma, Photoshop y Unreal.",
+    "Mi Experiencia":
+      "He publicado Air Bomb, mi primer juego para Android, desarrollado en solitario de principio a fin. A eso sumo mi TFG y varios proyectos de videojuegos y herramientas interactivas.",
     "Mi formación": 
       "Grado en Diseño y Desarrollo de Videojuegos – CITM (UPC). Complementado con cursos y práctica autodidacta en programación, diseño 3D y desarrollo de gameplay.",
     "¿Cómo trabajo en equipo?": 
