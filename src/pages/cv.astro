@@ -407,8 +407,19 @@ const enlaces = [
       color: #111 !important;
     }
 
+    /* CLAVE para que salga en UNA pagina tambien desde el movil.
+       Safari en iOS maqueta la impresion con el ancho de la pantalla del
+       telefono (~375px), no con el del papel: el texto se parte en muchas
+       mas lineas y el CV se iba a una segunda hoja.
+       Fijando el ancho en milimetros (ancho util de un A4 menos margenes)
+       el resultado es identico en movil y en escritorio. */
+    .cv-page {
+      width: 184mm !important;
+    }
+
     .cv {
-      max-width: none;
+      width: 184mm !important;
+      max-width: none !important;
       padding: 0 !important;
     }
 
@@ -444,15 +455,33 @@ const enlaces = [
       padding-bottom: 6pt;
     }
 
+    /* Enlaces en linea y no en rejilla: en un movil la rejilla se queda
+       en columnas estrechas y cada URL se parte en varias lineas, lo que
+       empujaba el CV a una segunda pagina. Asi ocupa lo mismo con
+       cualquier ancho de pantalla. */
     .cv-links {
-      margin-top: 6pt;
-      gap: 1pt 14pt;
+      display: block;
+      margin-top: 5pt;
       font-size: 8.6pt;
-      grid-template-columns: repeat(3, 1fr);
+      line-height: 1.5;
     }
 
+    .cv-links li {
+      display: inline;
+    }
+
+    .cv-links li::after {
+      content: " · ";
+      color: #999;
+    }
+
+    .cv-links li:last-child::after {
+      content: "";
+    }
+
+    /* La propia URL ya dice de que red es */
     .cv-link-label {
-      min-width: 3.4rem;
+      display: none;
     }
 
     .cv-link {
@@ -524,17 +553,48 @@ const enlaces = [
     }
 
     .cv-skills {
-      gap: 4.5pt;
+      display: block;
     }
 
+    /* Cada grupo en una linea corrida ("Grupo: items"): igual de legible
+       y no depende del ancho, al contrario que la rejilla de dos columnas. */
     .cv-skill-row {
-      grid-template-columns: minmax(0, 11rem) minmax(0, 1fr);
-      gap: 0 1rem;
+      display: block;
+      margin-bottom: 2.5pt;
     }
 
     .cv-skill-row dt {
+      display: inline;
       color: #000 !important;
       font-size: 9.6pt;
+    }
+
+    .cv-skill-row dt::after {
+      content: ": ";
+    }
+
+    .cv-skill-row dd {
+      display: inline;
+      margin: 0;
+    }
+
+    /* Evita que un titulo y su fecha se separen en dos lineas sueltas */
+    .cv-entry-head {
+      gap: 0.4rem;
+    }
+
+    /* Defensa contra una segunda pagina en blanco */
+    :global(body) {
+      overflow: visible !important;
+      height: auto !important;
+    }
+
+    .cv-page {
+      min-height: 0 !important;
+    }
+
+    .cv-section:last-child {
+      margin-bottom: 0;
     }
   }
 </style>

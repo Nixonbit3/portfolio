@@ -132,10 +132,14 @@ const roles = [
     </div>
 
     <!-- SCROLL INDICATOR -->
-    <div 
+    <!-- pointer-events-none: es decoracion y se superpone a los botones del
+         hero en pantallas bajas; sin esto robaba los clics del CTA. -->
+    <div
       class="absolute bottom-12 left-1/2 -translate-x-1/2
+             pointer-events-none select-none
              opacity-0 animate-fadeIn"
       style="animation-delay: 1.2s;"
+      aria-hidden="true"
     >
       <div class="flex flex-col items-center gap-2">
         <span class="text-white/40 text-sm font-medium">Scroll to explore</span>

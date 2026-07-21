@@ -41,7 +41,13 @@ import { proyectos } from "../data/projectData.js";
                opacity-0 animate-fade-in"
         style="animation-delay: 0.2s;"
       >
-        <span class="bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent">
+        <!-- data-es: aqui "My" debe concordar en plural ("Mis Proyectos"),
+             mientras que el diccionario lo traduce como "Mi" para casos
+             en singular como "Mi Experiencia". -->
+        <span
+          data-es="Mis"
+          class="bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent"
+        >
           My
         </span>
         <br />
