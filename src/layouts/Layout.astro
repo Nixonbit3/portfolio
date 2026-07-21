@@ -7,15 +7,23 @@ interface Props {
   title?: string;
   description?: string;
   noindex?: boolean;
+  /** Imagen de vista previa; ruta desde la raíz del sitio */
+  image?: string;
 }
 
 const {
-  title = "Nixon Correa — Game Developer & Designer",
-  description = "Portfolio de Nixon Correa, desarrollador y diseñador de videojuegos y experiencias digitales. Unity, C#, 3D y más.",
+  title = "Nixon Correa — Junior Unity Developer",
+  description =
+    "Junior Unity Developer centrado en gameplay y juegos móviles. Autor de Air Bomb, shooter arcade publicado en Android. Barcelona o remoto.",
   noindex = false,
+  image = "/og.jpg",
 } = Astro.props;
 
-const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
+const base = Astro.site ?? Astro.url;
+const canonical = new URL(Astro.url.pathname, base);
+
+// Las redes sociales exigen URL absoluta para la imagen de vista previa
+const ogImage = new URL(image, base);
 ---
 
 <!doctype html>
@@ -47,14 +55,27 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
 
-    <!-- Open Graph / vista previa al compartir -->
+    <link rel="canonical" href={canonical} />
+
+    <!-- Vista previa al compartir el enlace (email, LinkedIn, WhatsApp...) -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Nixon Correa" />
+    <meta property="og:locale" content="es_ES" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Nixon Correa, Junior Unity Developer. Air Bomb, juego publicado en Android."
+    />
+
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
   </head>
   <body class="bg-gray-950 text-white">
     <Navbar />
