@@ -191,6 +191,10 @@ const DICT = {
   "Código": "Code",
   "Sistema de Fragmentación 3D en Tiempo Real": "Real-Time 3D Fragmentation System",
   "Mate realista hecho en blender": "Realistic mate made in Blender",
+  "Shooter arcade para Android al estilo Space Invaders":
+    "Space Invaders-style arcade shooter for Android",
+  "Shooter arcade para Android al estilo Space Invaders: defiende la galaxia superando oleadas y persigue la puntuación máxima.":
+    "Space Invaders-style arcade shooter for Android: defend the galaxy through escalating waves and chase the high score.",
 
   // ---------- Página Contacto ----------
   "★ ¡HOLA! ★ OPEN TO WORK ★ LET'S CREATE MAGIC ★":

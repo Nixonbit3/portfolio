@@ -102,19 +102,21 @@ const { titulo, descripcion, imagen, tecnologias, demo, codigo, categoria, index
         />
       </a>
 
-      <a
-        class="group/link flex items-center justify-start text-white/80 hover:text-white
-               font-semibold text-base transition-all duration-300"
-        href={codigo}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Código
-        <HiArrowRight
-          className="ml-1 transition-transform duration-300 group-hover/link:translate-x-1"
-          size={18}
-        />
-      </a>
+      {codigo && (
+        <a
+          class="group/link flex items-center justify-start text-white/80 hover:text-white
+                 font-semibold text-base transition-all duration-300"
+          href={codigo}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Código
+          <HiArrowRight
+            className="ml-1 transition-transform duration-300 group-hover/link:translate-x-1"
+            size={18}
+          />
+        </a>
+      )}
     </div>
   </div>
 </div>

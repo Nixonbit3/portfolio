@@ -1,8 +1,16 @@
 import imgNote from "../assets/img-projects/note-app.png";
 import fractureTool from "../assets/img-projects/TFG.png";
 import mate4k from "../assets/img-projects/mate4k.png"
+import airBomb from "../assets/img-projects/air-bomb.jpg";
 
 export const proyectos = [
+  {
+    titulo: "Air Bomb",
+    descripcion: "Shooter arcade para Android al estilo Space Invaders",
+    imagen: airBomb.src,
+    tecnologias: ["Unity", "C#", "Android"],
+    demo: "https://nixonbit3.itch.io/air-bomb",
+  },
   {
     titulo: "Fracture Tool for Unity (TFG)",
     descripcion: "Sistema de Fragmentación 3D en Tiempo Real",
