@@ -146,11 +146,13 @@ p {
   background-clip: content-box;
 }
 
-/* Las imágenes nunca desbordan su contenedor */
+/* Las imágenes nunca desbordan su contenedor.
+   OJO: no incluir aqui svg ni canvas. Hay SVG decorativos posicionados
+   en absoluto que son mas grandes que su contenedor (el anillo de texto
+   giratorio de la pagina de contacto): limitarlos al 100% los aplasta
+   y deforma el circulo. */
 img,
-svg,
-video,
-canvas {
+video {
   max-width: 100%;
 }
 
