@@ -5,19 +5,18 @@ import MailLink from "../components/commons/mail/MailLink.astro";
 // CV en linea, optimizado para imprimir o guardar como PDF.
 // Deliberadamente SIN datos sensibles: no hay telefono, ni direccion,
 // ni DNI, ni fecha de nacimiento. El email va protegido contra bots.
-const perfil = `Junior Unity Developer centrado en gameplay y juegos móviles. Construyo juegos para aprender a construirlos mejor, y acabo de publicar el primero de principio a fin: Air Bomb, un shooter arcade para Android hecho en solitario con Unity y C#. Graduado en Diseño y Desarrollo de Videojuegos por el CITM (UPC). Busco mi primer puesto como Junior Unity / Gameplay Developer en un estudio o equipo móvil, en Barcelona o en remoto.`;
+// Texto comprimido a proposito: el CV debe caber en UNA pagina impresa.
+const perfil = `Junior Unity Developer focused on gameplay and mobile. Shipped Air Bomb, an arcade shooter for Android, built solo end-to-end with Unity and C#. Video Game Design and Development graduate (CITM – UPC). Looking for a first role as Junior Unity / Gameplay Developer, in Barcelona or remote.`;
 
 const experiencia = [
   {
-    puesto: "Técnico de Soporte IT",
+    puesto: "IT Support Technician",
     empresa: "Col·legi d'Arquitectes de Catalunya (COAC)",
     lugar: "Barcelona",
-    periodo: "Mar 2025 — Ago 2025",
+    periodo: "Mar 2025 — Aug 2025",
     puntos: [
-      "Diseño de materiales gamificados de concienciación en ciberseguridad para el personal: primera experiencia profesional aplicando mecánicas de juego a formación real.",
-      "Desarrollo de formularios PDF interactivos con herramientas de edición y automatización.",
-      "Edición de vídeos institucionales siguiendo la línea gráfica y los estándares del COAC.",
-      "Soporte técnico diario a la organización.",
+      "Designed gamified cybersecurity training for staff — applying game mechanics to real-world learning.",
+      "Built interactive PDF forms and edited institutional videos to the organisation's standards.",
     ],
   },
 ];
@@ -25,43 +24,37 @@ const experiencia = [
 const proyectos = [
   {
     nombre: "Air Bomb",
-    tipo: "Juego publicado · Android",
+    tipo: "Shipped game · Android",
     enlace: "https://nixonbit3.itch.io/air-bomb",
     enlaceTexto: "nixonbit3.itch.io/air-bomb",
     puntos: [
-      "Shooter arcade estilo Space Invaders desarrollado en solitario de principio a fin con Unity y C#.",
-      "Arquitectura View/Controller con separación entre lógica y presentación.",
-      "Niveles data-driven con ScriptableObjects y comunicación por eventos mediante Action callbacks.",
-      "DOTween para el game feel, persistencia en JSON y sistema de audio entre escenas.",
+      "Space Invaders-style arcade shooter, built solo end-to-end with Unity and C#.",
+      "View/Controller architecture, data-driven levels with ScriptableObjects, event-based communication, DOTween, JSON persistence and cross-scene audio.",
     ],
   },
   {
     nombre: "Fracture Tool for Unity",
-    tipo: "Trabajo de Fin de Grado · Herramienta",
+    tipo: "Final degree project",
     enlace: "https://github.com/Nixonbit3/FractureTool",
     enlaceTexto: "github.com/Nixonbit3/FractureTool",
     puntos: [
-      "Sistema de fragmentación 3D en tiempo real como herramienta de editor para Unity.",
-      "Desarrollado en C# con foco en rendimiento y usabilidad para otros desarrolladores.",
+      "Real-time 3D fragmentation system as a Unity editor tool, written in C# with a focus on performance and usability.",
     ],
   },
   {
-    nombre: "Mate 3D realista",
-    tipo: "Arte 3D",
+    nombre: "Realistic 3D Mate Gourd",
+    tipo: "3D Art",
     enlace: "https://www.artstation.com/artwork/8wnkNQ",
     enlaceTexto: "artstation.com/artwork/8wnkNQ",
-    puntos: [
-      "Modelado y texturizado fotorrealista en Blender y Substance Painter.",
-    ],
+    puntos: ["Photorealistic modelling and texturing in Blender and Substance Painter."],
   },
 ];
 
 const habilidades = [
-  { grupo: "Motores y lenguajes", items: "Unity, C#, C++, Unreal Engine, Python" },
-  { grupo: "Gameplay y arquitectura", items: "ScriptableObjects, DOTween, diseño orientado a datos, arquitectura por eventos, persistencia en JSON" },
-  { grupo: "Móvil", items: "Builds de Android, sistemas de UI y HUD, pruebas en dispositivo real" },
-  { grupo: "Arte y 3D", items: "Blender, Maya, 3ds Max, Substance Painter, Photoshop, Illustrator" },
-  { grupo: "Herramientas y metodología", items: "Git, GitHub, Figma, Trello, Scrum, Kanban" },
+  { grupo: "Engines & languages", items: "Unity, C#, C++, Unreal Engine, Python" },
+  { grupo: "Gameplay & architecture", items: "ScriptableObjects, DOTween, data-driven design, event-driven architecture, JSON persistence" },
+  { grupo: "Mobile", items: "Android builds, UI and HUD systems, testing on real devices" },
+  { grupo: "Art, 3D & tools", items: "Blender, Maya, 3ds Max, Substance Painter, Photoshop, Figma, Git, Scrum / Kanban" },
 ];
 
 const enlaces = [
@@ -74,15 +67,15 @@ const enlaces = [
 ---
 
 <Layout
-  title="CV - Nixon Correa | Junior Unity Developer"
-  description="Currículum de Nixon Correa, Junior Unity Developer centrado en gameplay y juegos móviles. Barcelona o remoto."
+  title="Resume - Nixon Correa | Junior Unity Developer"
+  description="Resume of Nixon Correa, Junior Unity Developer focused on gameplay and mobile games. Barcelona or remote."
 >
   <div class="cv-page bg-black text-white">
     <!-- BARRA DE ACCIONES (no se imprime) -->
     <div class="no-print sticky top-16 md:top-20 z-40 border-b border-white/10 bg-black/80 backdrop-blur-xl">
       <div class="mx-auto max-w-4xl px-6 py-4 flex flex-wrap items-center justify-between gap-4">
         <p class="text-sm text-white/50">
-          Vista de currículum · usa el botón para guardarlo como PDF
+          Resume view · use the button to save it as a PDF
         </p>
         <button
           id="print-cv"
@@ -94,7 +87,7 @@ const enlaces = [
           <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
           </svg>
-          Descargar PDF
+          Download PDF
         </button>
       </div>
     </div>
@@ -104,7 +97,7 @@ const enlaces = [
       <header class="cv-header">
         <h1 class="cv-name">Nixon Correa</h1>
         <p class="cv-role">Junior Unity Developer · Gameplay &amp; Mobile</p>
-        <p class="cv-location">Barcelona, España · Disponible en remoto</p>
+        <p class="cv-location">Barcelona, Spain · Open to remote</p>
 
         <ul class="cv-links">
           <li>
@@ -126,13 +119,13 @@ const enlaces = [
 
       <!-- PERFIL -->
       <section class="cv-section">
-        <h2 class="cv-section-title">Perfil</h2>
+        <h2 class="cv-section-title">Profile</h2>
         <p class="cv-text">{perfil}</p>
       </section>
 
       <!-- EXPERIENCIA -->
       <section class="cv-section">
-        <h2 class="cv-section-title">Experiencia</h2>
+        <h2 class="cv-section-title">Experience</h2>
         {
           experiencia.map((e) => (
             <div class="cv-entry">
@@ -155,7 +148,7 @@ const enlaces = [
 
       <!-- PROYECTOS -->
       <section class="cv-section">
-        <h2 class="cv-section-title">Proyectos</h2>
+        <h2 class="cv-section-title">Projects</h2>
         {
           proyectos.map((p) => (
             <div class="cv-entry">
@@ -180,10 +173,10 @@ const enlaces = [
 
       <!-- FORMACIÓN -->
       <section class="cv-section">
-        <h2 class="cv-section-title">Formación</h2>
+        <h2 class="cv-section-title">Education</h2>
         <div class="cv-entry">
           <div class="cv-entry-head">
-            <h3 class="cv-entry-title">Grado en Diseño y Desarrollo de Videojuegos</h3>
+            <h3 class="cv-entry-title">BSc in Video Game Design and Development</h3>
             <span class="cv-entry-date">Sep 2021 — Jul 2025</span>
           </div>
           <p class="cv-entry-sub">
@@ -194,7 +187,7 @@ const enlaces = [
 
       <!-- HABILIDADES -->
       <section class="cv-section">
-        <h2 class="cv-section-title">Habilidades</h2>
+        <h2 class="cv-section-title">Skills</h2>
         <dl class="cv-skills">
           {
             habilidades.map((h) => (
@@ -384,7 +377,12 @@ const enlaces = [
   @media print {
     @page {
       size: A4;
-      margin: 14mm 15mm;
+      margin: 11mm 13mm;
+    }
+
+    /* El CV entero debe caber en UNA hoja: tipografia y espaciados ajustados */
+    :global(html) {
+      font-size: 100%;
     }
 
     :global(html),
@@ -415,7 +413,7 @@ const enlaces = [
     }
 
     .cv-name {
-      font-size: 26pt;
+      font-size: 24pt;
       background: none;
       -webkit-text-fill-color: #111;
       color: #111;
@@ -426,7 +424,12 @@ const enlaces = [
       background: none;
       -webkit-text-fill-color: #000;
       color: #000;
-      margin-top: 2pt;
+      margin-top: 1pt;
+    }
+
+    .cv-location {
+      font-size: 8.5pt;
+      margin-top: 1pt;
     }
 
     .cv-location,
@@ -438,13 +441,18 @@ const enlaces = [
 
     .cv-header {
       border-bottom: 1px solid #ccc;
-      padding-bottom: 8pt;
+      padding-bottom: 6pt;
     }
 
     .cv-links {
-      margin-top: 8pt;
-      gap: 2pt 16pt;
-      font-size: 8.5pt;
+      margin-top: 6pt;
+      gap: 1pt 14pt;
+      font-size: 8.6pt;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .cv-link-label {
+      min-width: 3.4rem;
     }
 
     .cv-link {
@@ -454,25 +462,26 @@ const enlaces = [
     }
 
     .cv-section {
-      margin-top: 13pt;
+      margin-top: 12pt;
       /* Evita que un bloque se parta entre dos páginas */
       break-inside: avoid;
     }
 
     .cv-section-title {
       color: #000 !important;
-      font-size: 8.5pt;
-      letter-spacing: 0.14em;
+      font-size: 8.4pt;
+      letter-spacing: 0.13em;
       margin-bottom: 5pt;
       border-bottom: 1px solid #ddd;
-      padding-bottom: 2pt;
+      padding-bottom: 1.5pt;
     }
 
     .cv-text,
     .cv-list li,
     .cv-skill-row dd {
       color: #222 !important;
-      font-size: 9.5pt;
+      font-size: 9.6pt;
+      line-height: 1.45;
       max-width: none;
     }
 
@@ -481,26 +490,51 @@ const enlaces = [
     }
 
     .cv-entry + .cv-entry {
-      margin-top: 9pt;
+      margin-top: 8pt;
     }
 
     .cv-entry-title {
       color: #000 !important;
-      font-size: 10.5pt;
+      font-size: 10.6pt;
+    }
+
+    .cv-entry-sub {
+      font-size: 8.8pt;
+      margin-top: 0;
+    }
+
+    .cv-entry-date {
+      font-size: 8.8pt;
     }
 
     .cv-list {
-      margin-top: 3pt;
-      gap: 2pt;
+      margin-top: 2pt;
+      gap: 2.5pt;
+    }
+
+    .cv-list li {
+      padding-left: 0.85rem;
     }
 
     .cv-list li::before {
       background: #666;
+      width: 3.5px;
+      height: 3.5px;
+      top: 0.55em;
+    }
+
+    .cv-skills {
+      gap: 4.5pt;
+    }
+
+    .cv-skill-row {
+      grid-template-columns: minmax(0, 11rem) minmax(0, 1fr);
+      gap: 0 1rem;
     }
 
     .cv-skill-row dt {
       color: #000 !important;
-      font-size: 9.5pt;
+      font-size: 9.6pt;
     }
   }
 </style>

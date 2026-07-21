@@ -32,14 +32,14 @@ const links = [
 ];
 ---
 
-<Layout title="Contacto - Nixon" description="Contáctame para colaborar en proyectos">
+<Layout title="Contact - Nixon Correa" description="Get in touch with Nixon Correa, Junior Unity Developer. Barcelona or remote.">
   
   <!-- ACHIEVEMENT NOTIFICATION -->
   <div id="achievement" class="fixed top-32 right-6 pointer-events-none opacity-0 transition-all duration-700 ease-out" style="z-index: 99999; transform: translateX(400px);">
     <div class="bg-gradient-to-r from-yellow-500 to-orange-500 px-8 py-5 rounded-2xl shadow-[0_20px_60px_rgba(251,146,60,0.6)] border-2 border-yellow-300 flex items-center gap-4 min-w-[300px]">
       <div class="text-5xl animate-bounce">🏆</div>
       <div>
-        <div class="text-white font-bold text-xl" id="achievement-title">¡Achievement Unlocked!</div>
+        <div class="text-white font-bold text-xl" id="achievement-title">Achievement Unlocked!</div>
         <div class="text-white text-base font-semibold" id="achievement-desc">+50 XP</div>
       </div>
     </div>
@@ -69,7 +69,7 @@ const links = [
                   hover:scale-110 active:scale-95
                   transition-all duration-300">
         <span class="text-3xl">🎮</span>
-        <span class="text-white font-bold">Jugar Snake</span>
+        <span class="text-white font-bold">Play Snake</span>
       </div>
     </div>
   </button>
@@ -149,7 +149,7 @@ const links = [
                   <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
                   <span class="relative inline-flex rounded-full h-3 w-3 bg-white shadow-lg"></span>
                 </div>
-                <span class="text-white text-sm font-bold tracking-wide">DISPONIBLE</span>
+                <span class="text-white text-sm font-bold tracking-wide">AVAILABLE</span>
               </div>
             </div>
 
@@ -158,7 +158,7 @@ const links = [
               <path id="circlePathText" d="M120,120 m-95,0 a95,95 0 1,1 190,0 a95,95 0 1,1 -190,0" fill="none"/>
               <text class="text-[15px] font-bold tracking-wider" fill="url(#animatedGradient)">
                 <textPath href="#circlePathText" startOffset="0%">
-                  ★ ¡HOLA! ★ OPEN TO WORK ★ LET'S CREATE MAGIC ★
+                  ★ HELLO! ★ OPEN TO WORK ★ LET'S CREATE MAGIC ★
                 </textPath>
               </text>
               <defs>
@@ -277,7 +277,7 @@ const links = [
 
       <!-- HINT -->
       <div class="mt-16 text-center opacity-50">
-        <p class="text-white/40 text-sm">🎮 Gana XP interactuando con los links ✨</p>
+        <p class="text-white/40 text-sm">🎮 Earn XP by interacting with the links ✨</p>
       </div>
 
     </div>
@@ -535,7 +535,8 @@ const links = [
       "Creating the future of entertainment"
     ]
   };
-  const phrases = localStorage.getItem('lang') === 'en' ? phrasesByLang.en : phrasesByLang.es;
+  // Ingles por defecto; solo se usa espanol si esta elegido explicitamente
+  const phrases = localStorage.getItem('lang') === 'es' ? phrasesByLang.es : phrasesByLang.en;
   let phraseIndex = 0;
   let charIndex = 0;
   let isDeleting = false;
@@ -665,10 +666,10 @@ const links = [
 
     const isTouch = window.matchMedia('(pointer: coarse)').matches;
     if (hint) {
-      const en = localStorage.getItem('lang') === 'en';
+      const es = localStorage.getItem('lang') === 'es';
       hint.textContent = isTouch
-        ? (en ? 'Swipe to move • ✕ to quit' : 'Desliza para mover • ✕ para salir')
-        : (en ? 'WASD or Arrows • ESC to quit' : 'WASD o flechas • ESC para salir');
+        ? (es ? 'Desliza para mover • ✕ para salir' : 'Swipe to move • ✕ to quit')
+        : (es ? 'WASD o flechas • ESC para salir' : 'WASD or Arrows • ESC to quit');
     }
 
     // Escala por densidad de pantalla: nítido en móviles retina

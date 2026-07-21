@@ -5,21 +5,21 @@ import airBomb from "../assets/img-projects/air-bomb.webp";
 export const proyectos = [
   {
     titulo: "Air Bomb",
-    descripcion: "Shooter arcade para Android al estilo Space Invaders",
+    descripcion: "Space Invaders-style arcade shooter for Android",
     imagen: airBomb.src,
     tecnologias: ["Unity", "C#", "Android", "DOTween"],
     demo: "https://nixonbit3.itch.io/air-bomb",
   },
   {
     titulo: "Fracture Tool for Unity (TFG)",
-    descripcion: "Sistema de Fragmentación 3D en Tiempo Real",
+    descripcion: "Real-Time 3D Fragmentation System",
     imagen: fractureTool.src,
     tecnologias: ["Unity", "C#", "Github"],
     demo: "https://nixonbit3.github.io/FractureTool/",
     codigo: "https://github.com/Nixonbit3/FractureTool",
   },
   {
-    titulo: "Mate 3D realista",
+    titulo: "Realistic 3D Mate Gourd",
     imagen:
       mate4k.src,
     tecnologias: ["Blender", "Substance painter", "Adobe"],

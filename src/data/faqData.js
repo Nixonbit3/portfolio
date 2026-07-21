@@ -2,64 +2,64 @@
 export const faqHome = [
   {
     icon: "code",
-    question: "¿Qué tecnologías uso?",
+    question: "What technologies do I use?",
     answer:
-      "Unity y C# a diario, con ScriptableObjects, DOTween y builds de Android. También C++, Blender, Maya, Substance Painter, Figma y Unreal.",
+      "Unity and C# every day, with ScriptableObjects, DOTween and Android builds. Also C++, Blender, Maya, Substance Painter, Figma and Unreal.",
   },
   {
     icon: "briefcase",
-    question: "Mi Experiencia",
+    question: "My Experience",
     answer:
-      "He publicado Air Bomb, mi primer juego para Android hecho en solitario de principio a fin, además de mi TFG y otros proyectos de videojuegos y herramientas interactivas.",
+      "I shipped Air Bomb, my first Android game, built solo from start to finish, plus my final degree project and other video game and interactive tool projects.",
   },
   {
     icon: "academic",
-    question: "Mi formación",
-    answer: "Grado en Diseño y Desarrollo de Videojuegos – CITM (UPC).",
+    question: "My education",
+    answer: "Degree in Video Game Design and Development – CITM (UPC).",
   },
   {
     icon: "team",
-    question: "¿Cómo trabajo en equipo?",
+    question: "How do I work in a team?",
     answer:
-      "Soy introvertido, pero me adapto a equipos multidisciplinarios usando metodologías ágiles y comunicación clara para coordinar tareas.",
+      "I'm introverted, but I adapt to multidisciplinary teams using agile methodologies and clear communication to coordinate tasks.",
   },
   {
     icon: "agile",
-    question: "Metodologías Ágiles",
+    question: "Agile Methodologies",
     answer:
-      "Scrum y Kanban para gestionar proyectos, sprints de desarrollo y revisiones, asegurando eficiencia y organización.",
+      "Scrum and Kanban to manage projects, development sprints and reviews, ensuring efficiency and organization.",
   },
 ];
 
 export const faqAbout = [
   {
     icon: "code",
-    question: "¿Qué tecnologías uso?",
+    question: "What technologies do I use?",
     answer:
-      "Unity y C# como base del día a día, con ScriptableObjects, DOTween, persistencia en JSON y builds de Android. Además C++, Blender, Maya, Substance Painter, Figma, Photoshop y Unreal.",
+      "Unity and C# as my day-to-day base, with ScriptableObjects, DOTween, JSON persistence and Android builds. Plus C++, Blender, Maya, Substance Painter, Figma, Photoshop and Unreal.",
   },
   {
     icon: "briefcase",
-    question: "Mi Experiencia",
+    question: "My Experience",
     answer:
-      "He publicado Air Bomb, mi primer juego para Android, desarrollado en solitario de principio a fin. A eso sumo mi TFG y varios proyectos de videojuegos y herramientas interactivas.",
+      "I shipped Air Bomb, my first Android game, developed solo from start to finish. On top of that, my final degree project and several video game and interactive tool projects.",
   },
   {
     icon: "academic",
-    question: "Mi formación",
+    question: "My education",
     answer:
-      "Grado en Diseño y Desarrollo de Videojuegos – CITM (UPC). Complementado con cursos y práctica autodidacta en programación, diseño 3D y desarrollo de gameplay.",
+      "Degree in Video Game Design and Development – CITM (UPC). Complemented with courses and self-taught practice in programming, 3D design and gameplay development.",
   },
   {
     icon: "team",
-    question: "¿Cómo trabajo en equipo?",
+    question: "How do I work in a team?",
     answer:
-      "Soy introvertido, pero me adapto bien a equipos multidisciplinarios usando metodologías ágiles y comunicación clara para coordinar tareas y alcanzar objetivos comunes.",
+      "I'm introverted, but I adapt well to multidisciplinary teams using agile methodologies and clear communication to coordinate tasks and reach common goals.",
   },
   {
     icon: "agile",
-    question: "Metodologías Ágiles",
+    question: "Agile Methodologies",
     answer:
-      "He trabajado con Scrum y Kanban para gestionar proyectos, sprints de desarrollo y revisiones, asegurando eficiencia, organización y entrega de resultados.",
+      "I've worked with Scrum and Kanban to manage projects, development sprints and reviews, ensuring efficiency, organization and delivery of results.",
   },
 ];

@@ -14,7 +14,7 @@ interface Props {
 const {
   title = "Nixon Correa — Junior Unity Developer",
   description =
-    "Junior Unity Developer centrado en gameplay y juegos móviles. Autor de Air Bomb, shooter arcade publicado en Android. Barcelona o remoto.",
+    "Junior Unity Developer focused on gameplay and mobile games. Author of Air Bomb, an arcade shooter shipped on Android. Barcelona or remote.",
   noindex = false,
   image = "/og.jpg",
 } = Astro.props;
@@ -27,7 +27,7 @@ const ogImage = new URL(image, base);
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
@@ -60,7 +60,7 @@ const ogImage = new URL(image, base);
     <!-- Vista previa al compartir el enlace (email, LinkedIn, WhatsApp...) -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Nixon Correa" />
-    <meta property="og:locale" content="es_ES" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />

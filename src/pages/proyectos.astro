@@ -5,7 +5,7 @@ import Banner from "../components/commons/banners/banner.astro";
 import { proyectos } from "../data/projectData.js";
 ---
 
-<Layout title="Proyectos - Nixon" description="Explora mis proyectos de desarrollo de videojuegos y experiencias digitales">
+<Layout title="Projects - Nixon Correa" description="Unity and mobile game development projects by Nixon Correa, including Air Bomb, shipped on Android.">
   
   <!-- HERO SECTION -->
   <section class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-black">
@@ -42,11 +42,11 @@ import { proyectos } from "../data/projectData.js";
         style="animation-delay: 0.2s;"
       >
         <span class="bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent">
-          Mis
+          My
         </span>
         <br />
         <span class="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
-          Proyectos
+          Projects
         </span>
       </h1>
 
@@ -56,7 +56,7 @@ import { proyectos } from "../data/projectData.js";
                opacity-0 animate-fade-in"
         style="animation-delay: 0.4s;"
       >
-        Una colección de mis trabajos en desarrollo de videojuegos y experiencias interactivas
+        A collection of my work in video game development and interactive experiences
       </p>
 
       <!-- FILTER BUTTONS -->
@@ -72,7 +72,7 @@ import { proyectos } from "../data/projectData.js";
                  active:scale-95 transition-all duration-300"
           data-filter="all"
         >
-          Todos
+          All
         </button>
         <button 
           class="filter-btn px-6 py-3 rounded-full
@@ -142,7 +142,7 @@ import { proyectos } from "../data/projectData.js";
                  hover:bg-white/10 hover:border-white/30 hover:scale-105
                  active:scale-95 transition-all duration-300"
         >
-          <span>Ver más proyectos</span>
+          <span>Load more projects</span>
           <svg 
             class="w-5 h-5 transition-transform duration-300 group-hover:translate-y-1" 
             fill="none" 
@@ -320,7 +320,7 @@ import { proyectos } from "../data/projectData.js";
       };
     });
 
-    // activar "Todos" al inicio
+    // activar "All" al inicio
     const allBtn = document.querySelector('.filter-btn[data-filter="all"]');
     setActiveButton(allBtn);
   }

@@ -6,7 +6,7 @@ export const proyectos = [
 
     {
       titulo: "Air Bomb",
-      descripcion: "Mi primer juego publicado: shooter arcade para Android estilo Space Invaders, hecho en solitario de principio a fin. Arquitectura View/Controller, niveles data-driven con ScriptableObjects, comunicación por eventos, DOTween para el game feel, persistencia en JSON y audio entre escenas.",
+      descripcion: "My first shipped game: a Space Invaders-style arcade shooter for Android, built solo from start to finish. View/Controller architecture, data-driven levels with ScriptableObjects, event-based communication, DOTween for game feel, JSON persistence and cross-scene audio.",
       imagen: airBomb.src,
       tecnologias: ["Unity", "C#", "Android", "DOTween"],
       demo: "https://nixonbit3.itch.io/air-bomb",
@@ -15,7 +15,7 @@ export const proyectos = [
     },
   {
       titulo: "Fracture Tool for Unity (TFG)",
-      descripcion: "Sistema de Fragmentación 3D en Tiempo Real",
+      descripcion: "Real-Time 3D Fragmentation System",
       imagen: fractureTool.src,
       tecnologias: ["Unity", "C#", "Github"],
       demo: "https://nixonbit3.github.io/FractureTool/",
@@ -23,8 +23,8 @@ export const proyectos = [
       categoria: "Code",
     },
     {
-      titulo: "Mate 3D realista",
-      descripcion: "Mate realista hecho en blender",
+      titulo: "Realistic 3D Mate Gourd",
+      descripcion: "Realistic yerba mate gourd modeled in Blender",
       imagen:
         mate4k.src,
       tecnologias: ["Blender", "Substance painter", "Adobe"],
