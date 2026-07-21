@@ -5,7 +5,8 @@ import AboutMe from "../components/about/aboutMe.astro";
 import Experience from "../components/about/experience.astro";
 import Features from "../components/about/features.astro";
 import Skills from "../components/about/skills.astro";
-import FaqsAbout from "../components/about/FaqsAbout.jsx";
+import Faq from "../components/commons/faq/Faq.astro";
+import { faqAbout } from "../data/faqData.js";
 import BannerGithub from "../components/about/bannerGithub.astro";
 import Banner from "../components/commons/banners/banner.astro";
 ---
@@ -19,7 +20,12 @@ import Banner from "../components/commons/banners/banner.astro";
   <Experience />
   <Features />
   <Skills />
-  <FaqsAbout client:visible/>
+  <Faq
+    titleTop="Más sobre"
+    titleBottom="mi trabajo"
+    subtitle="Conoce más sobre mi experiencia, habilidades y forma de trabajo"
+    items={faqAbout}
+  />
   <BannerGithub />
   <Banner />
 </Layout>

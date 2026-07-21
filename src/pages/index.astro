@@ -4,7 +4,8 @@ import Header from "../components/home/header/header.astro";
 import Slider from "../components/home/header/slider.astro";
 import AboutHome from "../components/home/aboutHome/aboutHome.astro";
 import HomeProyect from "../components/home/homeProyect/homeProyect.astro";
-import FAQS from "../components/home/faqs/faqs.jsx";
+import Faq from "../components/commons/faq/Faq.astro";
+import { faqHome } from "../data/faqData.js";
 import Banner from "../components/commons/banners/banner.astro";
 ---
 
@@ -13,6 +14,11 @@ import Banner from "../components/commons/banners/banner.astro";
   <Slider />
   <AboutHome />
   <HomeProyect />
-  <FAQS client:visible />
+  <Faq
+    titleTop="Sobre mí"
+    titleBottom="y mi trabajo"
+    subtitle="Conoce más sobre mi experiencia, habilidades y forma de trabajo"
+    items={faqHome}
+  />
   <Banner />
 </Layout>

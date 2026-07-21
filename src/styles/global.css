@@ -75,3 +75,51 @@
 .text-shadow {
   text-shadow: 2px 2px 0 #6d0deb;
 }
+
+/* ---------------------------------------------------------
+   Rendimiento y fluidez
+   --------------------------------------------------------- */
+
+/* Scroll suave y sin saltos al navegar por anclas */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Evita el desbordamiento horizontal en movil (blobs y el carrusel
+   se salen del viewport y provocaban scroll lateral) */
+body {
+  overflow-x: hidden;
+}
+
+/* Los blobs decorativos no necesitan repintarse: se aislan en su
+   propia capa y se excluyen de los calculos de layout del resto */
+[class*="blur-["] {
+  contain: paint;
+  pointer-events: none;
+}
+
+/* Accesibilidad: si el sistema pide menos movimiento, se desactiva
+   todo lo decorativo y la web queda estatica pero completamente usable */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Los elementos que aparecen con animacion deben quedar visibles */
+  [data-reveal],
+  .skill-card,
+  .faq-card,
+  .social-link {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

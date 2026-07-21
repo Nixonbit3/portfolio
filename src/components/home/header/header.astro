@@ -1,6 +1,13 @@
 ---
-import SocialIcons from "../../commons/socialIcons/socialIcons.jsx";
-import TypeEfect from "../header/typeEfect.jsx";
+import SocialIcons from "../../commons/socialIcons/socialIcons.astro";
+
+// Roles del efecto de tipeo (no se traducen: son términos del sector)
+const roles = [
+  "Unity Developer",
+  "Gameplay Programmer",
+  "Mobile Game Developer",
+  "C# Developer",
+];
 ---
 
 <header class="relative min-h-screen bg-black overflow-hidden">
@@ -49,7 +56,11 @@ import TypeEfect from "../header/typeEfect.jsx";
       class="mt-8 opacity-0 translate-y-6 animate-fadeIn"
       style="animation-delay: 0.4s;"
     >
-      <TypeEfect client:visible />
+      <div class="notranslate mt-5 text-3xl font-bold" aria-live="off">
+        <span id="role-text" data-roles={JSON.stringify(roles)}>{roles[0]}</span><span
+          class="role-caret"
+          aria-hidden="true">|</span>
+      </div>
     </div>
 
     <!-- DESCRIPTION -->
@@ -67,34 +78,58 @@ import TypeEfect from "../header/typeEfect.jsx";
       class="mt-10 opacity-0 translate-y-6 animate-fadeIn"
       style="animation-delay: 0.8s;"
     >
-      <SocialIcons client:visible />
+      <SocialIcons />
     </div>
 
-    <!-- CTA BUTTON -->
-    <a
-      target="_blank"
-      href="/contact"
-      class="group mt-10 relative inline-flex items-center justify-center px-8 py-4
-             bg-white text-black font-semibold rounded-full
-             transition-all duration-300 ease-out
-             hover:scale-105 hover:shadow-[0_20px_60px_-15px_rgba(255,255,255,0.3)]
-             active:scale-95
+    <!-- CTA BUTTONS -->
+    <div
+      class="mt-10 flex flex-col sm:flex-row items-center gap-4
              opacity-0 translate-y-6 animate-fadeIn"
       style="animation-delay: 1s;"
     >
-      <span class="relative z-10">Contactar</span>
-      <svg 
-        class="ml-2 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" 
-        fill="none" 
-        viewBox="0 0 24 24" 
-        stroke="currentColor"
+      <!-- PRIMARIO: probar el juego publicado (lo mas convincente para un estudio) -->
+      <a
+        href="https://nixonbit3.itch.io/air-bomb"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group relative inline-flex items-center justify-center px-8 py-4 w-full sm:w-auto
+               bg-white text-black font-semibold rounded-full
+               transition-transform duration-300 ease-out
+               hover:scale-105 active:scale-95
+               shadow-lg hover:shadow-[0_20px_60px_-15px_rgba(255,255,255,0.35)]"
       >
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-      </svg>
-      
-      <!-- GLOW EFFECT -->
-      <div class="absolute inset-0 rounded-full bg-white opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-300"></div>
-    </a>
+        <span class="mr-2 text-xl" aria-hidden="true">🎮</span>
+        <span>Jugar Air Bomb</span>
+        <svg
+          class="ml-2 w-4 h-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+        </svg>
+      </a>
+
+      <!-- SECUNDARIO: contacto -->
+      <a
+        href="/contact"
+        class="group inline-flex items-center justify-center px-8 py-4 w-full sm:w-auto
+               bg-white/5 border border-white/20 text-white font-semibold rounded-full
+               transition-colors duration-300
+               hover:bg-white/10 hover:border-white/30"
+      >
+        <span>Contactar</span>
+        <svg
+          class="ml-2 w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
 
     <!-- SCROLL INDICATOR -->
     <div 
@@ -144,6 +179,27 @@ import TypeEfect from "../header/typeEfect.jsx";
     animation: scrollDown 1.5s ease-in-out infinite;
   }
 
+  /* Cursor del efecto de tipeo */
+  @keyframes caretBlink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+  }
+
+  .role-caret {
+    animation: caretBlink 1s step-end infinite;
+  }
+
+  /* Respeta a quien prefiere menos movimiento */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-fadeIn,
+    .animate-scroll-down,
+    .role-caret {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+
   /* SF Pro Text simulation with system fonts */
   h1, p, span {
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
@@ -156,3 +212,51 @@ import TypeEfect from "../header/typeEfect.jsx";
     -moz-osx-font-smoothing: grayscale;
   }
 </style>
+
+<script>
+  // Efecto de tipeo nativo (sustituye a typewriter-effect + React: ~213 KB menos)
+  const el = document.getElementById("role-text");
+
+  if (el) {
+    const roles: string[] = JSON.parse(el.dataset.roles || "[]");
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (roles.length && !reduced) {
+      let index = 0;
+      let chars = roles[0].length;
+      let deleting = true;
+      let timer: ReturnType<typeof setTimeout>;
+
+      const tick = () => {
+        const word = roles[index];
+        chars += deleting ? -1 : 1;
+        el.textContent = word.slice(0, chars);
+
+        let delay = deleting ? 45 : 90;
+
+        if (!deleting && chars === word.length) {
+          delay = 1800;
+          deleting = true;
+        } else if (deleting && chars === 0) {
+          deleting = false;
+          index = (index + 1) % roles.length;
+          delay = 300;
+        }
+
+        timer = setTimeout(tick, delay);
+      };
+
+      timer = setTimeout(tick, 1800);
+
+      // Pausa cuando la pestaña no está visible (ahorra batería y evita saltos)
+      document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+          clearTimeout(timer);
+        } else {
+          clearTimeout(timer);
+          timer = setTimeout(tick, 400);
+        }
+      });
+    }
+  }
+</script>

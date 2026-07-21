@@ -61,7 +61,8 @@ const DICT = {
   "¿Quieres ver más de mi trabajo?": "Want to see more of my work?",
   "Ver todos los proyectos": "View all projects",
   "Proyectos completados": "Completed projects",
-  "Pasión": "Passion",
+  "Juego publicado": "Shipped game",
+  "Jugar Air Bomb": "Play Air Bomb",
 
   // ---------- Banner CTA ----------
   "¿Trabajamos": "Shall we work",
@@ -200,7 +201,9 @@ const DICT = {
   "Ver más proyectos": "Load more projects",
   "Código": "Code",
   "Sistema de Fragmentación 3D en Tiempo Real": "Real-Time 3D Fragmentation System",
-  "Mate realista hecho en blender": "Realistic mate made in Blender",
+  "Mate 3D realista": "Realistic 3D Mate Gourd",
+  "Mate realista hecho en blender":
+    "Realistic yerba mate gourd modeled in Blender",
   "Shooter arcade para Android al estilo Space Invaders":
     "Space Invaders-style arcade shooter for Android",
   "Mi primer juego publicado: shooter arcade para Android estilo Space Invaders, hecho en solitario de principio a fin. Arquitectura View/Controller, niveles data-driven con ScriptableObjects, comunicación por eventos, DOTween para el game feel, persistencia en JSON y audio entre escenas.":

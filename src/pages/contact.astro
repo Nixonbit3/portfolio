@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import MiFoto from "../assets/img/MiFoto.png";
+import MiFoto from "../assets/img/MiFoto.webp";
 
 const links = [
   {
@@ -75,12 +75,27 @@ const links = [
   <!-- SNAKE GAME -->
   <canvas id="snake-canvas" class="fixed inset-0 z-[9998] opacity-0 pointer-events-none"></canvas>
   <div id="snake-ui" class="fixed top-6 left-6 z-[9999] opacity-0 pointer-events-none">
-    <div class="bg-black/90 backdrop-blur-xl px-6 py-3 rounded-2xl border border-white/20">
+    <div class="bg-black/90 px-6 py-3 rounded-2xl border border-white/20">
       <div class="text-white font-bold text-2xl">Score: <span id="snake-score">0</span></div>
       <div class="text-white/70 text-sm">High Score: <span id="snake-high">0</span></div>
-      <div class="text-white/50 text-xs mt-2">WASD or Arrows • ESC to quit</div>
+      <div class="text-white/50 text-xs mt-2" id="snake-hint">WASD or Arrows • ESC to quit</div>
     </div>
   </div>
+
+  <!-- SNAKE: BOTON DE SALIR (imprescindible en movil, donde no hay tecla ESC) -->
+  <button
+    id="snake-close"
+    type="button"
+    aria-label="Salir del juego"
+    class="fixed top-6 right-6 z-[9999] opacity-0 pointer-events-none
+           h-12 w-12 flex items-center justify-center rounded-full
+           bg-black/80 border border-white/25 text-white
+           active:scale-90 transition-transform duration-200"
+  >
+    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+    </svg>
+  </button>
 
   <!-- WEBGL SHADER (Lightweight) -->
   <canvas id="shader-canvas" class="fixed inset-0 pointer-events-none z-[1] opacity-20"></canvas>
@@ -454,9 +469,12 @@ const links = [
 
             gl.useProgram(program);
 
+            let rafId = 0;
+            const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
             function render(time: number) {
               if (!gl || !program) return;
-              
+
               gl.viewport(0, 0, shaderCanvas.width, shaderCanvas.height);
               gl.clearColor(0, 0, 0, 0);
               gl.clear(gl.COLOR_BUFFER_BIT);
@@ -466,14 +484,34 @@ const links = [
 
               gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
 
-              requestAnimationFrame(render);
+              rafId = requestAnimationFrame(render);
             }
 
-            render(0);
+            // Un solo fotograma si se pide menos movimiento; si no, bucle normal
+            if (reducedMotion) {
+              render(0);
+              cancelAnimationFrame(rafId);
+            } else {
+              rafId = requestAnimationFrame(render);
 
+              // No malgastar GPU/bateria con la pestana en segundo plano
+              document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                  cancelAnimationFrame(rafId);
+                } else {
+                  rafId = requestAnimationFrame(render);
+                }
+              });
+            }
+
+            // Redimensionado con "debounce": evita recrear el buffer en cada pixel
+            let resizeTimer: ReturnType<typeof setTimeout>;
             window.addEventListener('resize', () => {
-              shaderCanvas.width = window.innerWidth;
-              shaderCanvas.height = window.innerHeight;
+              clearTimeout(resizeTimer);
+              resizeTimer = setTimeout(() => {
+                shaderCanvas.width = window.innerWidth;
+                shaderCanvas.height = window.innerHeight;
+              }, 150);
             });
           }
         }
@@ -603,28 +641,64 @@ const links = [
     const canvas = document.getElementById('snake-canvas') as HTMLCanvasElement;
     const ui = document.getElementById('snake-ui');
     const gameBtn = document.getElementById('game-btn');
-    
+    const closeBtn = document.getElementById('snake-close');
+    const hint = document.getElementById('snake-hint');
+
     if (!canvas || !ui) return;
-    
+
     isGameRunning = true;
-    
+
     if (gameBtn) gameBtn.style.display = 'none';
-    
+
     canvas.style.opacity = '1';
     canvas.style.pointerEvents = 'auto';
+    canvas.style.touchAction = 'none';
     ui.style.opacity = '1';
-    
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    
+
+    // Botón de salir: en móvil no hay ESC
+    if (closeBtn) {
+      closeBtn.style.opacity = '1';
+      closeBtn.style.pointerEvents = 'auto';
+    }
+
+    const isTouch = window.matchMedia('(pointer: coarse)').matches;
+    if (hint) {
+      const en = localStorage.getItem('lang') === 'en';
+      hint.textContent = isTouch
+        ? (en ? 'Swipe to move • ✕ to quit' : 'Desliza para mover • ✕ para salir')
+        : (en ? 'WASD or Arrows • ESC to quit' : 'WASD o flechas • ESC para salir');
+    }
+
+    // Escala por densidad de pantalla: nítido en móviles retina
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let cssW = window.innerWidth;
+    let cssH = window.innerHeight;
+
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
-    
-    const gridSize = 20;
-    const tileCount = Math.floor(canvas.width / gridSize);
-    
-    let snake = [{x: 10, y: 10}];
-    let food = {x: 15, y: 15};
+
+    function sizeCanvas() {
+      cssW = window.innerWidth;
+      cssH = window.innerHeight;
+      canvas.width = Math.floor(cssW * dpr);
+      canvas.height = Math.floor(cssH * dpr);
+      canvas.style.width = cssW + 'px';
+      canvas.style.height = cssH + 'px';
+      ctx?.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    sizeCanvas();
+
+    // Celdas más grandes en móvil para que se juegue bien con el dedo
+    const gridSize = isTouch ? 28 : 20;
+    let tileCount = Math.floor(cssW / gridSize);
+    let tileCountY = Math.floor(cssH / gridSize);
+
+    let snake = [{x: Math.floor(tileCount / 2), y: Math.floor(tileCountY / 2)}];
+    let food = {
+      x: Math.floor(Math.random() * tileCount),
+      y: Math.floor(Math.random() * tileCountY),
+    };
     let dx = 0;
     let dy = 0;
     let score = 0;
@@ -675,7 +749,7 @@ const links = [
       const head = {x: snake[0].x + dx, y: snake[0].y + dy};
       
       // Wall collision
-      if (head.x < 0 || head.x >= tileCount || head.y < 0 || head.y >= Math.floor(canvas.height / gridSize)) {
+      if (head.x < 0 || head.x >= tileCount || head.y < 0 || head.y >= tileCountY) {
         gameOver();
         return;
       }
@@ -695,7 +769,7 @@ const links = [
         
         food = {
           x: Math.floor(Math.random() * tileCount),
-          y: Math.floor(Math.random() * Math.floor(canvas.height / gridSize))
+          y: Math.floor(Math.random() * tileCountY)
         };
         
         addXP(10);
@@ -733,32 +807,102 @@ const links = [
     
     function stopSnake() {
       gameActive = false;
-      
+
       // Limpiar el loop
       if (currentGameLoop) {
         clearTimeout(currentGameLoop);
         currentGameLoop = null;
       }
-      
-      // Remover event listener
+
+      // Remover listeners (teclado, táctil, resize y botón de salir)
       if (currentKeyHandler) {
         document.removeEventListener('keydown', currentKeyHandler);
         currentKeyHandler = null;
       }
-      
+      canvas.removeEventListener('touchstart', onTouchStart);
+      canvas.removeEventListener('touchmove', onTouchMove);
+      window.removeEventListener('resize', onResize);
+      window.removeEventListener('orientationchange', onResize);
+      closeBtn?.removeEventListener('click', stopSnake);
+
       // Limpiar canvas
       if (ctx) {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.clearRect(0, 0, cssW, cssH);
       }
-      
+
       // Ocultar UI
       canvas.style.opacity = '0';
       canvas.style.pointerEvents = 'none';
       if (ui) ui.style.opacity = '0';
+      if (closeBtn) {
+        closeBtn.style.opacity = '0';
+        closeBtn.style.pointerEvents = 'none';
+      }
       if (gameBtn) gameBtn.style.display = 'block';
-      
+
       isGameRunning = false;
     }
+
+    // ---- Controles táctiles (deslizar) ----
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    function setDirection(nx: number, ny: number) {
+      // Evita el giro de 180 grados sobre uno mismo
+      if (nx !== 0 && dx !== 0) return;
+      if (ny !== 0 && dy !== 0) return;
+      dx = nx;
+      dy = ny;
+    }
+
+    function onTouchStart(e: TouchEvent) {
+      const t = e.changedTouches[0];
+      touchStartX = t.clientX;
+      touchStartY = t.clientY;
+    }
+
+    function onTouchMove(e: TouchEvent) {
+      // Impide que la página haga scroll mientras se juega
+      e.preventDefault();
+
+      const t = e.changedTouches[0];
+      const diffX = t.clientX - touchStartX;
+      const diffY = t.clientY - touchStartY;
+      const MIN_SWIPE = 24;
+
+      if (Math.abs(diffX) < MIN_SWIPE && Math.abs(diffY) < MIN_SWIPE) return;
+
+      if (Math.abs(diffX) > Math.abs(diffY)) {
+        setDirection(diffX > 0 ? 1 : -1, 0);
+      } else {
+        setDirection(0, diffY > 0 ? 1 : -1);
+      }
+
+      // Reinicia el origen para permitir gestos encadenados
+      touchStartX = t.clientX;
+      touchStartY = t.clientY;
+    }
+
+    function onResize() {
+      sizeCanvas();
+      tileCount = Math.floor(cssW / gridSize);
+      tileCountY = Math.floor(cssH / gridSize);
+      // Recoloca la serpiente si el giro de pantalla la deja fuera
+      snake = snake.map((s) => ({
+        x: Math.min(s.x, tileCount - 1),
+        y: Math.min(s.y, tileCountY - 1),
+      }));
+      food = {
+        x: Math.min(food.x, tileCount - 1),
+        y: Math.min(food.y, tileCountY - 1),
+      };
+    }
+
+    canvas.addEventListener('touchstart', onTouchStart, { passive: true });
+    canvas.addEventListener('touchmove', onTouchMove, { passive: false });
+    window.addEventListener('resize', onResize);
+    window.addEventListener('orientationchange', onResize);
+    closeBtn?.addEventListener('click', stopSnake);
     
     function update() {
       if (!gameActive) return;
@@ -766,7 +910,7 @@ const links = [
       
       // Clear con trail effect
       ctx.fillStyle = 'rgba(0, 0, 0, 0.2)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillRect(0, 0, cssW, cssH);
       
       move();
       
@@ -785,19 +929,15 @@ const links = [
         return;
       }
       
-      // Prevenir que cambie de dirección 180 grados
-      if ((e.key === 'ArrowUp' || e.key === 'w' || e.key === 'W') && dy === 0) { 
-        dx = 0; dy = -1; 
-      }
-      if ((e.key === 'ArrowDown' || e.key === 's' || e.key === 'S') && dy === 0) { 
-        dx = 0; dy = 1; 
-      }
-      if ((e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') && dx === 0) { 
-        dx = -1; dy = 0; 
-      }
-      if ((e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') && dx === 0) { 
-        dx = 1; dy = 0; 
-      }
+      const k = e.key.toLowerCase();
+      if (k === 'arrowup' || k === 'w') setDirection(0, -1);
+      else if (k === 'arrowdown' || k === 's') setDirection(0, 1);
+      else if (k === 'arrowleft' || k === 'a') setDirection(-1, 0);
+      else if (k === 'arrowright' || k === 'd') setDirection(1, 0);
+      else return;
+
+      // Evita que las flechas hagan scroll de la página
+      e.preventDefault();
     };
     
     currentKeyHandler = handleKey;

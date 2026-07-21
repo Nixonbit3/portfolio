@@ -12,8 +12,8 @@ import { proyectos } from "../data/projectData.js";
     
     <!-- AMBIENT BACKGROUND -->
     <div class="absolute inset-0 -z-10">
-      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[140px] animate-float"></div>
-      <div class="absolute top-1/3 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-[140px] animate-float-delayed"></div>
+      <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-[140px]"></div>
+      <div class="absolute top-1/3 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-[140px]"></div>
     </div>
 
     <!-- GRID PATTERN -->
@@ -253,20 +253,31 @@ import { proyectos } from "../data/projectData.js";
   }
 
   function showCard(card) {
+    // Cancela un ocultado pendiente: si no, su temporizador escondia
+    // la tarjeta 400ms despues de haberla mostrado.
+    if (card._hideTimer) {
+      clearTimeout(card._hideTimer);
+      card._hideTimer = null;
+    }
+
     card.style.display = "block";
-    requestAnimationFrame(() => {
-      card.classList.remove(HIDDEN_CLASS);
-      card.classList.add(VISIBLE_CLASS);
-    });
+    // Reflow forzado: la transicion arranca desde el estado oculto sin
+    // depender de requestAnimationFrame (que no corre en pestanas de fondo).
+    void card.offsetWidth;
+    card.classList.remove(HIDDEN_CLASS);
+    card.classList.add(VISIBLE_CLASS);
   }
 
   function hideCard(card) {
     card.classList.remove(VISIBLE_CLASS);
     card.classList.add(HIDDEN_CLASS);
-    setTimeout(() => {
+
+    if (card._hideTimer) clearTimeout(card._hideTimer);
+    card._hideTimer = setTimeout(() => {
       if (card.classList.contains(HIDDEN_CLASS)) {
         card.style.display = "none";
       }
+      card._hideTimer = null;
     }, HIDE_TIMEOUT);
   }
 

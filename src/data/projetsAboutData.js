@@ -1,7 +1,6 @@
-import imgNote from "../assets/img-projects/note-app.png";
-import fractureTool from "../assets/img-projects/TFG.png";
-import mate4k from "../assets/img-projects/mate4k.png"
-import airBomb from "../assets/img-projects/air-bomb.jpg";
+import fractureTool from "../assets/img-projects/TFG.webp";
+import mate4k from "../assets/img-projects/mate4k.webp"
+import airBomb from "../assets/img-projects/air-bomb.webp";
 
 export const proyectos = [
   {
