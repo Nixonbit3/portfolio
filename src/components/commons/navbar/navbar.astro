@@ -112,12 +112,9 @@ const links = [
   </div>
 
   <!-- MOBILE MENU -->
-  <div
-    id="mobile-menu"
-    class="md:hidden opacity-0 pointer-events-none transition-all duration-500 overflow-hidden"
-    style="max-height: 0;"
-  >
-    <div class="px-6 pb-6 pt-4 space-y-2">
+  <div id="mobile-menu">
+    <div class="mobile-menu-inner">
+      <div class="px-6 pb-6 pt-4 space-y-2">
       {links.map((link) => (
         <a 
           href={link.href}
@@ -168,6 +165,7 @@ const links = [
           <FaGithub className="h-5 w-5 text-white/70" />
         </a>
       </div>
+      </div>
     </div>
   </div>
 </nav>
@@ -200,11 +198,39 @@ const links = [
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
   }
 
-  /* Mobile menu open state */
+  /* ---------------------------------------------------------
+     Menu movil.
+     Se anima con grid-template-rows (0fr -> 1fr) en lugar de un
+     max-height fijo: se adapta solo a la altura real del contenido,
+     asi que no hay que tocar nada al anadir enlaces. Todo el estado
+     vive aqui, sin utilidades de Tailwind que compitan ni !important.
+     --------------------------------------------------------- */
+  #mobile-menu {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      grid-template-rows 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 0.3s ease;
+  }
+
+  #mobile-menu > .mobile-menu-inner {
+    overflow: hidden;
+    min-height: 0;
+  }
+
   #mobile-menu.open {
+    grid-template-rows: 1fr;
     opacity: 1;
     pointer-events: auto;
-    max-height: 500px !important;
+  }
+
+  /* En escritorio el menu desplegable no existe */
+  @media (min-width: 768px) {
+    #mobile-menu {
+      display: none;
+    }
   }
 
   /* Active link state */

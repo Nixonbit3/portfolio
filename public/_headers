@@ -23,12 +23,21 @@
   Cross-Origin-Resource-Policy: same-origin
 
   # Politica de contenido: define de donde puede cargarse cada cosa.
-  # - script-src 'self': solo scripts propios; bloquea inyecciones (XSS)
-  # - style-src necesita 'unsafe-inline' por los estilos en linea de Tailwind/Astro
+  #
+  # IMPORTANTE sobre 'unsafe-inline' en script-src:
+  # Astro incrusta los scripts pequenos de los componentes dentro del HTML
+  # (menu movil, animaciones de aparicion, acordeon FAQ...). Sin
+  # 'unsafe-inline' el navegador los bloquea y la web queda rota: el menu
+  # no abre y las secciones nunca aparecen. Se mantiene 'self' para que
+  # siga siendo imposible cargar scripts de otro dominio.
+  # Esta web es estatica y no procesa datos del usuario, asi que la
+  # superficie real de XSS es practicamente nula.
+  #
   # - img-src permite el CDN de iconos de tecnologias (devicon)
   # - frame-ancestors 'none': refuerzo de X-Frame-Options
   # - form-action 'self': un atacante no puede redirigir un formulario a su servidor
-  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://cdn.jsdelivr.net; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests
+  # - object-src 'none': nada de Flash/plugins embebidos
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://cdn.jsdelivr.net; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests
 
 # Los assets con hash en el nombre no cambian nunca: cache agresiva
 /_astro/*
