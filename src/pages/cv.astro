@@ -1,0 +1,510 @@
+---
+import Layout from "../layouts/Layout.astro";
+import MailLink from "../components/commons/mail/MailLink.astro";
+
+// CV en linea, optimizado para imprimir o guardar como PDF.
+// Deliberadamente SIN datos sensibles: no hay telefono, ni direccion,
+// ni DNI, ni fecha de nacimiento. El email va protegido contra bots.
+const perfil = `Junior Unity Developer centrado en gameplay y juegos móviles. Construyo juegos para aprender a construirlos mejor, y acabo de publicar el primero de principio a fin: Air Bomb, un shooter arcade para Android hecho en solitario con Unity y C#. Graduado en Diseño y Desarrollo de Videojuegos por el CITM (UPC). Busco mi primer puesto como Junior Unity / Gameplay Developer en un estudio o equipo móvil, en Barcelona o en remoto.`;
+
+const experiencia = [
+  {
+    puesto: "Técnico de Soporte IT",
+    empresa: "Col·legi d'Arquitectes de Catalunya (COAC)",
+    lugar: "Barcelona",
+    periodo: "Mar 2025 — Ago 2025",
+    puntos: [
+      "Diseño de materiales gamificados de concienciación en ciberseguridad para el personal: primera experiencia profesional aplicando mecánicas de juego a formación real.",
+      "Desarrollo de formularios PDF interactivos con herramientas de edición y automatización.",
+      "Edición de vídeos institucionales siguiendo la línea gráfica y los estándares del COAC.",
+      "Soporte técnico diario a la organización.",
+    ],
+  },
+];
+
+const proyectos = [
+  {
+    nombre: "Air Bomb",
+    tipo: "Juego publicado · Android",
+    enlace: "https://nixonbit3.itch.io/air-bomb",
+    enlaceTexto: "nixonbit3.itch.io/air-bomb",
+    puntos: [
+      "Shooter arcade estilo Space Invaders desarrollado en solitario de principio a fin con Unity y C#.",
+      "Arquitectura View/Controller con separación entre lógica y presentación.",
+      "Niveles data-driven con ScriptableObjects y comunicación por eventos mediante Action callbacks.",
+      "DOTween para el game feel, persistencia en JSON y sistema de audio entre escenas.",
+    ],
+  },
+  {
+    nombre: "Fracture Tool for Unity",
+    tipo: "Trabajo de Fin de Grado · Herramienta",
+    enlace: "https://github.com/Nixonbit3/FractureTool",
+    enlaceTexto: "github.com/Nixonbit3/FractureTool",
+    puntos: [
+      "Sistema de fragmentación 3D en tiempo real como herramienta de editor para Unity.",
+      "Desarrollado en C# con foco en rendimiento y usabilidad para otros desarrolladores.",
+    ],
+  },
+  {
+    nombre: "Mate 3D realista",
+    tipo: "Arte 3D",
+    enlace: "https://www.artstation.com/artwork/8wnkNQ",
+    enlaceTexto: "artstation.com/artwork/8wnkNQ",
+    puntos: [
+      "Modelado y texturizado fotorrealista en Blender y Substance Painter.",
+    ],
+  },
+];
+
+const habilidades = [
+  { grupo: "Motores y lenguajes", items: "Unity, C#, C++, Unreal Engine, Python" },
+  { grupo: "Gameplay y arquitectura", items: "ScriptableObjects, DOTween, diseño orientado a datos, arquitectura por eventos, persistencia en JSON" },
+  { grupo: "Móvil", items: "Builds de Android, sistemas de UI y HUD, pruebas en dispositivo real" },
+  { grupo: "Arte y 3D", items: "Blender, Maya, 3ds Max, Substance Painter, Photoshop, Illustrator" },
+  { grupo: "Herramientas y metodología", items: "Git, GitHub, Figma, Trello, Scrum, Kanban" },
+];
+
+const enlaces = [
+  { etiqueta: "Portfolio", url: "https://nixondanielcorrea.netlify.app", texto: "nixondanielcorrea.netlify.app" },
+  { etiqueta: "LinkedIn", url: "https://www.linkedin.com/in/nixon-correa", texto: "linkedin.com/in/nixon-correa" },
+  { etiqueta: "GitHub", url: "https://github.com/Nixonbit3", texto: "github.com/Nixonbit3" },
+  { etiqueta: "itch.io", url: "https://nixonbit3.itch.io", texto: "nixonbit3.itch.io" },
+  { etiqueta: "Sketchfab", url: "https://sketchfab.com/nixoncorrea", texto: "sketchfab.com/nixoncorrea" },
+];
+---
+
+<Layout
+  title="CV - Nixon Correa | Junior Unity Developer"
+  description="Currículum de Nixon Correa, Junior Unity Developer centrado en gameplay y juegos móviles. Barcelona o remoto."
+>
+  <div class="cv-page bg-black text-white">
+    <!-- BARRA DE ACCIONES (no se imprime) -->
+    <div class="no-print sticky top-16 md:top-20 z-40 border-b border-white/10 bg-black/80 backdrop-blur-xl">
+      <div class="mx-auto max-w-4xl px-6 py-4 flex flex-wrap items-center justify-between gap-4">
+        <p class="text-sm text-white/50">
+          Vista de currículum · usa el botón para guardarlo como PDF
+        </p>
+        <button
+          id="print-cv"
+          type="button"
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full
+                 bg-white text-black font-semibold text-sm
+                 hover:scale-105 active:scale-95 transition-transform duration-300"
+        >
+          <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+          </svg>
+          Descargar PDF
+        </button>
+      </div>
+    </div>
+
+    <article class="cv mx-auto max-w-4xl px-6 py-14 md:py-20">
+      <!-- CABECERA -->
+      <header class="cv-header">
+        <h1 class="cv-name">Nixon Correa</h1>
+        <p class="cv-role">Junior Unity Developer · Gameplay &amp; Mobile</p>
+        <p class="cv-location">Barcelona, España · Disponible en remoto</p>
+
+        <ul class="cv-links">
+          <li>
+            <span class="cv-link-label">Email</span>
+            <MailLink encoded="bW9jLmxpYW1nQGFlcnJvY25kbg==" class="cv-link" />
+          </li>
+          {
+            enlaces.map((e) => (
+              <li>
+                <span class="cv-link-label">{e.etiqueta}</span>
+                <a class="cv-link" href={e.url} target="_blank" rel="noopener noreferrer">
+                  {e.texto}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </header>
+
+      <!-- PERFIL -->
+      <section class="cv-section">
+        <h2 class="cv-section-title">Perfil</h2>
+        <p class="cv-text">{perfil}</p>
+      </section>
+
+      <!-- EXPERIENCIA -->
+      <section class="cv-section">
+        <h2 class="cv-section-title">Experiencia</h2>
+        {
+          experiencia.map((e) => (
+            <div class="cv-entry">
+              <div class="cv-entry-head">
+                <h3 class="cv-entry-title">{e.puesto}</h3>
+                <span class="cv-entry-date">{e.periodo}</span>
+              </div>
+              <p class="cv-entry-sub">
+                {e.empresa} · {e.lugar}
+              </p>
+              <ul class="cv-list">
+                {e.puntos.map((p) => (
+                  <li>{p}</li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </section>
+
+      <!-- PROYECTOS -->
+      <section class="cv-section">
+        <h2 class="cv-section-title">Proyectos</h2>
+        {
+          proyectos.map((p) => (
+            <div class="cv-entry">
+              <div class="cv-entry-head">
+                <h3 class="cv-entry-title">{p.nombre}</h3>
+                <span class="cv-entry-date">{p.tipo}</span>
+              </div>
+              <p class="cv-entry-sub">
+                <a class="cv-link" href={p.enlace} target="_blank" rel="noopener noreferrer">
+                  {p.enlaceTexto}
+                </a>
+              </p>
+              <ul class="cv-list">
+                {p.puntos.map((x) => (
+                  <li>{x}</li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </section>
+
+      <!-- FORMACIÓN -->
+      <section class="cv-section">
+        <h2 class="cv-section-title">Formación</h2>
+        <div class="cv-entry">
+          <div class="cv-entry-head">
+            <h3 class="cv-entry-title">Grado en Diseño y Desarrollo de Videojuegos</h3>
+            <span class="cv-entry-date">Sep 2021 — Jul 2025</span>
+          </div>
+          <p class="cv-entry-sub">
+            Centre de la Imatge i la Tecnologia Multimèdia · CITM (UPC), Barcelona
+          </p>
+        </div>
+      </section>
+
+      <!-- HABILIDADES -->
+      <section class="cv-section">
+        <h2 class="cv-section-title">Habilidades</h2>
+        <dl class="cv-skills">
+          {
+            habilidades.map((h) => (
+              <div class="cv-skill-row">
+                <dt>{h.grupo}</dt>
+                <dd>{h.items}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </section>
+    </article>
+  </div>
+</Layout>
+
+<style>
+  /* ---------- Pantalla ---------- */
+  .cv-header {
+    padding-bottom: 1.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .cv-name {
+    font-size: clamp(2.5rem, 6vw, 3.75rem);
+    font-weight: 700;
+    line-height: 1;
+    background: linear-gradient(to right, #fff, rgba(255, 255, 255, 0.6));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .cv-role {
+    margin-top: 0.6rem;
+    font-size: 1.15rem;
+    font-weight: 600;
+    background: linear-gradient(to right, #c084fc, #22d3ee);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .cv-location {
+    margin-top: 0.35rem;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  .cv-links {
+    margin-top: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 0.5rem 2rem;
+    font-size: 0.9rem;
+  }
+
+  .cv-links li {
+    display: flex;
+    gap: 0.6rem;
+    align-items: baseline;
+  }
+
+  .cv-link-label {
+    color: rgba(255, 255, 255, 0.45);
+    min-width: 4.6rem;
+    font-weight: 500;
+  }
+
+  .cv-link {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    transition: border-color 0.25s ease, color 0.25s ease;
+    overflow-wrap: anywhere;
+  }
+
+  .cv-link:hover {
+    color: #fff;
+    border-color: #22d3ee;
+  }
+
+  .cv-section {
+    margin-top: 2.75rem;
+  }
+
+  .cv-section-title {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #22d3ee;
+    margin-bottom: 1.1rem;
+  }
+
+  .cv-text {
+    color: rgba(255, 255, 255, 0.72);
+    max-width: 68ch;
+  }
+
+  .cv-entry + .cv-entry {
+    margin-top: 1.6rem;
+  }
+
+  .cv-entry-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  .cv-entry-title {
+    font-size: 1.12rem;
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .cv-entry-date {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .cv-entry-sub {
+    margin-top: 0.2rem;
+    font-size: 0.92rem;
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .cv-list {
+    margin-top: 0.7rem;
+    display: grid;
+    gap: 0.42rem;
+  }
+
+  .cv-list li {
+    position: relative;
+    padding-left: 1.1rem;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.95rem;
+    max-width: 74ch;
+  }
+
+  .cv-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.62em;
+    width: 5px;
+    height: 5px;
+    border-radius: 99px;
+    background: linear-gradient(to right, #c084fc, #22d3ee);
+  }
+
+  .cv-skills {
+    display: grid;
+    gap: 0.7rem;
+  }
+
+  .cv-skill-row {
+    display: grid;
+    grid-template-columns: minmax(0, 15rem) minmax(0, 1fr);
+    gap: 0.3rem 1.5rem;
+    align-items: baseline;
+  }
+
+  .cv-skill-row dt {
+    font-weight: 600;
+    color: #fff;
+    font-size: 0.92rem;
+  }
+
+  .cv-skill-row dd {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 640px) {
+    .cv-skill-row {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* ---------- Impresión / PDF ----------
+     Papel blanco, tinta negra, sin decoración y sin desperdiciar espacio. */
+  @media print {
+    @page {
+      size: A4;
+      margin: 14mm 15mm;
+    }
+
+    :global(html),
+    :global(body) {
+      background: #fff !important;
+      color: #111 !important;
+    }
+
+    /* Fuera todo lo que no es el CV */
+    :global(nav),
+    :global(footer),
+    .no-print {
+      display: none !important;
+    }
+
+    :global(main) {
+      padding: 0 !important;
+    }
+
+    .cv-page {
+      background: #fff !important;
+      color: #111 !important;
+    }
+
+    .cv {
+      max-width: none;
+      padding: 0 !important;
+    }
+
+    .cv-name {
+      font-size: 26pt;
+      background: none;
+      -webkit-text-fill-color: #111;
+      color: #111;
+    }
+
+    .cv-role {
+      font-size: 11.5pt;
+      background: none;
+      -webkit-text-fill-color: #000;
+      color: #000;
+      margin-top: 2pt;
+    }
+
+    .cv-location,
+    .cv-entry-date,
+    .cv-entry-sub,
+    .cv-link-label {
+      color: #555 !important;
+    }
+
+    .cv-header {
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 8pt;
+    }
+
+    .cv-links {
+      margin-top: 8pt;
+      gap: 2pt 16pt;
+      font-size: 8.5pt;
+    }
+
+    .cv-link {
+      color: #111 !important;
+      border-bottom: none;
+      text-decoration: underline;
+    }
+
+    .cv-section {
+      margin-top: 13pt;
+      /* Evita que un bloque se parta entre dos páginas */
+      break-inside: avoid;
+    }
+
+    .cv-section-title {
+      color: #000 !important;
+      font-size: 8.5pt;
+      letter-spacing: 0.14em;
+      margin-bottom: 5pt;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 2pt;
+    }
+
+    .cv-text,
+    .cv-list li,
+    .cv-skill-row dd {
+      color: #222 !important;
+      font-size: 9.5pt;
+      max-width: none;
+    }
+
+    .cv-entry {
+      break-inside: avoid;
+    }
+
+    .cv-entry + .cv-entry {
+      margin-top: 9pt;
+    }
+
+    .cv-entry-title {
+      color: #000 !important;
+      font-size: 10.5pt;
+    }
+
+    .cv-list {
+      margin-top: 3pt;
+      gap: 2pt;
+    }
+
+    .cv-list li::before {
+      background: #666;
+    }
+
+    .cv-skill-row dt {
+      color: #000 !important;
+      font-size: 9.5pt;
+    }
+  }
+</style>
+
+<script>
+  document.getElementById("print-cv")?.addEventListener("click", () => window.print());
+</script>

@@ -21,8 +21,10 @@ const links = [
     icon: "twitter",
     xp: 25
   },
-  { 
-    href: "mailto:ndncorrea@gmail.com", 
+  {
+    // Email protegido: no aparece en el HTML, se reconstruye en el navegador
+    href: "#",
+    mail: "bW9jLmxpYW1nQGFlcnJvY25kbg==",
     label: "Email",
     icon: "email",
     xp: 100
@@ -198,9 +200,10 @@ const links = [
         {links.map((link, index) => (
           <a
             href={link.href}
-            target="_blank"
+            target={link.mail ? undefined : "_blank"}
             rel="noopener noreferrer"
-            class="social-link group relative block w-full"
+            class:list={["social-link group relative block w-full", link.mail && "mail-link"]}
+            data-mail={link.mail}
             data-xp={link.xp}
             style={`animation-delay: ${index * 150}ms;`}
           >
@@ -362,7 +365,6 @@ const links = [
 
   /* TYPOGRAPHY */
   * {
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
     -webkit-font-smoothing: antialiased;
   }
 

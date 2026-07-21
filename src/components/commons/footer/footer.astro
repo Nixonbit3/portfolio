@@ -1,5 +1,6 @@
 ---
 // Footer Apple-style con múltiples secciones
+import MailLink from "../mail/MailLink.astro";
 ---
 
 <footer class="relative bg-black pt-24 pb-8 overflow-hidden">
@@ -128,9 +129,11 @@
         </h4>
         <ul class="space-y-3">
           <li>
-            <a href="mailto:ndncorrea@gmail.com" class="text-white/60 hover:text-white text-sm transition-colors duration-300">
-              Email
-            </a>
+            <MailLink
+              encoded="bW9jLmxpYW1nQGFlcnJvY25kbg=="
+              label="Email"
+              class="text-white/60 hover:text-white text-sm transition-colors duration-300"
+            />
           </li>
           <li>
             <a href="https://www.linkedin.com/in/nixon-correa-818388244/" class="text-white/60 hover:text-white text-sm transition-colors duration-300">
@@ -171,7 +174,6 @@
 <style>
   /* Typography */
   footer, h3, h4, p, a, button {
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }

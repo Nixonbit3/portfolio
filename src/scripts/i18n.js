@@ -217,6 +217,56 @@ const DICT = {
   "🎮 Gana XP interactuando con los links ✨":
     "🎮 Earn XP by interacting with the links ✨",
 
+  // ---------- CV ----------
+  "CV": "Resume",
+  "Vista de currículum · usa el botón para guardarlo como PDF":
+    "Resume view · use the button to save it as a PDF",
+  "Descargar PDF": "Download PDF",
+  "Barcelona, España · Disponible en remoto": "Barcelona, Spain · Open to remote",
+  "Perfil": "Profile",
+  "Junior Unity Developer centrado en gameplay y juegos móviles. Construyo juegos para aprender a construirlos mejor, y acabo de publicar el primero de principio a fin: Air Bomb, un shooter arcade para Android hecho en solitario con Unity y C#. Graduado en Diseño y Desarrollo de Videojuegos por el CITM (UPC). Busco mi primer puesto como Junior Unity / Gameplay Developer en un estudio o equipo móvil, en Barcelona o en remoto.":
+    "Junior Unity Developer focused on gameplay and mobile games. I build games to learn how to build better ones, and I just shipped my first one end-to-end: Air Bomb, an arcade shooter for Android built solo with Unity and C#. Graduate in Video Game Design and Development from CITM (UPC). Looking for my first role as a Junior Unity / Gameplay Developer at a studio or mobile team, in Barcelona or remote.",
+  "Formación": "Education",
+  "Habilidades": "Skills",
+  "Técnico de Soporte IT": "IT Support Technician",
+  "Diseño de materiales gamificados de concienciación en ciberseguridad para el personal: primera experiencia profesional aplicando mecánicas de juego a formación real.":
+    "Designed gamified cybersecurity awareness materials for staff: first professional experience applying game mechanics to real-world training.",
+  "Desarrollo de formularios PDF interactivos con herramientas de edición y automatización.":
+    "Built interactive PDF forms using editing and automation tools.",
+  "Edición de vídeos institucionales siguiendo la línea gráfica y los estándares del COAC.":
+    "Edited institutional videos following the COAC's graphic line and standards.",
+  "Soporte técnico diario a la organización.": "Day-to-day technical support for the organization.",
+  "Juego publicado · Android": "Shipped game · Android",
+  "Shooter arcade estilo Space Invaders desarrollado en solitario de principio a fin con Unity y C#.":
+    "Space Invaders-style arcade shooter built solo from start to finish with Unity and C#.",
+  "Arquitectura View/Controller con separación entre lógica y presentación.":
+    "View/Controller architecture separating logic from presentation.",
+  "Niveles data-driven con ScriptableObjects y comunicación por eventos mediante Action callbacks.":
+    "Data-driven levels with ScriptableObjects and event communication via Action callbacks.",
+  "DOTween para el game feel, persistencia en JSON y sistema de audio entre escenas.":
+    "DOTween for game feel, JSON persistence and a cross-scene audio system.",
+  "Trabajo de Fin de Grado · Herramienta": "Final degree project · Tool",
+  "Sistema de fragmentación 3D en tiempo real como herramienta de editor para Unity.":
+    "Real-time 3D fragmentation system built as a Unity editor tool.",
+  "Desarrollado en C# con foco en rendimiento y usabilidad para otros desarrolladores.":
+    "Written in C# with a focus on performance and usability for other developers.",
+  "Arte 3D": "3D Art",
+  "Modelado y texturizado fotorrealista en Blender y Substance Painter.":
+    "Photorealistic modeling and texturing in Blender and Substance Painter.",
+  "Grado en Diseño y Desarrollo de Videojuegos": "BSc in Video Game Design and Development",
+  "Centre de la Imatge i la Tecnologia Multimèdia · CITM (UPC), Barcelona":
+    "Centre de la Imatge i la Tecnologia Multimèdia · CITM (UPC), Barcelona",
+  "Motores y lenguajes": "Engines & languages",
+  "Gameplay y arquitectura": "Gameplay & architecture",
+  "ScriptableObjects, DOTween, diseño orientado a datos, arquitectura por eventos, persistencia en JSON":
+    "ScriptableObjects, DOTween, data-driven design, event-driven architecture, JSON persistence",
+  "Móvil": "Mobile",
+  "Builds de Android, sistemas de UI y HUD, pruebas en dispositivo real":
+    "Android builds, UI and HUD systems, testing on real devices",
+  "Arte y 3D": "Art & 3D",
+  "Herramientas y metodología": "Tools & methodology",
+  "escribir por correo": "email me",
+
   // ---------- Página 404 ----------
   "Página no encontrada": "Page not found",
   "El enlace al que intentaste acceder no existe o fue movido.":

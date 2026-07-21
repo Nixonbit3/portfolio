@@ -1,0 +1,30 @@
+---
+// Enlace de correo protegido contra rastreadores de spam.
+//
+// El HTML servido NO contiene el email ni un "mailto:": solo una cadena
+// codificada. Los bots que recolectan direcciones buscan patrones
+// tipo "algo@algo.com" o "mailto:" en el HTML crudo y no ejecutan
+// JavaScript, asi que no encuentran nada. El navegador de una persona
+// si lo reconstruye y el enlace funciona con normalidad.
+export interface Props {
+  /** Email invertido y codificado en base64 */
+  encoded: string;
+  /** Texto visible; si se omite, se muestra el propio email */
+  label?: string;
+  class?: string;
+}
+
+const { encoded, label, class: className = "" } = Astro.props;
+---
+
+<a
+  href="#"
+  class:list={["mail-link", className]}
+  data-mail={encoded}
+  rel="nofollow noreferrer"
+>
+  {label ?? <span class="mail-text">escribir por correo</span>}
+</a>
+
+<!-- La reconstruccion la hace src/scripts/mail.js, cargado en el Layout -->
+

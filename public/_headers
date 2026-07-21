@@ -1,0 +1,38 @@
+# Cabeceras de seguridad (Netlify las aplica automaticamente)
+# Comprobables en https://securityheaders.com
+
+/*
+  # Impide que la web se incruste en un iframe de otro sitio (clickjacking)
+  X-Frame-Options: DENY
+
+  # Impide que el navegador "adivine" el tipo de archivo y ejecute algo indebido
+  X-Content-Type-Options: nosniff
+
+  # No filtra la URL completa al salir hacia otro dominio
+  Referrer-Policy: strict-origin-when-cross-origin
+
+  # Obliga a usar HTTPS durante dos anios, tambien en subdominios
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+
+  # Desactiva APIs del navegador que esta web no necesita:
+  # nadie puede pedir camara, microfono, ubicacion ni pagos desde aqui
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=(), interest-cohort=()
+
+  # Aisla la ventana de otras pestanas
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-origin
+
+  # Politica de contenido: define de donde puede cargarse cada cosa.
+  # - script-src 'self': solo scripts propios; bloquea inyecciones (XSS)
+  # - style-src necesita 'unsafe-inline' por los estilos en linea de Tailwind/Astro
+  # - img-src permite el CDN de iconos de tecnologias (devicon)
+  # - frame-ancestors 'none': refuerzo de X-Frame-Options
+  # - form-action 'self': un atacante no puede redirigir un formulario a su servidor
+  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://cdn.jsdelivr.net; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests
+
+# Los assets con hash en el nombre no cambian nunca: cache agresiva
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable

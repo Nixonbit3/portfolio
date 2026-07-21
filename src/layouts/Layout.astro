@@ -25,6 +25,23 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#000000" />
+
+    <!-- Precarga de las fuentes: evita el parpadeo de texto al cargar -->
+    <link
+      rel="preload"
+      href="/fonts/inter-latin-wght-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/space-grotesk-latin-wght-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
 
     <title>{title}</title>
     <meta name="description" content={description} />
@@ -51,6 +68,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url);
 
     <script>
       import "../scripts/i18n.js";
+      import "../scripts/mail.js";
     </script>
   </body>
 </html>

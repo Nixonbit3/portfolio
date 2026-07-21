@@ -1,27 +1,193 @@
 @import "tailwindcss";
 
+/* ---------------------------------------------------------
+   Fuentes variables autoalojadas (solo alfabeto latino).
+   Sin peticiones a terceros: mejor privacidad, mejor CSP y
+   cero saltos de texto al cargar (font-display: swap + fallback).
+   --------------------------------------------------------- */
+@font-face {
+  font-family: "Inter Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url("/fonts/inter-latin-wght-normal.woff2") format("woff2-variations");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Space Grotesk Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 300 700;
+  src: url("/fonts/space-grotesk-latin-wght-normal.woff2") format("woff2-variations");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/* ---------------------------------------------------------
+   Sistema de diseño
+   --------------------------------------------------------- */
+:root {
+  /* Tipografía */
+  --font-sans: "Inter Variable", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Space Grotesk Variable", var(--font-sans);
+
+  /* Color de marca */
+  --brand-purple: #a855f7;
+  --brand-cyan: #22d3ee;
+  --brand-violet: #7836cf;
+
+  /* Superficies de cristal, unificadas */
+  --surface: rgba(255, 255, 255, 0.05);
+  --surface-hover: rgba(255, 255, 255, 0.1);
+  --border-subtle: rgba(255, 255, 255, 0.1);
+  --border-strong: rgba(255, 255, 255, 0.2);
+}
+
+/* ---------------------------------------------------------
+   Base tipográfica
+   --------------------------------------------------------- */
+html {
+  scroll-behavior: smooth;
+  /* Evita que el texto salte de tamaño al girar el móvil */
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-synthesis-weight: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Cifras tabulares en datos y ligaduras tipográficas activas */
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  letter-spacing: -0.011em;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+/* Titulares con la fuente display: más carácter y presencia */
+h1,
+h2,
+h3,
+h4,
+.font-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.05;
+  /* El tracking negativo escala con el tamaño: clave para que los
+     titulares grandes no parezcan "sueltos" */
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+h1 {
+  letter-spacing: -0.045em;
+}
+
+/* Párrafos: ancho de línea cómodo y sin huérfanas */
+p {
+  text-wrap: pretty;
+}
+
+/* Números alineados en las estadísticas */
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------------------------------------------------------
+   Accesibilidad e interacción
+   --------------------------------------------------------- */
+
+/* Foco visible y consistente al navegar con teclado (antes no existía) */
+:focus-visible {
+  outline: 2px solid var(--brand-cyan);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Selección de texto con el color de marca */
+::selection {
+  background: rgba(168, 85, 247, 0.35);
+  color: #fff;
+}
+
+/* Barra de desplazamiento acorde al tema oscuro */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.18) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 99px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.28);
+  background-clip: content-box;
+}
+
+/* Las imágenes nunca desbordan su contenedor */
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+}
+
+/* ---------------------------------------------------------
+   Rendimiento
+   --------------------------------------------------------- */
+
+/* Los blobs decorativos se aíslan en su capa y no capturan clics */
+[class*="blur-["] {
+  contain: paint;
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------
+   Utilidades del proyecto
+   --------------------------------------------------------- */
 .primary {
-  color: #7836cf;
+  color: var(--brand-violet);
 }
 .secondary {
   color: #512092;
 }
 .bg-primary {
-  background-color: #7836cf;
+  background-color: var(--brand-violet);
 }
 .bg-secondary {
   background-color: #512092;
 }
 .text-primary {
-  color: #7836cf;
+  color: var(--brand-violet);
 }
 
-/* reglas hover (usar estas clases directamente) */
 .hover-text-secondary:hover {
-  color: #7836cf;
+  color: var(--brand-violet);
 }
 .hover-bg-secondary:hover {
-  background-color: #7836cf;
+  background-color: var(--brand-violet);
 }
 .hover\:bg-secondary:hover {
   background-color: #512092;
@@ -31,14 +197,12 @@
 }
 
 .text-shadow {
-  text-shadow: 2px 2px 0 #620deb;
+  text-shadow: 2px 2px 0 #6d0deb;
 }
 
 .text-shadow-cyan {
   text-shadow: 2px 2px 0 #0debd8;
 }
-
-/* estilos del home */
 
 @keyframes gradientMove {
   0% {
@@ -72,34 +236,9 @@
   animation: gradientMove2 8s ease-in-out infinite alternate;
 }
 
-.text-shadow {
-  text-shadow: 2px 2px 0 #6d0deb;
-}
-
 /* ---------------------------------------------------------
-   Rendimiento y fluidez
+   Preferencia de movimiento reducido
    --------------------------------------------------------- */
-
-/* Scroll suave y sin saltos al navegar por anclas */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Evita el desbordamiento horizontal en movil (blobs y el carrusel
-   se salen del viewport y provocaban scroll lateral) */
-body {
-  overflow-x: hidden;
-}
-
-/* Los blobs decorativos no necesitan repintarse: se aislan en su
-   propia capa y se excluyen de los calculos de layout del resto */
-[class*="blur-["] {
-  contain: paint;
-  pointer-events: none;
-}
-
-/* Accesibilidad: si el sistema pide menos movimiento, se desactiva
-   todo lo decorativo y la web queda estatica pero completamente usable */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -114,11 +253,11 @@ body {
     scroll-behavior: auto !important;
   }
 
-  /* Los elementos que aparecen con animacion deben quedar visibles */
   [data-reveal],
   .skill-card,
   .faq-card,
-  .social-link {
+  .social-link,
+  .project-card {
     opacity: 1 !important;
     transform: none !important;
   }
