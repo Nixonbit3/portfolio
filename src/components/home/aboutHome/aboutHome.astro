@@ -39,7 +39,11 @@ import MiFoto from "../../../assets/img/MiFoto.webp";
                    hover:scale-[1.02]"
           >
             <img 
-              src={MiFoto.src} 
+              src={MiFoto.src}
+              width={MiFoto.width}
+              height={MiFoto.height}
+              loading="lazy"
+              decoding="async" 
               alt="Nixon - Game Developer"
               class="w-full h-auto object-cover
                      transition-all duration-700 ease-out

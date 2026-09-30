@@ -14,6 +14,9 @@ export interface Props {
 
 const { titulo, descripcion, imagen, tecnologias, demo, codigo, categoria, index } =
   Astro.props;
+
+// Los juegos publicados en itch.io se juegan, no son una "demo"
+const demoLabel = demo?.includes("itch.io") ? "Play" : "Demo";
 ---
 
 <div
@@ -34,6 +37,8 @@ const { titulo, descripcion, imagen, tecnologias, demo, codigo, categoria, index
   <!-- IMAGE -->
   <div class="relative overflow-hidden">
     <img
+          loading="lazy"
+          decoding="async"
       src={imagen}
       alt={`Imagen del proyecto ${titulo}`}
       class="h-50 w-full rounded-2xl object-cover p-3
@@ -95,7 +100,7 @@ const { titulo, descripcion, imagen, tecnologias, demo, codigo, categoria, index
         rel="noopener noreferrer"
         href={demo}
       >
-        Demo
+        {demoLabel}
         <HiArrowRight
           className="ml-1 transition-transform duration-300 group-hover/link:translate-x-1"
           size={18}

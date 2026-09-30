@@ -10,6 +10,9 @@ export interface Props {
 }
 
 const { titulo, imagen, tecnologias, demo, codigo } = Astro.props;
+// Los juegos publicados en itch.io se juegan, no son una "demo"
+const demoLabel = demo?.includes("itch.io") ? "Play" : "Demo";
+
 ---
 
 <article
@@ -37,6 +40,8 @@ const { titulo, imagen, tecnologias, demo, codigo } = Astro.props;
       <!-- IMAGE -->
       <div class="aspect-video w-full overflow-hidden">
         <img
+          loading="lazy"
+          decoding="async"
           src={imagen}
           alt={`Proyecto: ${titulo}`}
           class="w-full h-full object-cover 
@@ -122,7 +127,7 @@ const { titulo, imagen, tecnologias, demo, codigo } = Astro.props;
                  transition-all duration-300
                  shadow-lg hover:shadow-xl"
         >
-          <span>Demo</span>
+          <span>{demoLabel}</span>
           <svg class="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-0.5" 
                fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />

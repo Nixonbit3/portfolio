@@ -9,6 +9,12 @@
 // Diccionario: texto en ingles (normalizado: sin saltos de linea,
 // espacios colapsados y sin espacios al inicio/fin) -> texto en espanol.
 const DICT = {
+  "Play":
+    "Jugar",
+  "All rights reserved.":
+    "Todos los derechos reservados.",
+  "Play in your browser":
+    "Jugar en el navegador",
   // ---------- Brick Breaker / dos juegos publicados ----------
   "Junior Unity Developer focused on gameplay and mobile games. I've shipped two mobile games, built solo end-to-end with Unity and C#.":
     "Junior Unity Developer centrado en gameplay y juegos móviles. He publicado dos juegos para móvil, hechos en solitario de principio a fin con Unity y C#.",
