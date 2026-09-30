@@ -1,8 +1,16 @@
 import fractureTool from "../assets/img-projects/TFG.webp";
 import mate4k from "../assets/img-projects/mate4k.webp"
 import airBomb from "../assets/img-projects/air-bomb.webp";
+import brickBreaker from "../assets/img-projects/brick-breaker.webp";
 
 export const proyectos = [
+  {
+    titulo: "Brick Breaker Mobile",
+    descripcion: "Arkanoid-style brick breaker for mobile, playable in the browser",
+    imagen: brickBreaker.src,
+    tecnologias: ["Unity", "C#", "Android", "WebGL"],
+    demo: "https://nixonbit3.itch.io/brick-breaker-mobile",
+  },
   {
     titulo: "Air Bomb",
     descripcion: "Space Invaders-style arcade shooter for Android",

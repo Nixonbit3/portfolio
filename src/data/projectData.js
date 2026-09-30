@@ -1,8 +1,18 @@
 import fractureTool from "../assets/img-projects/TFG.webp";
 import mate4k from "../assets/img-projects/mate4k.webp"
 import airBomb from "../assets/img-projects/air-bomb.webp";
+import brickBreaker from "../assets/img-projects/brick-breaker.webp";
 
 export const proyectos = [
+    {
+      titulo: "Brick Breaker Mobile",
+      descripcion: "Arkanoid-style brick breaker rebuilt for mobile, playable in the browser and on Android. 5 procedurally generated levels, lives, high score, pause, music and SFX with volume control, analytics and rewarded ads. View/Controller architecture, event-driven gameplay and data-driven levels with ScriptableObjects.",
+      imagen: brickBreaker.src,
+      tecnologias: ["Unity", "C#", "Android", "WebGL", "DOTween"],
+      demo: "https://nixonbit3.itch.io/brick-breaker-mobile",
+      codigo: "",
+      categoria: "Code",
+    },
 
     {
       titulo: "Air Bomb",

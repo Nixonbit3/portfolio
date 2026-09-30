@@ -9,6 +9,33 @@
 // Diccionario: texto en ingles (normalizado: sin saltos de linea,
 // espacios colapsados y sin espacios al inicio/fin) -> texto en espanol.
 const DICT = {
+  // ---------- Brick Breaker / dos juegos publicados ----------
+  "Junior Unity Developer focused on gameplay and mobile games. I've shipped two mobile games, built solo end-to-end with Unity and C#.":
+    "Junior Unity Developer centrado en gameplay y juegos móviles. He publicado dos juegos para móvil, hechos en solitario de principio a fin con Unity y C#.",
+  "I've already shipped two of them end-to-end.":
+    "ya he publicado dos de principio a fin.",
+  "I've shipped two mobile games,":
+    "He publicado dos juegos para móvil,",
+  ", built solo from start to finish with":
+    ", hechos en solitario de principio a fin con",
+  "Shipped games":
+    "Juegos publicados",
+  "I've shipped two mobile games built solo from start to finish, Air Bomb and Brick Breaker Mobile, plus my final degree project and other video game and interactive tool projects.":
+    "He publicado dos juegos para móvil hechos en solitario de principio a fin, Air Bomb y Brick Breaker Mobile, además de mi TFG y otros proyectos de videojuegos y herramientas interactivas.",
+  "I've shipped two mobile games developed solo from start to finish: Air Bomb and Brick Breaker Mobile, which is also playable in the browser. On top of that, my final degree project and several video game and interactive tool projects.":
+    "He publicado dos juegos para móvil desarrollados en solitario de principio a fin: Air Bomb y Brick Breaker Mobile, que además se puede jugar en el navegador. A eso sumo mi TFG y varios proyectos de videojuegos y herramientas interactivas.",
+  "Arkanoid-style brick breaker rebuilt for mobile, playable in the browser and on Android. 5 procedurally generated levels, lives, high score, pause, music and SFX with volume control, analytics and rewarded ads. View/Controller architecture, event-driven gameplay and data-driven levels with ScriptableObjects.":
+    "Rompeladrillos estilo Arkanoid rehecho para móvil, jugable en el navegador y en Android. 5 niveles generados proceduralmente, vidas, récord, pausa, música y efectos con control de volumen, analíticas y anuncios con recompensa. Arquitectura View/Controller, gameplay orientado a eventos y niveles data-driven con ScriptableObjects.",
+  "Arkanoid-style brick breaker for mobile, playable in the browser":
+    "Rompeladrillos estilo Arkanoid para móvil, jugable en el navegador",
+  "Junior Unity Developer focused on gameplay and mobile. Shipped two mobile games built solo end-to-end with Unity and C#: Air Bomb (Android) and Brick Breaker Mobile (Android and web). Video Game Design and Development graduate (CITM – UPC). Looking for a first role as Junior Unity / Gameplay Developer, in Barcelona or remote.":
+    "Junior Unity Developer centrado en gameplay y móvil. He publicado dos juegos para móvil hechos en solitario de principio a fin con Unity y C#: Air Bomb (Android) y Brick Breaker Mobile (Android y web). Graduado en Diseño y Desarrollo de Videojuegos (CITM – UPC). Busco mi primer puesto como Junior Unity / Gameplay Developer, en Barcelona o en remoto.",
+  "Shipped game · Android & Web":
+    "Juego publicado · Android y Web",
+  "Arkanoid-style brick breaker for mobile, playable in the browser: 5 procedurally generated levels, high score, pause and audio settings.":
+    "Rompeladrillos estilo Arkanoid para móvil, jugable en el navegador: 5 niveles generados proceduralmente, récord, pausa y ajustes de audio.",
+  "Rewarded ads and analytics on Android; View/Controller architecture, event-driven gameplay and ScriptableObject levels.":
+    "Anuncios con recompensa y analíticas en Android; arquitectura View/Controller, gameplay orientado a eventos y niveles con ScriptableObjects.",
   // ---------- CV (texto comprimido a una pagina) ----------
   "Junior Unity Developer focused on gameplay and mobile. Shipped Air Bomb, an arcade shooter for Android, built solo end-to-end with Unity and C#. Video Game Design and Development graduate (CITM – UPC). Looking for a first role as Junior Unity / Gameplay Developer, in Barcelona or remote.":
     "Junior Unity Developer centrado en gameplay y móvil. He publicado Air Bomb, un shooter arcade para Android, hecho en solitario de principio a fin con Unity y C#. Graduado en Diseño y Desarrollo de Videojuegos (CITM – UPC). Busco mi primer puesto como Junior Unity / Gameplay Developer, en Barcelona o en remoto.",

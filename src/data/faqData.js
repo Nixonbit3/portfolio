@@ -10,7 +10,7 @@ export const faqHome = [
     icon: "briefcase",
     question: "My Experience",
     answer:
-      "I shipped Air Bomb, my first Android game, built solo from start to finish, plus my final degree project and other video game and interactive tool projects.",
+      "I've shipped two mobile games built solo from start to finish, Air Bomb and Brick Breaker Mobile, plus my final degree project and other video game and interactive tool projects.",
   },
   {
     icon: "academic",
@@ -42,7 +42,7 @@ export const faqAbout = [
     icon: "briefcase",
     question: "My Experience",
     answer:
-      "I shipped Air Bomb, my first Android game, developed solo from start to finish. On top of that, my final degree project and several video game and interactive tool projects.",
+      "I've shipped two mobile games developed solo from start to finish: Air Bomb and Brick Breaker Mobile, which is also playable in the browser. On top of that, my final degree project and several video game and interactive tool projects.",
   },
   {
     icon: "academic",

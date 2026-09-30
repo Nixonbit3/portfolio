@@ -6,7 +6,7 @@ import MailLink from "../components/commons/mail/MailLink.astro";
 // Deliberadamente SIN datos sensibles: no hay telefono, ni direccion,
 // ni DNI, ni fecha de nacimiento. El email va protegido contra bots.
 // Texto comprimido a proposito: el CV debe caber en UNA pagina impresa.
-const perfil = `Junior Unity Developer focused on gameplay and mobile. Shipped Air Bomb, an arcade shooter for Android, built solo end-to-end with Unity and C#. Video Game Design and Development graduate (CITM – UPC). Looking for a first role as Junior Unity / Gameplay Developer, in Barcelona or remote.`;
+const perfil = `Junior Unity Developer focused on gameplay and mobile. Shipped two mobile games built solo end-to-end with Unity and C#: Air Bomb (Android) and Brick Breaker Mobile (Android and web). Video Game Design and Development graduate (CITM – UPC). Looking for a first role as Junior Unity / Gameplay Developer, in Barcelona or remote.`;
 
 const experiencia = [
   {
@@ -22,6 +22,16 @@ const experiencia = [
 ];
 
 const proyectos = [
+  {
+    nombre: "Brick Breaker Mobile",
+    tipo: "Shipped game · Android & Web",
+    enlace: "https://nixonbit3.itch.io/brick-breaker-mobile",
+    enlaceTexto: "nixonbit3.itch.io/brick-breaker-mobile",
+    puntos: [
+      "Arkanoid-style brick breaker for mobile, playable in the browser: 5 procedurally generated levels, high score, pause and audio settings.",
+      "Rewarded ads and analytics on Android; View/Controller architecture, event-driven gameplay and ScriptableObject levels.",
+    ],
+  },
   {
     nombre: "Air Bomb",
     tipo: "Shipped game · Android",
@@ -40,13 +50,6 @@ const proyectos = [
     puntos: [
       "Real-time 3D fragmentation system as a Unity editor tool, written in C# with a focus on performance and usability.",
     ],
-  },
-  {
-    nombre: "Realistic 3D Mate Gourd",
-    tipo: "3D Art",
-    enlace: "https://www.artstation.com/artwork/8wnkNQ",
-    enlaceTexto: "artstation.com/artwork/8wnkNQ",
-    puntos: ["Photorealistic modelling and texturing in Blender and Substance Painter."],
   },
 ];
 
