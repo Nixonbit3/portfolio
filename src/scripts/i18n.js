@@ -9,6 +9,8 @@
 // Diccionario: texto en ingles (normalizado: sin saltos de linea,
 // espacios colapsados y sin espacios al inicio/fin) -> texto en espanol.
 const DICT = {
+  "Move your mouse to play":
+    "Mueve el ratón para jugar",
   "Play":
     "Jugar",
   "All rights reserved.":
@@ -26,10 +28,10 @@ const DICT = {
     ", hechos en solitario de principio a fin con",
   "Shipped games":
     "Juegos publicados",
-  "I've shipped two mobile games built solo from start to finish, Air Bomb and Brick Breaker Mobile, plus my final degree project and other video game and interactive tool projects.":
-    "He publicado dos juegos para móvil hechos en solitario de principio a fin, Air Bomb y Brick Breaker Mobile, además de mi TFG y otros proyectos de videojuegos y herramientas interactivas.",
-  "I've shipped two mobile games developed solo from start to finish: Air Bomb and Brick Breaker Mobile, which is also playable in the browser. On top of that, my final degree project and several video game and interactive tool projects.":
-    "He publicado dos juegos para móvil desarrollados en solitario de principio a fin: Air Bomb y Brick Breaker Mobile, que además se puede jugar en el navegador. A eso sumo mi TFG y varios proyectos de videojuegos y herramientas interactivas.",
+  "I've shipped two mobile games built solo from start to finish, Air Bomb and Brick Breaker Mobile, plus Fracture Tool, a Unity Asset Store tool I publish as Naxo Studios, and other video game and interactive tool projects.":
+    "He publicado dos juegos para móvil hechos en solitario de principio a fin, Air Bomb y Brick Breaker Mobile, además de Fracture Tool, una herramienta de la Unity Asset Store que publico como Naxo Studios, y otros proyectos de videojuegos y herramientas interactivas.",
+  "I've shipped two mobile games developed solo from start to finish: Air Bomb and Brick Breaker Mobile, which is also playable in the browser. On top of that, Fracture Tool, my final degree project turned into a Unity Asset Store tool (Free and Pro) published as Naxo Studios, and several video game and interactive tool projects.":
+    "He publicado dos juegos para móvil desarrollados en solitario de principio a fin: Air Bomb y Brick Breaker Mobile, que además se puede jugar en el navegador. A eso sumo Fracture Tool, mi TFG convertido en una herramienta de la Unity Asset Store (Free y Pro) publicada como Naxo Studios, y varios proyectos de videojuegos y herramientas interactivas.",
   "Arkanoid-style brick breaker rebuilt for mobile, playable in the browser and on Android. 5 procedurally generated levels, lives, high score, pause, music and SFX with volume control, analytics and rewarded ads. View/Controller architecture, event-driven gameplay and data-driven levels with ScriptableObjects.":
     "Rompeladrillos estilo Arkanoid rehecho para móvil, jugable en el navegador y en Android. 5 niveles generados proceduralmente, vidas, récord, pausa, música y efectos con control de volumen, analíticas y anuncios con recompensa. Arquitectura View/Controller, gameplay orientado a eventos y niveles data-driven con ScriptableObjects.",
   "Arkanoid-style brick breaker for mobile, playable in the browser":
@@ -288,8 +290,16 @@ const DICT = {
     "Ver más proyectos",
   "Code":
     "Código",
-  "Real-Time 3D Fragmentation System":
-    "Sistema de Fragmentación 3D en Tiempo Real",
+  "Get Free":
+    "Conseguir Free",
+  "Get Pro":
+    "Conseguir Pro",
+  "Unity Asset Store tool, published under my brand Naxo Studios, that breaks any mesh into real physics fragments. Five fracture modes, material presets and baked fractures: a 4,000-triangle column breaks in ~3 ms instead of ~490 ms. Free and Pro editions built from one codebase. It started as my final degree project.":
+    "Herramienta de la Unity Asset Store, publicada bajo mi marca Naxo Studios, que rompe cualquier malla en fragmentos físicos reales. Cinco modos de fractura, presets de material y fracturas precalculadas: una columna de 4.000 triángulos se rompe en ~3 ms en lugar de ~490 ms. Ediciones Free y Pro con un mismo código base. Empezó como mi trabajo de fin de grado.",
+  "Unity Asset Store tool that breaks any mesh into real physics fragments":
+    "Herramienta de la Unity Asset Store que rompe cualquier malla en fragmentos físicos reales",
+  "Editor tools":
+    "Herramientas de editor",
   "Realistic 3D Mate Gourd":
     "Mate 3D realista",
   "Realistic yerba mate gourd modeled in Blender":
@@ -344,6 +354,14 @@ const DICT = {
     "DOTween para el game feel, persistencia en JSON y sistema de audio entre escenas.",
   "Final degree project · Tool":
     "Trabajo de Fin de Grado · Herramienta",
+  "Unity Asset Store · Free & Pro · Naxo Studios":
+    "Unity Asset Store · Free y Pro · Naxo Studios",
+  "Editor and runtime tool that breaks any mesh into physics fragments: 5 fracture modes, baked fractures (~3 ms vs ~490 ms) and a custom inspector. Started as my final degree project; passed Asset Store validation.":
+    "Herramienta de editor y runtime que rompe cualquier malla en fragmentos físicos: 5 modos de fractura, fracturas precalculadas (~3 ms frente a ~490 ms) e inspector personalizado. Empezó como mi TFG; superó la validación de la Asset Store.",
+  "My final degree project became":
+    "Mi trabajo de fin de grado se convirtió en",
+  ", a Unity Asset Store tool with Free and Pro editions, published under my own brand,":
+    ", una herramienta de la Unity Asset Store con ediciones Free y Pro, publicada bajo mi propia marca,",
   "Real-time 3D fragmentation system built as a Unity editor tool.":
     "Sistema de fragmentación 3D en tiempo real como herramienta de editor para Unity.",
   "Written in C# with a focus on performance and usability for other developers.":

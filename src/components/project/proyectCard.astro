@@ -8,21 +8,24 @@ export interface Props {
   tecnologias: string[];
   demo: string;
   codigo: string;
+  demoLabel?: string;
+  codigoLabel?: string;
   categoria?: string;
   index: number; 
 }
 
-const { titulo, descripcion, imagen, tecnologias, demo, codigo, categoria, index } =
+const { titulo, descripcion, imagen, tecnologias, demo, codigo, categoria, index, demoLabel: demoText, codigoLabel } =
   Astro.props;
 
 // Los juegos publicados en itch.io se juegan, no son una "demo"
-const demoLabel = demo?.includes("itch.io") ? "Play" : "Demo";
+const demoLabel = demoText ?? (demo?.includes("itch.io") ? "Play" : "Demo");
 ---
 
 <div
   data-index={index}
   data-categoria={categoria ?? ""}
-  class="project-card group relative z-10 flex w-[400px] flex-col overflow-hidden rounded-3xl
+  data-tilt
+  class="project-card tilt-card group relative z-10 flex w-[400px] flex-col overflow-hidden rounded-3xl
          bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl border border-white/10
          shadow-[0_8px_32px_rgba(0,0,0,0.3)]
          hover:shadow-[0_20px_60px_rgba(0,0,0,0.4)] hover:border-white/20
@@ -40,7 +43,7 @@ const demoLabel = demo?.includes("itch.io") ? "Play" : "Demo";
           loading="lazy"
           decoding="async"
       src={imagen}
-      alt={`Imagen del proyecto ${titulo}`}
+      alt={`Project image: ${titulo}`}
       class="h-50 w-full rounded-2xl object-cover p-3
              transition-transform duration-700 group-hover:scale-110"
     />
@@ -115,7 +118,7 @@ const demoLabel = demo?.includes("itch.io") ? "Play" : "Demo";
           target="_blank"
           rel="noopener noreferrer"
         >
-          Code
+          {codigoLabel ?? "Code"}
           <HiArrowRight
             className="ml-1 transition-transform duration-300 group-hover/link:translate-x-1"
             size={18}

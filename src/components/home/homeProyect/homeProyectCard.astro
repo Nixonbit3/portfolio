@@ -7,17 +7,20 @@ export interface Props {
   tecnologias: string[];
   demo: string;
   codigo?: string; // Ahora es opcional
+  demoLabel?: string;
+  codigoLabel?: string;
 }
 
-const { titulo, imagen, tecnologias, demo, codigo } = Astro.props;
+const { titulo, imagen, tecnologias, demo, codigo, demoLabel: demoText, codigoLabel } = Astro.props;
 // Los juegos publicados en itch.io se juegan, no son una "demo"
-const demoLabel = demo?.includes("itch.io") ? "Play" : "Demo";
+const demoLabel = demoText ?? (demo?.includes("itch.io") ? "Play" : "Demo");
 
 ---
 
 <article
   class="project-card group relative"
   data-reveal
+  data-tilt
 >
   <!-- AMBIENT GLOW (appears on hover) -->
   <div class="absolute -inset-4 bg-gradient-to-r from-purple-500/0 to-cyan-500/0 
@@ -26,7 +29,7 @@ const demoLabel = demo?.includes("itch.io") ? "Play" : "Demo";
               transition-all duration-700 -z-10"></div>
 
   <!-- CARD CONTAINER -->
-  <div class="relative h-full flex flex-col overflow-hidden rounded-3xl
+  <div class="tilt-card relative h-full flex flex-col overflow-hidden rounded-3xl
               bg-gradient-to-br from-white/10 to-white/5
               backdrop-blur-xl border border-white/10
               shadow-[0_8px_32px_rgba(0,0,0,0.3)]
@@ -43,7 +46,7 @@ const demoLabel = demo?.includes("itch.io") ? "Play" : "Demo";
           loading="lazy"
           decoding="async"
           src={imagen}
-          alt={`Proyecto: ${titulo}`}
+          alt={`Project: ${titulo}`}
           class="w-full h-full object-cover 
                  transition-all duration-700 ease-out
                  group-hover:scale-110"
@@ -64,7 +67,7 @@ const demoLabel = demo?.includes("itch.io") ? "Play" : "Demo";
           class="p-2.5 rounded-xl bg-white/10 backdrop-blur-xl border border-white/20
                  hover:bg-white/20 hover:scale-110 active:scale-95
                  transition-all duration-300"
-          aria-label="View demo"
+          aria-label={demoText ?? "View demo"}
         >
           <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -79,7 +82,7 @@ const demoLabel = demo?.includes("itch.io") ? "Play" : "Demo";
             class="p-2.5 rounded-xl bg-white/10 backdrop-blur-xl border border-white/20
                    hover:bg-white/20 hover:scale-110 active:scale-95
                    transition-all duration-300"
-            aria-label="View code"
+            aria-label={codigoLabel ?? "View code"}
           >
             <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
@@ -145,7 +148,7 @@ const demoLabel = demo?.includes("itch.io") ? "Play" : "Demo";
                    hover:scale-105 active:scale-95
                    transition-all duration-300"
           >
-            <span>Code</span>
+            <span>{codigoLabel ?? "Code"}</span>
             <svg class="w-4 h-4 transition-transform duration-300 group-hover/btn:rotate-12" 
                  fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />

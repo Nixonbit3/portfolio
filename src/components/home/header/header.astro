@@ -10,7 +10,7 @@ const roles = [
 ];
 ---
 
-<header class="relative min-h-screen bg-black overflow-hidden">
+<header id="hero" class="hero relative min-h-screen bg-black overflow-hidden">
   <!-- MESH GRADIENT BACKGROUND -->
   <div class="absolute inset-0">
     <div class="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,54,207,0.15),transparent)]"></div>
@@ -21,10 +21,16 @@ const roles = [
   <!-- GRID PATTERN (OPTIONAL) -->
   <div class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:72px_72px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,black,transparent)]"></div>
 
-  <main class="relative z-10 flex flex-col items-center justify-center min-h-screen text-center px-6 md:px-8">
+  <!-- MINIJUEGO DE FONDO: un Brick Breaker que juega solo y cede la pala
+       al mover el raton o arrastrar el dedo (src/scripts/heroGame.js).
+       Va detras del texto y no recibe clics. -->
+  <canvas id="hero-game" class="hero-game absolute inset-0 w-full h-full pointer-events-none" aria-hidden="true"></canvas>
+
+  <div class="hero-stack relative z-10 flex flex-col items-center justify-center min-h-screen text-center px-6 md:px-8">
     <!-- BADGE LABEL -->
     <div 
-      class="mb-6 inline-flex items-center gap-2 px-4 py-1.5 rounded-full 
+      data-hero-first
+      class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full 
              bg-white/5 backdrop-blur-xl border border-white/10
              opacity-0 translate-y-4 animate-fadeIn"
       style="animation-delay: 0.1s;"
@@ -38,7 +44,7 @@ const roles = [
 
     <!-- MAIN HEADING -->
     <h1 
-      class="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight
+      class="hero-title text-5xl sm:text-6xl font-bold tracking-tight
              opacity-0 translate-y-8 animate-fadeIn"
       style="animation-delay: 0.2s;"
     >
@@ -53,10 +59,10 @@ const roles = [
 
     <!-- TYPEWRITER EFFECT -->
     <div 
-      class="mt-8 opacity-0 translate-y-6 animate-fadeIn"
+      class="opacity-0 translate-y-6 animate-fadeIn"
       style="animation-delay: 0.4s;"
     >
-      <div class="notranslate mt-5 text-3xl font-bold" aria-live="off">
+      <div class="notranslate text-2xl md:text-3xl font-bold" aria-live="off">
         <span id="role-text" data-roles={JSON.stringify(roles)}>{roles[0]}</span><span
           class="role-caret"
           aria-hidden="true">|</span>
@@ -65,7 +71,7 @@ const roles = [
 
     <!-- DESCRIPTION -->
     <p 
-      class="mt-8 text-lg md:text-xl text-white/60 max-w-2xl font-normal leading-relaxed
+      class="text-lg md:text-xl text-white/60 max-w-2xl font-normal leading-relaxed
              opacity-0 translate-y-6 animate-fadeIn"
       style="animation-delay: 0.6s;"
     >
@@ -74,8 +80,10 @@ const roles = [
     </p>
 
     <!-- SOCIAL ICONS -->
+    <!-- -my-5 compensa el margen propio del componente: el espaciado lo pone .hero-stack.
+         En movil van despues de los botones, para que estos entren en la primera pantalla. -->
     <div 
-      class="mt-10 opacity-0 translate-y-6 animate-fadeIn"
+      class="-my-5 order-last md:order-none opacity-0 translate-y-6 animate-fadeIn"
       style="animation-delay: 0.8s;"
     >
       <SocialIcons />
@@ -83,7 +91,7 @@ const roles = [
 
     <!-- CTA BUTTONS -->
     <div
-      class="mt-10 flex flex-col sm:flex-row items-center gap-4
+      class="flex flex-col sm:flex-row items-center gap-4
              opacity-0 translate-y-6 animate-fadeIn"
       style="animation-delay: 1s;"
     >
@@ -133,11 +141,10 @@ const roles = [
     </div>
 
     <!-- SCROLL INDICATOR -->
-    <!-- pointer-events-none: es decoracion y se superpone a los botones del
-         hero en pantallas bajas; sin esto robaba los clics del CTA. -->
+    <!-- Va en el flujo, debajo de los botones, y solo en pantallas altas:
+         antes estaba superpuesto y tapaba el boton de contacto. -->
     <div
-      class="absolute bottom-12 left-1/2 -translate-x-1/2
-             pointer-events-none select-none
+      class="hero-scroll pointer-events-none select-none
              opacity-0 animate-fadeIn"
       style="animation-delay: 1.2s;"
       aria-hidden="true"
@@ -150,7 +157,13 @@ const roles = [
       </div>
     </div>
 
-  </main>
+  </div>
+
+  <!-- MARCADOR DEL MINIJUEGO (solo con raton y pantalla ancha) -->
+  <div id="hero-hud" class="hero-hud" aria-hidden="true">
+    <span>Move your mouse to play</span>
+    <span class="hero-hud-score notranslate"><i></i><b id="hero-score">0</b></span>
+  </div>
 </header>
 
 <style>
@@ -194,6 +207,117 @@ const roles = [
     animation: caretBlink 1s step-end infinite;
   }
 
+  /* ---------------------------------------------------------
+     Composicion de la portada.
+     El espaciado y el titular escalan con la ALTURA de la ventana:
+     asi todo, botones incluidos, cabe en la primera pantalla de un
+     portatil, y nada queda debajo de la barra de navegacion.
+     --------------------------------------------------------- */
+  .hero {
+    /* Deja el desplazamiento vertical al navegador y entrega los
+       arrastres horizontales al minijuego */
+    touch-action: pan-y pinch-zoom;
+  }
+
+  .hero-stack {
+    gap: clamp(0.85rem, 2.6vh, 2.5rem);
+    /* Hueco para la fila de bloques del minijuego */
+    padding-top: 3.25rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .hero-scroll {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .hero-stack {
+      /* 5rem de barra de navegacion + franja de bloques */
+      padding-top: 8.75rem;
+      padding-bottom: 2rem;
+    }
+
+    .hero-title {
+      font-size: clamp(3.5rem, 11vh, 6rem);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-title {
+      font-size: clamp(3.5rem, 11vh, 8rem);
+    }
+  }
+
+  @media (min-width: 768px) and (min-height: 900px) {
+    .hero-scroll {
+      display: block;
+    }
+  }
+
+  /* Minijuego */
+  .hero-game {
+    opacity: 0;
+    transition: opacity 1.2s ease;
+  }
+
+  .hero-game.is-on {
+    opacity: 1;
+  }
+
+  .hero-hud {
+    display: none;
+  }
+
+  @media (min-width: 1024px) and (hover: hover) and (pointer: fine) {
+    .hero-hud {
+      position: absolute;
+      left: 1.5rem;
+      /* Por encima de la linea por la que se mueve la pala */
+      bottom: 2.75rem;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.04);
+      color: rgba(255, 255, 255, 0.45);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0;
+      pointer-events: none;
+      user-select: none;
+      opacity: 0;
+      transition: opacity 0.8s ease 0.6s;
+    }
+
+    .hero-hud.is-on {
+      opacity: 1;
+    }
+  }
+
+  .hero-hud-score {
+    display: none;
+    align-items: center;
+    gap: 0.4rem;
+    padding-left: 0.6rem;
+    border-left: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.8);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .hero-hud.has-score .hero-hud-score {
+    display: inline-flex;
+  }
+
+  .hero-hud-score i {
+    width: 0.9rem;
+    height: 0.4rem;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #a855f7, #22d3ee);
+  }
+
   /* Respeta a quien prefiere menos movimiento */
   @media (prefers-reduced-motion: reduce) {
     .animate-fadeIn,
@@ -218,6 +342,8 @@ const roles = [
 </style>
 
 <script>
+  import "../../../scripts/heroGame.js";
+
   // Efecto de tipeo nativo (sustituye a typewriter-effect + React: ~213 KB menos)
   const el = document.getElementById("role-text");
 

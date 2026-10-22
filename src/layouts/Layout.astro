@@ -14,7 +14,7 @@ interface Props {
 const {
   title = "Nixon Correa — Junior Unity Developer",
   description =
-    "Junior Unity Developer focused on gameplay and mobile games. Author of Air Bomb, an arcade shooter shipped on Android. Barcelona or remote.",
+    "Junior Unity Developer focused on gameplay and mobile games. Two shipped mobile games, Air Bomb and Brick Breaker Mobile, built solo with Unity and C#. Barcelona or remote.",
   noindex = false,
   image = "/og.jpg",
 } = Astro.props;
@@ -69,7 +69,7 @@ const ogImage = new URL(image, base);
     <meta property="og:image:height" content="630" />
     <meta
       property="og:image:alt"
-      content="Nixon Correa, Junior Unity Developer. Air Bomb, juego publicado en Android."
+      content="Nixon Correa, Junior Unity Developer. Air Bomb, a mobile game shipped on Android."
     />
 
     <meta name="twitter:card" content="summary_large_image" />
@@ -90,6 +90,7 @@ const ogImage = new URL(image, base);
     <script>
       import "../scripts/i18n.js";
       import "../scripts/mail.js";
+      import "../scripts/tilt.js";
     </script>
   </body>
 </html>

@@ -1,4 +1,4 @@
-import fractureTool from "../assets/img-projects/TFG.webp";
+import fractureTool from "../assets/img-projects/fracture-tool.webp";
 import mate4k from "../assets/img-projects/mate4k.webp"
 import airBomb from "../assets/img-projects/air-bomb.webp";
 import brickBreaker from "../assets/img-projects/brick-breaker.webp";
@@ -24,12 +24,14 @@ export const proyectos = [
       categoria: "Code",
     },
   {
-      titulo: "Fracture Tool for Unity (TFG)",
-      descripcion: "Real-Time 3D Fragmentation System",
+      titulo: "Fracture Tool (Naxo Studios)",
+      descripcion: "Unity Asset Store tool, published under my brand Naxo Studios, that breaks any mesh into real physics fragments. Five fracture modes, material presets and baked fractures: a 4,000-triangle column breaks in ~3 ms instead of ~490 ms. Free and Pro editions built from one codebase. It started as my final degree project.",
       imagen: fractureTool.src,
-      tecnologias: ["Unity", "C#", "Github"],
-      demo: "https://nixonbit3.github.io/FractureTool/",
-      codigo: "https://github.com/Nixonbit3/FractureTool",
+      tecnologias: ["Unity", "C#", "Editor tools", "Asset Store"],
+      demo: "https://assetstore.unity.com/packages/tools/physics/fracture-tool-free-410372",
+      demoLabel: "Get Free",
+      codigo: "https://assetstore.unity.com/packages/tools/physics/fracture-tool-pro-410486",
+      codigoLabel: "Get Pro",
       categoria: "Code",
     },
     {
