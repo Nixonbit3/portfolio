@@ -31,7 +31,7 @@ const roles = [
     <div 
       data-hero-first
       class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full 
-             bg-white/5 backdrop-blur-xl border border-white/10
+             bg-white/5 border border-white/10
              opacity-0 translate-y-4 animate-fadeIn"
       style="animation-delay: 0.1s;"
     >
@@ -221,9 +221,16 @@ const roles = [
 
   .hero-stack {
     gap: clamp(0.85rem, 2.6vh, 2.5rem);
-    /* Hueco para la fila de bloques del minijuego */
-    padding-top: 3.25rem;
+    padding-top: 1.5rem;
     padding-bottom: 1.5rem;
+  }
+
+  /* Hueco para la fila de bloques del minijuego: solo donde hay raton
+     (misma condicion que en src/scripts/heroGame.js) */
+  @media (hover: hover) and (pointer: fine) {
+    .hero-stack {
+      padding-top: 3.25rem;
+    }
   }
 
   .hero-scroll {
@@ -232,13 +239,20 @@ const roles = [
 
   @media (min-width: 768px) {
     .hero-stack {
-      /* 5rem de barra de navegacion + franja de bloques */
-      padding-top: 8.75rem;
+      /* 5rem de barra de navegacion + un respiro */
+      padding-top: 6rem;
       padding-bottom: 2rem;
     }
 
     .hero-title {
       font-size: clamp(3.5rem, 11vh, 6rem);
+    }
+  }
+
+  @media (min-width: 768px) and (hover: hover) and (pointer: fine) {
+    .hero-stack {
+      /* 5rem de barra de navegacion + franja de bloques */
+      padding-top: 8.75rem;
     }
   }
 

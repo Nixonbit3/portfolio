@@ -422,11 +422,31 @@ export function createHeroGame({ hero, canvas, first, hud, scoreEl }) {
   let enabled = false;
   let onScreen = true;
 
+  // Guarda de rendimiento: si los primeros segundos van por debajo de ~35 fps,
+  // el equipo no da para el fondo animado y se apaga (el texto no se toca).
+  let sampled = 0;
+  let sampledMs = 0;
+
   function frame(now) {
     raf = requestAnimationFrame(frame);
+    const gap = now - last;
     // Tope de 33 ms: tras un parón (cambio de pestaña) no hay saltos
-    const dt = Math.min(0.033, Math.max(0, (now - last) / 1000));
+    const dt = Math.min(0.033, Math.max(0, gap / 1000));
     last = now;
+
+    if (sampled < 120 && gap < 250) {
+      sampled++;
+      sampledMs += gap;
+      if (sampled === 120 && sampledMs / sampled > 28) {
+        enabled = false;
+        running = false;
+        cancelAnimationFrame(raf);
+        canvas.classList.remove("is-on");
+        if (hud) hud.classList.remove("is-on");
+        return;
+      }
+    }
+
     update(dt, now);
     draw();
   }
@@ -436,6 +456,8 @@ export function createHeroGame({ hero, canvas, first, hud, scoreEl }) {
     if (should && !running) {
       running = true;
       last = performance.now();
+      sampled = 0;
+      sampledMs = 0;
       raf = requestAnimationFrame(frame);
     } else if (!should && running) {
       running = false;
@@ -524,6 +546,10 @@ function boot() {
   const first = hero ? hero.querySelector("[data-hero-first]") : null;
   if (!hero || !canvas || !first || !canvas.getContext) return;
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  // Solo con raton: en moviles y tablets la pala quedaba bajo la primera
+  // pantalla (era un simple fondo) y la animacion continua gasta bateria
+  // y puede dar tirones. Los estilos de .hero-stack usan esta misma consulta.
+  if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
 
   const game = createHeroGame({
     hero,
