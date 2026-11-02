@@ -1,24 +1,250 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/home/header/header.astro";
-import Slider from "../components/home/header/slider.astro";
-import AboutHome from "../components/home/aboutHome/aboutHome.astro";
-import HomeProyect from "../components/home/homeProyect/homeProyect.astro";
-import Faq from "../components/commons/faq/Faq.astro";
-import { faqHome } from "../data/faqData.js";
-import Banner from "../components/commons/banners/banner.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import MailLink from "../components/MailLink.astro";
+
+import brickBreaker from "../assets/img-projects/brick-breaker.webp";
+import airBomb from "../assets/img-projects/air-bomb.webp";
+import fractureTool from "../assets/img-projects/fracture-tool.webp";
+import mate from "../assets/img-projects/mate4k.webp";
+
+// Los textos van en ingles (idioma por defecto). La version en espanol se
+// aplica en el navegador con el diccionario de src/scripts/i18n.js.
+const proyectos = [
+  {
+    titulo: "Brick Breaker Mobile",
+    imagen: brickBreaker,
+    alt: "Brick Breaker Mobile title screen",
+    texto:
+      "A brick breaker for phones that also runs in the browser. It has five generated levels, lives, a high score, pause, audio settings, analytics and rewarded ads on Android.",
+    stack: "Android and WebGL. Unity, C#, DOTween.",
+    enlaces: [
+      { texto: "Play in the browser", url: "https://nixonbit3.itch.io/brick-breaker-mobile" },
+    ],
+  },
+  {
+    titulo: "Air Bomb",
+    imagen: airBomb,
+    alt: "Air Bomb title art",
+    texto:
+      "A Space Invaders-style arcade shooter for Android. Levels are ScriptableObjects, systems talk through events, progress is saved as JSON and the audio carries across scenes.",
+    stack: "Android. Unity, C#, DOTween.",
+    enlaces: [{ texto: "Play on itch.io", url: "https://nixonbit3.itch.io/air-bomb" }],
+  },
+  {
+    titulo: "Fracture Tool",
+    imagen: fractureTool,
+    alt: "Fracture Tool Pro cover showing a wall breaking into glass and stone fragments",
+    texto:
+      "A Unity Asset Store tool that breaks any mesh into physics fragments. It started as my final degree project and is now published as a Free and a Pro edition under my brand, Naxo Studios. Cuts can be baked in the editor, so a 4,000-triangle column breaks in about 3 ms instead of 490 ms.",
+    stack: "Editor tooling. Unity, C#, PhysX.",
+    enlaces: [
+      {
+        texto: "Get Free",
+        url: "https://assetstore.unity.com/packages/tools/physics/fracture-tool-free-410372",
+      },
+      {
+        texto: "Get Pro",
+        url: "https://assetstore.unity.com/packages/tools/physics/fracture-tool-pro-410486",
+      },
+    ],
+  },
+  {
+    titulo: "Realistic 3D Mate Gourd",
+    imagen: mate,
+    alt: "Realistic yerba mate gourd on grass",
+    texto: "A yerba mate gourd modeled in Blender and textured in Substance Painter.",
+    stack: "3D art. Blender, Substance Painter.",
+    enlaces: [{ texto: "View on ArtStation", url: "https://www.artstation.com/artwork/8wnkNQ" }],
+  },
+];
+
+const principios = [
+  {
+    titulo: "Logic and presentation stay apart",
+    texto:
+      "I use a View and Controller split. Viewers animate and report what happened, controllers decide what it means. Services such as audio, analytics and ads sit outside both.",
+  },
+  {
+    titulo: "Levels are data",
+    texto:
+      "Level definitions live in ScriptableObjects, so a designer can change a level without touching code and a new level never needs a new script.",
+  },
+  {
+    titulo: "Systems talk through events",
+    texto:
+      "Classes announce what happened with C# events and subscribe and unsubscribe in OnDestroy, so nothing holds a reference it no longer needs.",
+  },
+  {
+    titulo: "Everything runs on a real phone",
+    texto:
+      "I test builds on real devices and chase bugs with stack traces and prefab reference checks before I call a build done.",
+  },
+];
+
+const herramientas = [
+  { grupo: "Engines and languages", items: "Unity, C#, C++, Unreal Engine, Python" },
+  {
+    grupo: "Gameplay and architecture",
+    items:
+      "ScriptableObjects, DOTween, data-driven design, event-driven architecture, JSON persistence",
+  },
+  { grupo: "Mobile", items: "Android builds, UI and HUD systems, testing on real devices" },
+  {
+    grupo: "Art, 3D and process",
+    items:
+      "Blender, Maya, 3ds Max, Substance Painter, Photoshop, Figma, Git, Scrum and Kanban",
+  },
+];
 ---
 
 <Layout>
-  <Header />
-  <Slider />
-  <AboutHome />
-  <HomeProyect />
-  <Faq
-    titleTop="About me"
-    titleBottom="and my work"
-    subtitle="Learn more about my experience, skills and way of working"
-    items={faqHome}
-  />
-  <Banner />
+  <header class="band hero">
+    <div class="wrap">
+      <Nav />
+
+      <h1 class="hero__name"><span>Nixon</span><span>Correa</span></h1>
+
+      <div class="hero__body">
+        <div class="hero__lead">
+          <p>
+            I build gameplay and mobile games in Unity and C#. I have shipped two of them, each made
+            alone from first prototype to published build.
+          </p>
+          <div class="actions">
+            <a class="btn" href="https://nixonbit3.itch.io/brick-breaker-mobile" target="_blank" rel="noopener noreferrer">Play Brick Breaker in your browser</a>
+            <a class="link" href="/cv">Read the resume</a>
+          </div>
+        </div>
+        <dl class="facts">
+          <div><dt>Based in</dt><dd>Barcelona, open to remote work</dd></div>
+          <div><dt>Looking for</dt><dd>A first role as Junior Unity or Gameplay developer</dd></div>
+          <div>
+            <dt>Published</dt>
+            <dd>Air Bomb (Android), Brick Breaker Mobile (Android and web), Fracture Tool (Unity Asset Store)</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section" id="work" aria-labelledby="work-title">
+      <div class="wrap">
+        <div class="section__head">
+          <h2 class="section__title" id="work-title">Selected work</h2>
+          <p class="section__note">Two shipped games, one published Unity tool and one 3D piece.</p>
+        </div>
+
+        <div class="work">
+          {
+            proyectos.map((p, i) => (
+              <article class="row">
+                <div class="row__img">
+                  <img
+                    src={p.imagen.src}
+                    width={p.imagen.width}
+                    height={p.imagen.height}
+                    alt={p.alt}
+                    loading={i === 0 ? "eager" : "lazy"}
+                    decoding="async"
+                  />
+                </div>
+                <div class="row__body">
+                  <h3 class="row__title">{p.titulo}</h3>
+                  <p class="row__text">{p.texto}</p>
+                  <p class="row__stack">{p.stack}</p>
+                  <div class="row__links">
+                    {p.enlaces.map((e) => (
+                      <a href={e.url} target="_blank" rel="noopener noreferrer">
+                        {e.texto}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section approach" id="approach" aria-labelledby="approach-title">
+      <div class="wrap">
+        <div class="section__head">
+          <h2 class="section__title" id="approach-title">How I build</h2>
+          <p class="section__note">The habits behind both games, written down.</p>
+        </div>
+        <div class="principles">
+          {
+            principios.map((p) => (
+              <div class="principle">
+                <h3>{p.titulo}</h3>
+                <p>{p.texto}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="background" aria-labelledby="background-title">
+      <div class="wrap">
+        <div class="section__head">
+          <h2 class="section__title" id="background-title">Background</h2>
+        </div>
+        <div class="bg-grid">
+          <div class="bg-col bg-col--a">
+            <h3 class="col-title">Experience and education</h3>
+            <div class="entry">
+              <h4>IT Support Technician</h4>
+              <p class="entry__meta">Col·legi d'Arquitectes de Catalunya (COAC), Barcelona. March to August 2025.</p>
+              <ul>
+                <li>Designed gamified cybersecurity training for staff, applying game mechanics to real learning.</li>
+                <li>Built interactive PDF forms and edited institutional videos to the organisation's standards.</li>
+              </ul>
+            </div>
+            <div class="entry">
+              <h4>BSc in Video Game Design and Development</h4>
+              <p class="entry__meta">CITM, Universitat Politècnica de Catalunya, Barcelona. September 2021 to July 2025.</p>
+            </div>
+          </div>
+          <div class="bg-col bg-col--b">
+            <h3 class="col-title">Tools</h3>
+            <dl class="toolset">
+              {
+                herramientas.map((h) => (
+                  <div>
+                    <dt>{h.grupo}</dt>
+                    <dd>{h.items}</dd>
+                  </div>
+                ))
+              }
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <section class="band contact" id="contact" aria-labelledby="contact-title">
+    <div class="wrap">
+      <div class="contact__grid">
+        <h2 class="contact__title" id="contact-title">Looking for my first role in a games studio.</h2>
+        <div class="contact__side">
+          <p>Write to me on LinkedIn or by email.</p>
+          <a class="btn" href="https://www.linkedin.com/in/nixon-correa" target="_blank" rel="noopener noreferrer">Message me on LinkedIn</a>
+          <div class="contact__links">
+            <MailLink encoded="bW9jLmxpYW1nQGFlcnJvY25kbg==" />
+            <a href="/cv">Resume</a>
+            <a href="https://github.com/Nixonbit3" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://nixonbit3.itch.io" target="_blank" rel="noopener noreferrer">itch.io</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <Footer />
 </Layout>

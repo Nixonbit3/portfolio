@@ -9,372 +9,107 @@
 // Diccionario: texto en ingles (normalizado: sin saltos de linea,
 // espacios colapsados y sin espacios al inicio/fin) -> texto en espanol.
 const DICT = {
-  "Move your mouse to play":
-    "Mueve el ratón para jugar",
-  "Play":
-    "Jugar",
-  "All rights reserved.":
-    "Todos los derechos reservados.",
-  "Play in your browser":
-    "Jugar en el navegador",
-  // ---------- Brick Breaker / dos juegos publicados ----------
-  "Junior Unity Developer focused on gameplay and mobile games. I've shipped two mobile games, built solo end-to-end with Unity and C#.":
-    "Junior Unity Developer centrado en gameplay y juegos móviles. He publicado dos juegos para móvil, hechos en solitario de principio a fin con Unity y C#.",
-  "I've already shipped two of them end-to-end.":
-    "ya he publicado dos de principio a fin.",
-  "I've shipped two mobile games,":
-    "He publicado dos juegos para móvil,",
-  ", built solo from start to finish with":
-    ", hechos en solitario de principio a fin con",
-  "Shipped games":
-    "Juegos publicados",
-  "I've shipped two mobile games built solo from start to finish, Air Bomb and Brick Breaker Mobile, plus Fracture Tool, a Unity Asset Store tool I publish as Naxo Studios, and other video game and interactive tool projects.":
-    "He publicado dos juegos para móvil hechos en solitario de principio a fin, Air Bomb y Brick Breaker Mobile, además de Fracture Tool, una herramienta de la Unity Asset Store que publico como Naxo Studios, y otros proyectos de videojuegos y herramientas interactivas.",
-  "I've shipped two mobile games developed solo from start to finish: Air Bomb and Brick Breaker Mobile, which is also playable in the browser. On top of that, Fracture Tool, my final degree project turned into a Unity Asset Store tool (Free and Pro) published as Naxo Studios, and several video game and interactive tool projects.":
-    "He publicado dos juegos para móvil desarrollados en solitario de principio a fin: Air Bomb y Brick Breaker Mobile, que además se puede jugar en el navegador. A eso sumo Fracture Tool, mi TFG convertido en una herramienta de la Unity Asset Store (Free y Pro) publicada como Naxo Studios, y varios proyectos de videojuegos y herramientas interactivas.",
-  "Arkanoid-style brick breaker rebuilt for mobile, playable in the browser and on Android. 5 procedurally generated levels, lives, high score, pause, music and SFX with volume control, analytics and rewarded ads. View/Controller architecture, event-driven gameplay and data-driven levels with ScriptableObjects.":
-    "Rompeladrillos estilo Arkanoid rehecho para móvil, jugable en el navegador y en Android. 5 niveles generados proceduralmente, vidas, récord, pausa, música y efectos con control de volumen, analíticas y anuncios con recompensa. Arquitectura View/Controller, gameplay orientado a eventos y niveles data-driven con ScriptableObjects.",
-  "Arkanoid-style brick breaker for mobile, playable in the browser":
-    "Rompeladrillos estilo Arkanoid para móvil, jugable en el navegador",
-  "Junior Unity Developer focused on gameplay and mobile. Shipped two mobile games built solo end-to-end with Unity and C#: Air Bomb (Android) and Brick Breaker Mobile (Android and web). Video Game Design and Development graduate (CITM – UPC). Looking for a first role as Junior Unity / Gameplay Developer, in Barcelona or remote.":
-    "Junior Unity Developer centrado en gameplay y móvil. He publicado dos juegos para móvil hechos en solitario de principio a fin con Unity y C#: Air Bomb (Android) y Brick Breaker Mobile (Android y web). Graduado en Diseño y Desarrollo de Videojuegos (CITM – UPC). Busco mi primer puesto como Junior Unity / Gameplay Developer, en Barcelona o en remoto.",
-  "Shipped game · Android & Web":
-    "Juego publicado · Android y Web",
-  "Arkanoid-style brick breaker for mobile, playable in the browser: 5 procedurally generated levels, high score, pause and audio settings.":
-    "Rompeladrillos estilo Arkanoid para móvil, jugable en el navegador: 5 niveles generados proceduralmente, récord, pausa y ajustes de audio.",
-  "Rewarded ads and analytics on Android; View/Controller architecture, event-driven gameplay and ScriptableObject levels.":
-    "Anuncios con recompensa y analíticas en Android; arquitectura View/Controller, gameplay orientado a eventos y niveles con ScriptableObjects.",
-  // ---------- CV (texto comprimido a una pagina) ----------
-  "Junior Unity Developer focused on gameplay and mobile. Shipped Air Bomb, an arcade shooter for Android, built solo end-to-end with Unity and C#. Video Game Design and Development graduate (CITM – UPC). Looking for a first role as Junior Unity / Gameplay Developer, in Barcelona or remote.":
-    "Junior Unity Developer centrado en gameplay y móvil. He publicado Air Bomb, un shooter arcade para Android, hecho en solitario de principio a fin con Unity y C#. Graduado en Diseño y Desarrollo de Videojuegos (CITM – UPC). Busco mi primer puesto como Junior Unity / Gameplay Developer, en Barcelona o en remoto.",
-  "Designed gamified cybersecurity training for staff — applying game mechanics to real-world learning.":
-    "Diseño de formación gamificada en ciberseguridad para el personal, aplicando mecánicas de juego a aprendizaje real.",
-  "Built interactive PDF forms and edited institutional videos to the organisation's standards.":
-    "Desarrollo de formularios PDF interactivos y edición de vídeos institucionales según los estándares de la organización.",
-  "Space Invaders-style arcade shooter, built solo end-to-end with Unity and C#.":
-    "Shooter arcade estilo Space Invaders, hecho en solitario de principio a fin con Unity y C#.",
-  "View/Controller architecture, data-driven levels with ScriptableObjects, event-based communication, DOTween, JSON persistence and cross-scene audio.":
-    "Arquitectura View/Controller, niveles data-driven con ScriptableObjects, comunicación por eventos, DOTween, persistencia en JSON y audio entre escenas.",
-  "Real-time 3D fragmentation system as a Unity editor tool, written in C# with a focus on performance and usability.":
-    "Sistema de fragmentación 3D en tiempo real como herramienta de editor para Unity, escrito en C# con foco en rendimiento y usabilidad.",
-  "Photorealistic modelling and texturing in Blender and Substance Painter.":
-    "Modelado y texturizado fotorrealista en Blender y Substance Painter.",
-  "Art, 3D & tools": "Arte, 3D y herramientas",
-  "Final degree project": "Trabajo de Fin de Grado",
-  "Resume view · use the button to save it as a PDF":
-    "Vista de currículum · usa el botón para guardarlo como PDF",
-
-  "Home":
-    "Inicio",
-  "Projects":
+  "Skip to content":
+    "Saltar al contenido",
+  "Junior Unity developer":
+    "Desarrollador Unity junior",
+  "Work":
     "Proyectos",
-  "About Me":
-    "Sobre Mí",
+  "Approach":
+    "Método",
+  "Background":
+    "Trayectoria",
+  "Resume":
+    "CV",
   "Contact":
     "Contacto",
-  "Looking for my first role · Barcelona or remote":
-    "Buscando mi primer puesto · Barcelona o remoto",
-  "Hi, I'm":
-    "Hola, soy",
-  "Junior Unity Developer focused on gameplay and mobile games. I just shipped my first Android game, built end-to-end with Unity and C#.":
-    "Junior Unity Developer centrado en gameplay y juegos móviles. Acabo de publicar mi primer juego para Android, hecho de principio a fin con Unity y C#.",
-  "Shall we talk?":
-    "¿Hablamos?",
-  "Scroll to explore":
-    "Scroll para explorar",
-  "Tech Stack":
-    "Stack Tecnológico",
-  "Technologies I master":
-    "Tecnologías que domino",
-  "Focused on gameplay and mobile games with Unity and C#, with a solid base in 3D and programming":
-    "Especializado en gameplay y juegos móviles con Unity y C#, con base sólida en 3D y programación",
-  "Available":
-    "Disponible",
-  "About me":
-    "Sobre mí",
-  "From prototype":
-    "Del prototipo",
-  "to shipped game":
-    "al juego publicado",
-  "I'm":
-    "Soy",
-  ", a Junior Unity Developer focused on":
-    ", Junior Unity Developer centrado en",
-  "gameplay and mobile games":
-    "gameplay y juegos móviles",
-  ". I build games to learn how to build better ones, and":
-    ". Construyo juegos para aprender a construirlos mejor, y",
-  "I just shipped my first one end-to-end.":
-    "acabo de publicar el primero de principio a fin.",
-  "I work with":
-    "Trabajo con",
-  "Unity, C#, ScriptableObjects, DOTween and Android builds":
-    "Unity, C#, ScriptableObjects, DOTween y builds de Android",
-  ", with care for separating logic from presentation and for data-driven design.":
-    ", cuidando la separación entre lógica y presentación y el diseño orientado a datos.",
-  "Learn more about me":
-    "Conocer más sobre mí",
-  "Technologies":
-    "Tecnologías",
-  "Tools and languages I master to create digital experiences":
-    "Herramientas y lenguajes que domino para crear experiencias digitales",
-  "A selection of my most recent work in video game development and interactive experiences":
-    "Una selección de mis trabajos más recientes en desarrollo de videojuegos y experiencias interactivas",
-  "Want to see more of my work?":
-    "¿Quieres ver más de mi trabajo?",
-  "View all projects":
-    "Ver todos los proyectos",
-  "Completed projects":
-    "Proyectos completados",
-  "Shipped game":
-    "Juego publicado",
-  "Play Air Bomb":
-    "Jugar Air Bomb",
-  "Shall we work":
-    "¿Trabajamos",
-  "together?":
-    "juntos?",
-  "I'm available for new opportunities.":
-    "Estoy disponible para nuevas oportunidades.",
-  "Let's talk and create something amazing!":
-    "¡Hablemos y creemos algo increíble!",
-  "Contact me":
-    "Contáctame",
-  "View Resume":
-    "Ver Currículum",
-  "Open to offers · Junior Unity Developer":
-    "Abierto a ofertas · Junior Unity Developer",
-  "and my work":
-    "y mi trabajo",
-  "Learn more about my experience, skills and way of working":
-    "Conoce más sobre mi experiencia, habilidades y forma de trabajo",
-  "What technologies do I use?":
-    "¿Qué tecnologías uso?",
-  "My Experience":
-    "Mi Experiencia",
-  "My education":
-    "Mi formación",
-  "How do I work in a team?":
-    "¿Cómo trabajo en equipo?",
-  "Agile Methodologies":
-    "Metodologías Ágiles",
-  "Unity and C# every day, with ScriptableObjects, DOTween and Android builds. Also C++, Blender, Maya, Substance Painter, Figma and Unreal.":
-    "Unity y C# a diario, con ScriptableObjects, DOTween y builds de Android. También C++, Blender, Maya, Substance Painter, Figma y Unreal.",
-  "I shipped Air Bomb, my first Android game, built solo from start to finish, plus my final degree project and other video game and interactive tool projects.":
-    "He publicado Air Bomb, mi primer juego para Android hecho en solitario de principio a fin, además de mi TFG y otros proyectos de videojuegos y herramientas interactivas.",
-  "Degree in Video Game Design and Development – CITM (UPC).":
-    "Grado en Diseño y Desarrollo de Videojuegos – CITM (UPC).",
-  "I'm introverted, but I adapt to multidisciplinary teams using agile methodologies and clear communication to coordinate tasks.":
-    "Soy introvertido, pero me adapto a equipos multidisciplinarios usando metodologías ágiles y comunicación clara para coordinar tareas.",
-  "Scrum and Kanban to manage projects, development sprints and reviews, ensuring efficiency and organization.":
-    "Scrum y Kanban para gestionar proyectos, sprints de desarrollo y revisiones, asegurando eficiencia y organización.",
-  "More about":
-    "Más sobre",
-  "my work":
-    "mi trabajo",
-  "Unity and C# as my day-to-day base, with ScriptableObjects, DOTween, JSON persistence and Android builds. Plus C++, Blender, Maya, Substance Painter, Figma, Photoshop and Unreal.":
-    "Unity y C# como base del día a día, con ScriptableObjects, DOTween, persistencia en JSON y builds de Android. Además C++, Blender, Maya, Substance Painter, Figma, Photoshop y Unreal.",
-  "I shipped Air Bomb, my first Android game, developed solo from start to finish. On top of that, my final degree project and several video game and interactive tool projects.":
-    "He publicado Air Bomb, mi primer juego para Android, desarrollado en solitario de principio a fin. A eso sumo mi TFG y varios proyectos de videojuegos y herramientas interactivas.",
-  "Degree in Video Game Design and Development – CITM (UPC). Complemented with courses and self-taught practice in programming, 3D design and gameplay development.":
-    "Grado en Diseño y Desarrollo de Videojuegos – CITM (UPC). Complementado con cursos y práctica autodidacta en programación, diseño 3D y desarrollo de gameplay.",
-  "I'm introverted, but I adapt well to multidisciplinary teams using agile methodologies and clear communication to coordinate tasks and reach common goals.":
-    "Soy introvertido, pero me adapto bien a equipos multidisciplinarios usando metodologías ágiles y comunicación clara para coordinar tareas y alcanzar objetivos comunes.",
-  "I've worked with Scrum and Kanban to manage projects, development sprints and reviews, ensuring efficiency, organization and delivery of results.":
-    "He trabajado con Scrum y Kanban para gestionar proyectos, sprints de desarrollo y revisiones, asegurando eficiencia, organización y entrega de resultados.",
-  "Junior Unity Developer focused on gameplay and mobile games. Barcelona or remote.":
-    "Junior Unity Developer centrado en gameplay y juegos móviles. Barcelona o remoto.",
-  "Navigation":
-    "Navegación",
-  "Video Games":
-    "Videojuegos",
-  "3D Modeling":
-    "Modelado 3D",
-  "© 2025 Nixon. All rights reserved.":
-    "© 2025 Nixon. Todos los derechos reservados.",
-  "Privacy":
-    "Privacidad",
-  "Terms":
-    "Términos",
-  "Made with":
-    "Hecho con",
-  "using Astro":
-    "usando Astro",
-  "My name is":
-    "Mi nombre es",
-  "a graduate in Video Game Design and Development":
-    "graduado en Diseño y Desarrollo de Videojuegos",
-  "from":
-    "por el",
-  "focused on":
-    "centrado en",
-  ", and":
-    ", y",
-  "and":
-    "y",
-  "I just shipped":
-    "Acabo de publicar",
-  ", my first Android game, built solo from start to finish with":
-    ", mi primer juego para Android, hecho en solitario de principio a fin con",
-  "Unity and C#":
-    "Unity y C#",
-  ": View/Controller architecture, data-driven levels with ScriptableObjects, event-based communication, DOTween, JSON persistence and cross-scene audio.":
-    ": arquitectura View/Controller, niveles data-driven con ScriptableObjects, comunicación por eventos, DOTween, persistencia en JSON y audio entre escenas.",
-  "What I bring:":
-    "Lo que aporto:",
-  "gameplay programming, UI systems and Android builds":
-    "programación de gameplay, sistemas de UI y builds de Android",
-  ", with architecture habits that separate logic from presentation. On top of that, the foundation from my degree:":
-    ", con hábitos de arquitectura que separan lógica y presentación. A eso sumo la base de mi carrera:",
-  "C++, custom engines, VR/AR, 3D (Blender, 3ds Max, Maya) and UI/UX":
-    "C++, motores propios, VR/AR, 3D (Blender, 3ds Max, Maya) y UI/UX",
-  "I stand out for my":
-    "Destaco por mi",
-  "ability to work independently":
-    "capacidad de trabajo independiente",
-  ", my debugging discipline (stack traces, prefab reference hunting and testing on real devices) and how fast I learn. I'm looking for my":
-    ", mi disciplina depurando (stack traces, referencias de prefabs y pruebas en dispositivo real) y mi rapidez aprendiendo. Busco mi",
-  "first role as a Junior Unity / Gameplay Developer":
-    "primer puesto como Junior Unity / Gameplay Developer",
-  "at a studio or mobile team, in Barcelona or remote.":
-    "en un estudio o equipo móvil, en Barcelona o en remoto.",
-  "Experience":
-    "Experiencia",
-  "My":
-    "Mi",
-  "IT Technical Support":
-    "Soporte Técnico IT",
-  "Mar 2025 - Aug 2025":
-    "Mar 2025 - Ago 2025",
-  "Creation of interactive PDF forms, editing of institutional videos and development of gamified materials on cybersecurity at the COAC":
-    "Creación de formularios PDF interactivos, edición de vídeos institucionales y desarrollo de materiales gamificados sobre ciberseguridad en el COAC",
-  "Design and development of interactive PDF forms using advanced editing and automation tools.":
-    "Diseño y desarrollo de formularios PDF interactivos utilizando herramientas avanzadas de edición y automatización.",
-  "Editing and preparation of institutional videos following the COAC's graphic line and standards.":
-    "Edición y preparación de vídeos institucionales siguiendo la línea gráfica y los estándares del COAC.",
-  "Creation of gamified materials focused on cybersecurity awareness.":
-    "Creación de materiales gamificados enfocados en la concienciación sobre ciberseguridad.",
-  "Strengths":
-    "Fortalezas",
-  "What I'm":
-    "En qué",
-  "good at":
-    "soy fuerte",
-  "What I bring today to a team building games with Unity":
-    "Lo que aporto hoy a un equipo que desarrolla juegos con Unity",
-  "Playable systems and mechanics in Unity and C#: player control, enemy waves, scoring and game feel.":
-    "Sistemas jugables y mecánicas en Unity y C#: control del jugador, oleadas de enemigos, puntuación y game feel.",
-  "Architecture & clean code":
-    "Arquitectura y código limpio",
-  "Separation of logic and presentation, data-driven design with ScriptableObjects and event-based communication.":
-    "Separación entre lógica y presentación, diseño orientado a datos con ScriptableObjects y comunicación por eventos.",
-  "Android builds, UI and HUD systems, JSON persistence and testing on real devices.":
-    "Builds de Android, sistemas de UI y HUD, persistencia en JSON y pruebas en dispositivo real.",
-  "Visit my":
-    "¡Visita mi",
-  "Explore my projects, contributions and open source code.":
-    "Explora mis proyectos, contribuciones y código abierto.",
-  "Discover how I work and what I've created.":
-    "Descubre cómo trabajo y qué he creado.",
-  "Go to GitHub":
-    "Ir a GitHub",
-  "Public projects":
-    "Proyectos públicos",
-  "Quality code":
-    "Código de calidad",
-  "A collection of my work in video game development and interactive experiences":
-    "Una colección de mis trabajos en desarrollo de videojuegos y experiencias interactivas",
-  "All":
-    "Todos",
-  "Load more projects":
-    "Ver más proyectos",
-  "Code":
-    "Código",
+  "I build gameplay and mobile games in Unity and C#. I have shipped two of them, each made alone from first prototype to published build.":
+    "Programo gameplay y juegos móviles en Unity y C#. He publicado dos de ellos, cada uno hecho en solitario desde el primer prototipo hasta la versión publicada.",
+  "Play Brick Breaker in your browser":
+    "Juega a Brick Breaker en tu navegador",
+  "Read the resume":
+    "Ver el currículum",
+  "Based in":
+    "Ubicación",
+  "Barcelona, open to remote work":
+    "Barcelona, abierto a trabajo remoto",
+  "Looking for":
+    "Busco",
+  "A first role as Junior Unity or Gameplay developer":
+    "Mi primer puesto como desarrollador Unity o Gameplay junior",
+  "Published":
+    "Publicado",
+  "Air Bomb (Android), Brick Breaker Mobile (Android and web), Fracture Tool (Unity Asset Store)":
+    "Air Bomb (Android), Brick Breaker Mobile (Android y web), Fracture Tool (Unity Asset Store)",
+  "Selected work":
+    "Proyectos destacados",
+  "Two shipped games, one published Unity tool and one 3D piece.":
+    "Dos juegos publicados, una herramienta de Unity publicada y una pieza 3D.",
+  "A brick breaker for phones that also runs in the browser. It has five generated levels, lives, a high score, pause, audio settings, analytics and rewarded ads on Android.":
+    "Un rompeladrillos para móvil que también funciona en el navegador. Tiene cinco niveles generados, vidas, récord, pausa, ajustes de audio, analíticas y anuncios con recompensa en Android.",
+  "Android and WebGL. Unity, C#, DOTween.":
+    "Android y WebGL. Unity, C#, DOTween.",
+  "Play in the browser":
+    "Jugar en el navegador",
+  "A Space Invaders-style arcade shooter for Android. Levels are ScriptableObjects, systems talk through events, progress is saved as JSON and the audio carries across scenes.":
+    "Un shooter arcade estilo Space Invaders para Android. Los niveles son ScriptableObjects, los sistemas se comunican con eventos, el progreso se guarda en JSON y el audio pasa de una escena a otra.",
+  "Play on itch.io":
+    "Jugar en itch.io",
+  "A Unity Asset Store tool that breaks any mesh into physics fragments. It started as my final degree project and is now published as a Free and a Pro edition under my brand, Naxo Studios. Cuts can be baked in the editor, so a 4,000-triangle column breaks in about 3 ms instead of 490 ms.":
+    "Una herramienta de la Unity Asset Store que rompe cualquier malla en fragmentos físicos. Empezó como mi trabajo de fin de grado y ahora está publicada en una edición Free y otra Pro bajo mi marca, Naxo Studios. Los cortes se pueden precalcular en el editor, así que una columna de 4.000 triángulos se rompe en unos 3 ms en lugar de 490 ms.",
+  "Editor tooling. Unity, C#, PhysX.":
+    "Herramientas de editor. Unity, C#, PhysX.",
   "Get Free":
     "Conseguir Free",
   "Get Pro":
     "Conseguir Pro",
-  "Unity Asset Store tool, published under my brand Naxo Studios, that breaks any mesh into real physics fragments. Five fracture modes, material presets and baked fractures: a 4,000-triangle column breaks in ~3 ms instead of ~490 ms. Free and Pro editions built from one codebase. It started as my final degree project.":
-    "Herramienta de la Unity Asset Store, publicada bajo mi marca Naxo Studios, que rompe cualquier malla en fragmentos físicos reales. Cinco modos de fractura, presets de material y fracturas precalculadas: una columna de 4.000 triángulos se rompe en ~3 ms en lugar de ~490 ms. Ediciones Free y Pro con un mismo código base. Empezó como mi trabajo de fin de grado.",
-  "Unity Asset Store tool that breaks any mesh into real physics fragments":
-    "Herramienta de la Unity Asset Store que rompe cualquier malla en fragmentos físicos reales",
-  "Editor tools":
-    "Herramientas de editor",
   "Realistic 3D Mate Gourd":
     "Mate 3D realista",
-  "Realistic yerba mate gourd modeled in Blender":
-    "Mate realista hecho en blender",
-  "Space Invaders-style arcade shooter for Android":
-    "Shooter arcade para Android al estilo Space Invaders",
-  "My first shipped game: a Space Invaders-style arcade shooter for Android, built solo from start to finish. View/Controller architecture, data-driven levels with ScriptableObjects, event-based communication, DOTween for game feel, JSON persistence and cross-scene audio.":
-    "Mi primer juego publicado: shooter arcade para Android estilo Space Invaders, hecho en solitario de principio a fin. Arquitectura View/Controller, niveles data-driven con ScriptableObjects, comunicación por eventos, DOTween para el game feel, persistencia en JSON y audio entre escenas.",
-  "★ HELLO! ★ OPEN TO WORK ★ LET'S CREATE MAGIC ★":
-    "★ ¡HOLA! ★ OPEN TO WORK ★ LET'S CREATE MAGIC ★",
-  "AVAILABLE":
-    "DISPONIBLE",
-  "Play Snake":
-    "Jugar Snake",
-  "🎮 Earn XP by interacting with the links ✨":
-    "🎮 Gana XP interactuando con los links ✨",
-  "Resume":
-    "CV",
-  "Resume view · use the button to save it as a PDF":
-    "Vista de currículum · usa el botón para guardarlo como PDF",
-  "Download PDF":
-    "Descargar PDF",
-  "Barcelona, Spain · Open to remote":
-    "Barcelona, España · Disponible en remoto",
-  "Profile":
-    "Perfil",
-  "Junior Unity Developer focused on gameplay and mobile games. I build games to learn how to build better ones, and I just shipped my first one end-to-end: Air Bomb, an arcade shooter for Android built solo with Unity and C#. Graduate in Video Game Design and Development from CITM (UPC). Looking for my first role as a Junior Unity / Gameplay Developer at a studio or mobile team, in Barcelona or remote.":
-    "Junior Unity Developer centrado en gameplay y juegos móviles. Construyo juegos para aprender a construirlos mejor, y acabo de publicar el primero de principio a fin: Air Bomb, un shooter arcade para Android hecho en solitario con Unity y C#. Graduado en Diseño y Desarrollo de Videojuegos por el CITM (UPC). Busco mi primer puesto como Junior Unity / Gameplay Developer en un estudio o equipo móvil, en Barcelona o en remoto.",
-  "Education":
-    "Formación",
-  "Skills":
-    "Habilidades",
+  "A yerba mate gourd modeled in Blender and textured in Substance Painter.":
+    "Un mate de yerba modelado en Blender y texturizado en Substance Painter.",
+  "3D art. Blender, Substance Painter.":
+    "Arte 3D. Blender, Substance Painter.",
+  "View on ArtStation":
+    "Ver en ArtStation",
+  "How I build":
+    "Cómo trabajo",
+  "The habits behind both games, written down.":
+    "Los hábitos detrás de ambos juegos, por escrito.",
+  "Logic and presentation stay apart":
+    "Lógica y presentación, por separado",
+  "I use a View and Controller split. Viewers animate and report what happened, controllers decide what it means. Services such as audio, analytics and ads sit outside both.":
+    "Uso una separación View y Controller. Los viewers animan y avisan de lo ocurrido, los controllers deciden qué significa. Los servicios, como audio, analíticas y anuncios, quedan fuera de ambos.",
+  "Levels are data":
+    "Los niveles son datos",
+  "Level definitions live in ScriptableObjects, so a designer can change a level without touching code and a new level never needs a new script.":
+    "Las definiciones de nivel viven en ScriptableObjects, así que un diseñador puede cambiar un nivel sin tocar código y un nivel nuevo nunca necesita un script nuevo.",
+  "Systems talk through events":
+    "Los sistemas se comunican con eventos",
+  "Classes announce what happened with C# events and subscribe and unsubscribe in OnDestroy, so nothing holds a reference it no longer needs.":
+    "Las clases avisan de lo ocurrido con eventos de C# y se suscriben y desuscriben en OnDestroy, así que nada conserva una referencia que ya no necesita.",
+  "Everything runs on a real phone":
+    "Todo se prueba en un móvil real",
+  "I test builds on real devices and chase bugs with stack traces and prefab reference checks before I call a build done.":
+    "Pruebo las builds en dispositivos reales y persigo los fallos con stack traces y revisión de referencias de prefabs antes de dar una build por terminada.",
+  "Experience and education":
+    "Experiencia y formación",
   "IT Support Technician":
-    "Técnico de Soporte IT",
-  "Designed gamified cybersecurity awareness materials for staff: first professional experience applying game mechanics to real-world training.":
-    "Diseño de materiales gamificados de concienciación en ciberseguridad para el personal: primera experiencia profesional aplicando mecánicas de juego a formación real.",
-  "Built interactive PDF forms using editing and automation tools.":
-    "Desarrollo de formularios PDF interactivos con herramientas de edición y automatización.",
-  "Edited institutional videos following the COAC's graphic line and standards.":
-    "Edición de vídeos institucionales siguiendo la línea gráfica y los estándares del COAC.",
-  "Day-to-day technical support for the organization.":
-    "Soporte técnico diario a la organización.",
-  "Shipped game · Android":
-    "Juego publicado · Android",
-  "Space Invaders-style arcade shooter built solo from start to finish with Unity and C#.":
-    "Shooter arcade estilo Space Invaders desarrollado en solitario de principio a fin con Unity y C#.",
-  "View/Controller architecture separating logic from presentation.":
-    "Arquitectura View/Controller con separación entre lógica y presentación.",
-  "Data-driven levels with ScriptableObjects and event communication via Action callbacks.":
-    "Niveles data-driven con ScriptableObjects y comunicación por eventos mediante Action callbacks.",
-  "DOTween for game feel, JSON persistence and a cross-scene audio system.":
-    "DOTween para el game feel, persistencia en JSON y sistema de audio entre escenas.",
-  "Final degree project · Tool":
-    "Trabajo de Fin de Grado · Herramienta",
-  "Unity Asset Store · Free & Pro · Naxo Studios":
-    "Unity Asset Store · Free y Pro · Naxo Studios",
-  "Editor and runtime tool that breaks any mesh into physics fragments: 5 fracture modes, baked fractures (~3 ms vs ~490 ms) and a custom inspector. Started as my final degree project; passed Asset Store validation.":
-    "Herramienta de editor y runtime que rompe cualquier malla en fragmentos físicos: 5 modos de fractura, fracturas precalculadas (~3 ms frente a ~490 ms) e inspector personalizado. Empezó como mi TFG; superó la validación de la Asset Store.",
-  "My final degree project became":
-    "Mi trabajo de fin de grado se convirtió en",
-  ", a Unity Asset Store tool with Free and Pro editions, published under my own brand,":
-    ", una herramienta de la Unity Asset Store con ediciones Free y Pro, publicada bajo mi propia marca,",
-  "Real-time 3D fragmentation system built as a Unity editor tool.":
-    "Sistema de fragmentación 3D en tiempo real como herramienta de editor para Unity.",
-  "Written in C# with a focus on performance and usability for other developers.":
-    "Desarrollado en C# con foco en rendimiento y usabilidad para otros desarrolladores.",
-  "3D Art":
-    "Arte 3D",
-  "Photorealistic modeling and texturing in Blender and Substance Painter.":
-    "Modelado y texturizado fotorrealista en Blender y Substance Painter.",
+    "Técnico de soporte IT",
+  "Col·legi d'Arquitectes de Catalunya (COAC), Barcelona. March to August 2025.":
+    "Col·legi d'Arquitectes de Catalunya (COAC), Barcelona. De marzo a agosto de 2025.",
+  "Designed gamified cybersecurity training for staff, applying game mechanics to real learning.":
+    "Diseñé formación de ciberseguridad gamificada para el personal, aplicando mecánicas de juego al aprendizaje real.",
+  "Built interactive PDF forms and edited institutional videos to the organisation's standards.":
+    "Creé formularios PDF interactivos y edité vídeos institucionales según los estándares de la organización.",
   "BSc in Video Game Design and Development":
     "Grado en Diseño y Desarrollo de Videojuegos",
-  "Engines & languages":
+  "CITM, Universitat Politècnica de Catalunya, Barcelona. September 2021 to July 2025.":
+    "CITM, Universitat Politècnica de Catalunya, Barcelona. De septiembre de 2021 a julio de 2025.",
+  "Tools":
+    "Herramientas",
+  "Engines and languages":
     "Motores y lenguajes",
-  "Gameplay & architecture":
+  "Gameplay and architecture":
     "Gameplay y arquitectura",
   "ScriptableObjects, DOTween, data-driven design, event-driven architecture, JSON persistence":
     "ScriptableObjects, DOTween, diseño orientado a datos, arquitectura por eventos, persistencia en JSON",
@@ -382,12 +117,64 @@ const DICT = {
     "Móvil",
   "Android builds, UI and HUD systems, testing on real devices":
     "Builds de Android, sistemas de UI y HUD, pruebas en dispositivo real",
-  "Art & 3D":
-    "Arte y 3D",
-  "Tools & methodology":
-    "Herramientas y metodología",
+  "Art, 3D and process":
+    "Arte, 3D y proceso",
+  "Blender, Maya, 3ds Max, Substance Painter, Photoshop, Figma, Git, Scrum and Kanban":
+    "Blender, Maya, 3ds Max, Substance Painter, Photoshop, Figma, Git, Scrum y Kanban",
+  "Looking for my first role in a games studio.":
+    "Busco mi primer puesto en un estudio de videojuegos.",
+  "Write to me on LinkedIn or by email.":
+    "Escríbeme por LinkedIn o por correo.",
+  "Message me on LinkedIn":
+    "Escríbeme por LinkedIn",
   "email me":
     "escribir por correo",
+  "All rights reserved.":
+    "Todos los derechos reservados.",
+  "Resume view. Use the button to save it as a PDF.":
+    "Vista del currículum. Usa el botón para guardarlo como PDF.",
+  "Download PDF":
+    "Descargar PDF",
+  "Barcelona, Spain · Open to remote":
+    "Barcelona, España · Disponible en remoto",
+  "Profile":
+    "Perfil",
+  "Junior Unity Developer focused on gameplay and mobile. Shipped two mobile games built solo end-to-end with Unity and C#: Air Bomb (Android) and Brick Breaker Mobile (Android and web). Video Game Design and Development graduate (CITM – UPC). Looking for a first role as Junior Unity / Gameplay Developer, in Barcelona or remote.":
+    "Junior Unity Developer centrado en gameplay y móvil. He publicado dos juegos para móvil hechos en solitario de principio a fin con Unity y C#: Air Bomb (Android) y Brick Breaker Mobile (Android y web). Graduado en Diseño y Desarrollo de Videojuegos (CITM – UPC). Busco mi primer puesto como Junior Unity / Gameplay Developer, en Barcelona o en remoto.",
+  "Experience":
+    "Experiencia",
+  "Mar 2025 — Aug 2025":
+    "Mar 2025 — Ago 2025",
+  "Designed gamified cybersecurity training for staff — applying game mechanics to real-world learning.":
+    "Diseño de formación gamificada en ciberseguridad para el personal, aplicando mecánicas de juego a aprendizaje real.",
+  "Projects":
+    "Proyectos",
+  "Shipped game · Android & Web":
+    "Juego publicado · Android y Web",
+  "Arkanoid-style brick breaker for mobile, playable in the browser: 5 procedurally generated levels, high score, pause and audio settings.":
+    "Rompeladrillos estilo Arkanoid para móvil, jugable en el navegador: 5 niveles generados proceduralmente, récord, pausa y ajustes de audio.",
+  "Rewarded ads and analytics on Android; View/Controller architecture, event-driven gameplay and ScriptableObject levels.":
+    "Anuncios con recompensa y analíticas en Android; arquitectura View/Controller, gameplay orientado a eventos y niveles con ScriptableObjects.",
+  "Shipped game · Android":
+    "Juego publicado · Android",
+  "Space Invaders-style arcade shooter, built solo end-to-end with Unity and C#.":
+    "Shooter arcade estilo Space Invaders, hecho en solitario de principio a fin con Unity y C#.",
+  "View/Controller architecture, data-driven levels with ScriptableObjects, event-based communication, DOTween, JSON persistence and cross-scene audio.":
+    "Arquitectura View/Controller, niveles data-driven con ScriptableObjects, comunicación por eventos, DOTween, persistencia en JSON y audio entre escenas.",
+  "Unity Asset Store · Free & Pro · Naxo Studios":
+    "Unity Asset Store · Free y Pro · Naxo Studios",
+  "Editor and runtime tool that breaks any mesh into physics fragments: 5 fracture modes, baked fractures (~3 ms vs ~490 ms) and a custom inspector. Started as my final degree project; passed Asset Store validation.":
+    "Herramienta de editor y runtime que rompe cualquier malla en fragmentos físicos: 5 modos de fractura, fracturas precalculadas (~3 ms frente a ~490 ms) e inspector personalizado. Empezó como mi TFG; superó la validación de la Asset Store.",
+  "Education":
+    "Formación",
+  "Skills":
+    "Habilidades",
+  "Engines & languages":
+    "Motores y lenguajes",
+  "Gameplay & architecture":
+    "Gameplay y arquitectura",
+  "Art, 3D & tools":
+    "Arte, 3D y herramientas",
   "Page not found":
     "Página no encontrada",
   "The link you tried to access doesn't exist or was moved.":
@@ -425,7 +212,7 @@ function shouldSkip(parent) {
   return (
     !parent ||
     parent.closest(
-      'script, style, noscript, .notranslate, [data-es], #lang-toggle, #lang-toggle-mobile'
+      'script, style, noscript, .notranslate, [data-es], #lang-toggle'
     )
   );
 }
@@ -467,7 +254,7 @@ function translate(root) {
   translateTextNodes(root);
 }
 
-// Observa contenido que aparece tarde (islas React con client:visible, etc.)
+// Observa contenido que aparece tarde
 function startObserver() {
   const observer = new MutationObserver((mutations) => {
     if (getLang() !== "es") return;
@@ -513,7 +300,7 @@ function init() {
   startObserver();
 
   document
-    .querySelectorAll("#lang-toggle, #lang-toggle-mobile")
+    .querySelectorAll("#lang-toggle")
     .forEach((btn) => btn.addEventListener("click", onToggleClick));
 }
 

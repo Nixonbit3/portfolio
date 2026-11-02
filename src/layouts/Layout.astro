@@ -1,7 +1,5 @@
 ---
 import "../styles/global.css";
-import Navbar from "../components/commons/navbar/navbar.astro";
-import Footer from "../components/commons/footer/footer.astro";
 
 interface Props {
   title?: string;
@@ -30,22 +28,16 @@ const ogImage = new URL(image, base);
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#ff5a1f" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="theme-color" content="#000000" />
 
-    <!-- Precarga de las fuentes: evita el parpadeo de texto al cargar -->
+    <!-- Precarga de la fuente: evita el parpadeo de texto al cargar -->
     <link
       rel="preload"
-      href="/fonts/inter-latin-wght-normal.woff2"
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="/fonts/space-grotesk-latin-wght-normal.woff2"
+      href="/fonts/archivo-latin-wdth-normal.woff2"
       as="font"
       type="font/woff2"
       crossorigin
@@ -77,20 +69,13 @@ const ogImage = new URL(image, base);
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
   </head>
-  <body class="bg-gray-950 text-white">
-    <Navbar />
-    
-    <!-- Padding SOLO en móvil -->
-    <main class="pt-16 md:pt-0">
-      <slot />
-    </main>
-    
-    <Footer />
+  <body>
+    <a href="#main" class="skip-link">Skip to content</a>
+    <slot />
 
     <script>
       import "../scripts/i18n.js";
       import "../scripts/mail.js";
-      import "../scripts/tilt.js";
     </script>
   </body>
 </html>

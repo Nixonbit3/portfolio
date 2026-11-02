@@ -1,16 +1,16 @@
 // @ts-check
 import { defineConfig } from "astro/config";
-import tailwindcss from "@tailwindcss/vite";
-
-import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
   site: "https://nixondanielcorrea.netlify.app",
 
-  vite: {
-    plugins: [tailwindcss()],
+  // Las paginas de la version anterior ahora son secciones de la portada.
+  // Se generan como redireccion estatica para que los enlaces viejos
+  // (LinkedIn, CV, correos) sigan funcionando.
+  redirects: {
+    "/about": "/#background",
+    "/proyectos": "/#work",
+    "/contact": "/#contact",
   },
-
-  integrations: [react()],
 });

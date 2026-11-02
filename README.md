@@ -1,63 +1,43 @@
-# 🌌 Personal Portfolio 
+# Nixon Correa · Portfolio
 
----
+Portfolio de Junior Unity Developer (gameplay y juegos móviles).
+Web: https://nixondanielcorrea.netlify.app
 
-## 🚀 Características principales
+## Cómo está hecha
 
-- ⚡️ Construido con **Astro** y **React** 
-- 🎨 **Diseño responsive**
-- 🧠 **Filtrado dinámico de proyectos**
-- 💬 Secciones personalizables: *Sobre mí*, *Proyectos*, *Experiencia*, *Contacto*  
+- **Astro** (sitio estático, sin React ni Tailwind) y CSS propio con variables.
+- **Una sola tipografía**, Archivo, autoalojada (`public/fonts`). Sin peticiones a terceros.
+- **Tema claro y oscuro** automáticos según el sistema (`prefers-color-scheme`).
+- **ES/EN**: el HTML se sirve en inglés y el español se aplica en el navegador con el
+  diccionario de `src/scripts/i18n.js`. Al cambiar un texto de una página, hay que
+  añadir o actualizar su clave en ese diccionario.
+- **Correo protegido**: no aparece en el HTML, se reconstruye en el navegador
+  (`src/components/MailLink.astro` + `src/scripts/mail.js`).
+- **Currículum** en `/cv`, preparado para imprimirse en una sola hoja A4.
+- Las rutas antiguas `/about`, `/proyectos` y `/contact` redirigen a su sección en la portada.
 
----
+## Estructura
 
-## 🧩 Tecnologías utilizadas
-
-- [Astro](https://astro.build/)  
-- [TailwindCSS](https://tailwindcss.com/)  
-- [TypeScript / JavaScript]  
-- [React (en componentes selectivos)]  
-- [Vite](https://vitejs.dev/)  
-
----
-
-## 📂 Estructura del proyecto
-
-
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│ └── images/ # Recursos estáticos
-├── src/
-│ ├── components/ # Componentes reutilizables
-│ ├── layouts/ # Layout base
-│ ├── pages/ # Páginas principales (index, proyectos, etc.)
-│ ├── scripts/ # JS para interactividad (filtro, animaciones)
-│ ├── styles/ # CSS global o módulos
-│ └── data/ # Datos (proyectos, experiencia)
-└── astro.config.mjs
+```
+src/
+  pages/        index (portada), cv, 404
+  components/   Nav, Footer, MailLink
+  layouts/      Layout (cabecera, SEO, Open Graph)
+  styles/       global.css (tokens y componentes)
+  scripts/      i18n.js, mail.js
+  assets/       imágenes de los proyectos
+public/         _headers (seguridad), fuentes, favicon, og.jpg
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Comandos
 
-## 🧞 Commands
+```bash
+npm install
+npm run dev      # http://localhost:4321
+npm run build    # genera dist/
+```
 
-All commands are run from the root of the project, from a terminal:
+## Despliegue
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
----
-
-
+Netlify construye `dist/` en cada push a `main`. Cada push cuenta como un despliegue:
+conviene agrupar los cambios y subirlos de una vez.
