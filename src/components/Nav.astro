@@ -11,13 +11,13 @@
     <a href="/#background">Background</a>
     <a href="/cv">Resume</a>
     <a href="/#contact">Contact</a>
-    <button
-      id="lang-toggle"
-      type="button"
-      class="lang notranslate"
-      aria-label="Cambiar idioma / Switch language"
-    >
-      <span class="lang-toggle-label">ES</span>
-    </button>
+    <span class="lang notranslate" translate="no">
+      <label class="sr-only" for="lang-select">Language · Idioma · Llengua</label>
+      <select id="lang-select" class="lang__select">
+        <option value="en" lang="en">English</option>
+        <option value="es" lang="es">Español</option>
+        <option value="ca" lang="ca">Català</option>
+      </select>
+    </span>
   </span>
 </nav>

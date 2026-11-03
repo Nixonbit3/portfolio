@@ -34,6 +34,19 @@ const ogImage = new URL(image, base);
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
 
+    <!-- Si la persona eligio ES o CA, se oculta la pagina hasta traducirla
+         (src/scripts/i18n.js la muestra). Un respaldo en CSS la muestra
+         pasado 1,5 s por si el script fallara. -->
+    <script is:inline>
+      try {
+        var l = localStorage.getItem("lang");
+        if (l === "es" || l === "ca") {
+          document.documentElement.lang = l;
+          document.documentElement.classList.add("i18n-pending");
+        }
+      } catch (e) {}
+    </script>
+
     <!-- Precarga de la fuente: evita el parpadeo de texto al cargar -->
     <link
       rel="preload"
@@ -68,6 +81,8 @@ const ogImage = new URL(image, base);
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+
+    <slot name="head" />
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to content</a>

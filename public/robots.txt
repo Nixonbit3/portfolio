@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nixondanielcorrea.netlify.app/sitemap.xml

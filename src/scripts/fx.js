@@ -30,7 +30,7 @@ if (!reduce) {
     };
     window.addEventListener("scroll", request, { passive: true });
     window.addEventListener("resize", request);
-    update();
+    request();
   }
 
   // ---------- Aparicion de los proyectos ----------
@@ -68,17 +68,30 @@ if (!reduce) {
     const toast = document.querySelector(".toast");
     const lang = () => {
       try {
-        return localStorage.getItem("lang") === "es" ? "es" : "en";
+        const v = localStorage.getItem("lang");
+        return v === "es" || v === "ca" ? v : "en";
       } catch {
         return "en";
       }
     };
     const LEVELS = {
-      work: { en: ["Level 1", "Selected work"], es: ["Nivel 1", "Proyectos destacados"] },
-      approach: { en: ["Level 2", "How I build"], es: ["Nivel 2", "Cómo trabajo"] },
-      contact: { en: ["Final level", "Say hello"], es: ["Nivel final", "Di hola"] },
+      work: {
+        en: ["Level 1", "Selected work"],
+        es: ["Nivel 1", "Proyectos destacados"],
+        ca: ["Nivell 1", "Projectes destacats"],
+      },
+      approach: {
+        en: ["Level 2", "How I build"],
+        es: ["Nivel 2", "Cómo trabajo"],
+        ca: ["Nivell 2", "Com treballo"],
+      },
+      contact: {
+        en: ["Final level", "Say hello"],
+        es: ["Nivel final", "Di hola"],
+        ca: ["Nivell final", "Digues hola"],
+      },
     };
-    const UNLOCKED = { en: "Level unlocked", es: "Nivel desbloqueado" };
+    const UNLOCKED = { en: "Level unlocked", es: "Nivel desbloqueado", ca: "Nivell desbloquejat" };
 
     let seen = [];
     try {
