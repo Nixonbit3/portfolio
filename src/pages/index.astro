@@ -73,6 +73,7 @@ const principios = [
   },
   {
     titulo: "Systems talk through events",
+    codigo: true,
     texto:
       "Classes announce what happened with C# events and subscribe and unsubscribe in OnDestroy, so nothing holds a reference it no longer needs.",
   },
@@ -84,7 +85,7 @@ const principios = [
 ];
 
 const herramientas = [
-  { grupo: "Engines and languages", items: "Unity, C#, C++, Unreal Engine, Python" },
+  { grupo: "Languages and engines", items: "C#, C++, Python, Unity, Unreal Engine" },
   {
     grupo: "Gameplay and architecture",
     items:
@@ -100,31 +101,52 @@ const herramientas = [
 ---
 
 <Layout>
+  <div class="xp" aria-hidden="true"><span class="xp__fill"></span></div>
+  <div class="toast" role="status" aria-live="polite"></div>
+
   <header class="band hero">
     <div class="wrap">
       <Nav />
 
-      <h1 class="hero__name"><span>Nixon</span><span>Correa</span></h1>
+      <div class="hero__grid">
+        <h1 class="hero__name"><span>Nixon</span><span>Correa</span></h1>
 
-      <div class="hero__body">
+        <aside class="inspector" aria-label="Profile summary">
+          <div class="inspector__head">
+            <span class="inspector__check" aria-hidden="true"></span>
+            <span class="inspector__title notranslate">Nixon Correa</span>
+            <span class="inspector__tag notranslate">(Developer)</span>
+          </div>
+          <dl class="inspector__body">
+            <div class="field" style="--i:0"><dt>Based in</dt><dd>Barcelona, open to remote work</dd></div>
+            <div class="field" style="--i:1"><dt>Looking for</dt><dd>A first programming role, in games or in any other kind of software</dd></div>
+            <div class="field" style="--i:2">
+              <dt>Published</dt>
+              <dd>
+                <ul class="field__list">
+                  <li>Air Bomb (Android)</li>
+                  <li>Brick Breaker Mobile (Android and web)</li>
+                  <li>Fracture Tool (Unity Asset Store)</li>
+                </ul>
+              </dd>
+            </div>
+            <div class="field" style="--i:3">
+              <dt>Open to work</dt>
+              <dd class="field__bool"><span class="toggle" aria-hidden="true"></span>Yes</dd>
+            </div>
+          </dl>
+        </aside>
         <div class="hero__lead">
           <p>
-            I build gameplay and mobile games in Unity and C#. I have shipped two of them, each made
-            alone from first prototype to published build.
+            I'm a junior developer who learned to program by building games. I have shipped two
+            mobile games and a published Unity tool, all written in C# and made alone from first
+            prototype to release.
           </p>
           <div class="actions">
-            <a class="btn" href="https://nixonbit3.itch.io/brick-breaker-mobile" target="_blank" rel="noopener noreferrer">Play Brick Breaker in your browser</a>
+            <a class="btn" href="https://nixonbit3.itch.io/brick-breaker-mobile" target="_blank" rel="noopener noreferrer"><span class="btn__icon" aria-hidden="true"></span>Play Brick Breaker in your browser</a>
             <a class="link" href="/cv">Read the resume</a>
           </div>
         </div>
-        <dl class="facts">
-          <div><dt>Based in</dt><dd>Barcelona, open to remote work</dd></div>
-          <div><dt>Looking for</dt><dd>A first role as Junior Unity or Gameplay developer</dd></div>
-          <div>
-            <dt>Published</dt>
-            <dd>Air Bomb (Android), Brick Breaker Mobile (Android and web), Fracture Tool (Unity Asset Store)</dd>
-          </div>
-        </dl>
       </div>
     </div>
   </header>
@@ -182,6 +204,14 @@ const herramientas = [
               <div class="principle">
                 <h3>{p.titulo}</h3>
                 <p>{p.texto}</p>
+                {p.codigo && (
+                  <pre class="code notranslate" translate="no" aria-label="Example in C#"><code><span class="k">public event</span> <span class="t">Action</span>&lt;<span class="t">int</span>&gt; OnScoreChanged;
+
+<span class="k">void</span> OnDestroy()
+{`{`}
+    model.OnScoreChanged <span class="k">-=</span> HandleScore;
+{`}`}</code></pre>
+                )}
               </div>
             ))
           }
@@ -230,7 +260,7 @@ const herramientas = [
   <section class="band contact" id="contact" aria-labelledby="contact-title">
     <div class="wrap">
       <div class="contact__grid">
-        <h2 class="contact__title" id="contact-title">Looking for my first role in a games studio.</h2>
+        <h2 class="contact__title" id="contact-title">Looking for my first programming role.</h2>
         <div class="contact__side">
           <p>Write to me on LinkedIn or by email.</p>
           <a class="btn" href="https://www.linkedin.com/in/nixon-correa" target="_blank" rel="noopener noreferrer">Message me on LinkedIn</a>
@@ -248,3 +278,7 @@ const herramientas = [
 
   <Footer />
 </Layout>
+
+<script>
+  import "../scripts/fx.js";
+</script>

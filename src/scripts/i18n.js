@@ -11,8 +11,8 @@
 const DICT = {
   "Skip to content":
     "Saltar al contenido",
-  "Junior Unity developer":
-    "Desarrollador Unity junior",
+  "Junior developer":
+    "Desarrollador junior",
   "Work":
     "Proyectos",
   "Approach":
@@ -23,24 +23,28 @@ const DICT = {
     "CV",
   "Contact":
     "Contacto",
-  "I build gameplay and mobile games in Unity and C#. I have shipped two of them, each made alone from first prototype to published build.":
-    "Programo gameplay y juegos móviles en Unity y C#. He publicado dos de ellos, cada uno hecho en solitario desde el primer prototipo hasta la versión publicada.",
-  "Play Brick Breaker in your browser":
-    "Juega a Brick Breaker en tu navegador",
-  "Read the resume":
-    "Ver el currículum",
   "Based in":
     "Ubicación",
   "Barcelona, open to remote work":
     "Barcelona, abierto a trabajo remoto",
   "Looking for":
     "Busco",
-  "A first role as Junior Unity or Gameplay developer":
-    "Mi primer puesto como desarrollador Unity o Gameplay junior",
+  "A first programming role, in games or in any other kind of software":
+    "Mi primer puesto de programación, en videojuegos o en cualquier otro tipo de software",
   "Published":
     "Publicado",
-  "Air Bomb (Android), Brick Breaker Mobile (Android and web), Fracture Tool (Unity Asset Store)":
-    "Air Bomb (Android), Brick Breaker Mobile (Android y web), Fracture Tool (Unity Asset Store)",
+  "Brick Breaker Mobile (Android and web)":
+    "Brick Breaker Mobile (Android y web)",
+  "Open to work":
+    "Abierto a ofertas",
+  "Yes":
+    "Sí",
+  "I'm a junior developer who learned to program by building games. I have shipped two mobile games and a published Unity tool, all written in C# and made alone from first prototype to release.":
+    "Soy un desarrollador junior que aprendió a programar haciendo juegos. He publicado dos juegos para móvil y una herramienta de Unity, todo escrito en C# y hecho en solitario desde el primer prototipo hasta la publicación.",
+  "Play Brick Breaker in your browser":
+    "Juega a Brick Breaker en tu navegador",
+  "Read the resume":
+    "Ver el currículum",
   "Selected work":
     "Proyectos destacados",
   "Two shipped games, one published Unity tool and one 3D piece.":
@@ -107,8 +111,8 @@ const DICT = {
     "CITM, Universitat Politècnica de Catalunya, Barcelona. De septiembre de 2021 a julio de 2025.",
   "Tools":
     "Herramientas",
-  "Engines and languages":
-    "Motores y lenguajes",
+  "Languages and engines":
+    "Lenguajes y motores",
   "Gameplay and architecture":
     "Gameplay y arquitectura",
   "ScriptableObjects, DOTween, data-driven design, event-driven architecture, JSON persistence":
@@ -121,8 +125,8 @@ const DICT = {
     "Arte, 3D y proceso",
   "Blender, Maya, 3ds Max, Substance Painter, Photoshop, Figma, Git, Scrum and Kanban":
     "Blender, Maya, 3ds Max, Substance Painter, Photoshop, Figma, Git, Scrum y Kanban",
-  "Looking for my first role in a games studio.":
-    "Busco mi primer puesto en un estudio de videojuegos.",
+  "Looking for my first programming role.":
+    "Busco mi primer puesto de programación.",
   "Write to me on LinkedIn or by email.":
     "Escríbeme por LinkedIn o por correo.",
   "Message me on LinkedIn":
@@ -135,12 +139,14 @@ const DICT = {
     "Vista del currículum. Usa el botón para guardarlo como PDF.",
   "Download PDF":
     "Descargar PDF",
+  "Junior Developer · C#, C++, Python":
+    "Desarrollador Junior · C#, C++, Python",
   "Barcelona, Spain · Open to remote":
     "Barcelona, España · Disponible en remoto",
   "Profile":
     "Perfil",
-  "Junior Unity Developer focused on gameplay and mobile. Shipped two mobile games built solo end-to-end with Unity and C#: Air Bomb (Android) and Brick Breaker Mobile (Android and web). Video Game Design and Development graduate (CITM – UPC). Looking for a first role as Junior Unity / Gameplay Developer, in Barcelona or remote.":
-    "Junior Unity Developer centrado en gameplay y móvil. He publicado dos juegos para móvil hechos en solitario de principio a fin con Unity y C#: Air Bomb (Android) y Brick Breaker Mobile (Android y web). Graduado en Diseño y Desarrollo de Videojuegos (CITM – UPC). Busco mi primer puesto como Junior Unity / Gameplay Developer, en Barcelona o en remoto.",
+  "Junior developer with a games background, open to any programming role. Shipped two mobile games and a Unity Asset Store tool, each built solo in C#: Air Bomb (Android), Brick Breaker Mobile (Android and web) and Fracture Tool (Free and Pro). Video Game Design and Development graduate (CITM – UPC). Looking for a first programming role in Barcelona or remote.":
+    "Desarrollador junior con experiencia en videojuegos y abierto a cualquier puesto de programación. He publicado dos juegos para móvil y una herramienta de la Unity Asset Store, cada uno hecho en solitario en C#: Air Bomb (Android), Brick Breaker Mobile (Android y web) y Fracture Tool (Free y Pro). Graduado en Diseño y Desarrollo de Videojuegos (CITM – UPC). Busco mi primer puesto de programación en Barcelona o en remoto.",
   "Experience":
     "Experiencia",
   "Mar 2025 — Aug 2025":
@@ -169,8 +175,8 @@ const DICT = {
     "Formación",
   "Skills":
     "Habilidades",
-  "Engines & languages":
-    "Motores y lenguajes",
+  "Languages & engines":
+    "Lenguajes y motores",
   "Gameplay & architecture":
     "Gameplay y arquitectura",
   "Art, 3D & tools":
